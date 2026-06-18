@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TechRot Profile Picture</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%;
+    background: #0d0d0d;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+  }
+  .pfp {
+    width: 512px; height: 512px;
+    background: #0d0d0d;
+    position: relative;
+    overflow: hidden;
+  }
+  .pfp::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+    background-size: 16px 16px;
+    pointer-events: none;
+  }
+  .pfp::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 3px
+    );
+    pointer-events: none; opacity: 0.2;
+  }
+  .ascii-skull {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -52%);
+    font-size: 15px; line-height: 1.0; white-space: pre;
+    text-align: center;
+    overflow: hidden;
+    text-shadow: 0 0 6px rgba(255,255,255,0.15);
+  }
+  .b { color: #e8e8e8; }
+  .d { color: #666; }
+  .f { color: #3a3a3a; }
+  .c { color: #555; }
+  .x { color: #0d0d0d; }  /* gaps from fractures */
+  .label {
+    position: absolute; bottom: 14px; left: 0; right: 0;
+    text-align: center;
+    font-size: 11px; color: #4a4a4a; letter-spacing: 4px;
+    text-transform: uppercase;
+    z-index: 5;
+  }
+  .label .rot { color: #888; }
+</style>
+</head>
+<body>
+
+<div class="pfp">
+  <div class="ascii-skull">        <span class="b">▓███████████▓</span>
+      <span class="b">▓███</span><span class="f">░░░</span><span class="b">█████</span><span class="f">░░░</span><span class="b">███▓</span>
+    <span class="b">▓██</span><span class="f">░░░░░</span><span class="b">███</span><span class="f">░░░░░</span><span class="b">██▓</span>
+   <span class="b">▓██</span><span class="x">░</span><span class="f">░░░░</span><span class="b">███████</span><span class="f">░░░░</span><span class="x">░</span><span class="b">██▓</span>
+   <span class="b">▓█</span><span class="x">▒</span><span class="b">███</span><span class="f">░░░░░</span><span class="b">███</span><span class="f">░░░░░</span><span class="b">███</span><span class="x">▒</span><span class="b">█▓</span>
+   <span class="b">▓█</span><span class="x">░</span><span class="b">██</span><span class="f">░░░░░░░</span><span class="b">██</span><span class="f">░░░░░░░</span><span class="b">██</span><span class="x">░</span><span class="b">█▓</span>
+   <span class="b">▓█</span><span class="f">░░</span><span class="b">██</span><span class="x">▒░</span><span class="b">███████</span><span class="x">░▒</span><span class="b">██</span><span class="f">░░</span><span class="b">█▓</span>
+   <span class="b">▓█</span><span class="f">░░░</span><span class="b">██</span><span class="x">▒▒</span><span class="b">███████</span><span class="x">▒▒</span><span class="b">██</span><span class="f">░░░</span><span class="b">█▓</span>
+   <span class="b">▓█</span><span class="f">░░░░</span><span class="b">█████</span><span class="x">░</span><span class="b">█████</span><span class="f">░░░░</span><span class="b">█▓</span>
+    <span class="b">▓██</span><span class="f">░░░░░</span><span class="b">███████</span><span class="f">░░░░░</span><span class="b">██▓</span>
+     <span class="b">▓███</span><span class="f">░░░░░░░░░░░</span><span class="b">███▓</span>
+      <span class="b">▓█████</span><span class="f">░░░░░░░</span><span class="b">█████▓</span>
+       <span class="d">▒▒</span><span class="b">▓███</span><span class="x"> </span><span class="b">███▓</span><span class="d">▒▒</span>
+        <span class="d">▒▒</span><span class="x">▒</span><span class="b">██</span><span class="x">▒</span><span class="b">██</span><span class="x">▒</span><span class="d">▒▒</span>
+         <span class="d">▒</span><span class="x">▒▒</span><span class="c">▒▒</span><span class="x">▒▒</span><span class="d">▒</span>
+          <span class="c">▒▒</span><span class="x">▒</span><span class="c">▒</span><span class="x">▒</span><span class="c">▒▒</span>
+           <span class="c">▒</span><span class="x"> </span><span class="c">▒▒</span><span class="x"> </span><span class="c">▒</span></div>
+  <div class="label">TECH<span class="rot">ROT</span></div>
+</div>
+
+</body>
+</html>

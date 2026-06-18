@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TechRot — YouTube Banner</title>
+<style>
+  /* YouTube banner: 2560 x 1440. Safe area ~1546 x 423 centered. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 2560px; height: 1440px;
+    background: #0d0d0d;
+    overflow: hidden;
+    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+  }
+  .banner {
+    position: relative;
+    width: 2560px; height: 1440px;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 55%),
+      #0d0d0d;
+    color: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  /* subtle scanline / grid overlay */
+  .banner::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+  .banner::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      rgba(0,0,0,0.2) 3px, rgba(0,0,0,0.2) 4px
+    );
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  .title-art {
+    font-size: 30px;
+    line-height: 1.0;
+    letter-spacing: 0;
+    white-space: pre;
+    text-align: center;
+    color: #f2f2f2;
+    text-shadow:
+      0 0 10px rgba(255,255,255,0.3),
+      0 0 35px rgba(255,255,255,0.12);
+    position: relative; z-index: 2;
+  }
+  .title-art .rot {
+    color: #888888;
+    text-shadow:
+      0 0 10px rgba(136,136,136,0.35),
+      0 0 35px rgba(136,136,136,0.15);
+  }
+  .tagline {
+    margin-top: 40px;
+    font-size: 30px;
+    letter-spacing: 14px;
+    color: #6e6e6e;
+    text-transform: uppercase;
+    position: relative; z-index: 2;
+  }
+  .tagline .accent { color: #b0b0b0; }
+  .corner {
+    position: absolute;
+    font-size: 20px;
+    color: #4a4a4a;
+    z-index: 2;
+    letter-spacing: 2px;
+  }
+  .corner.tl { top: 60px; left: 80px; }
+  .corner.tr { top: 60px; right: 80px; }
+  .corner.bl { bottom: 60px; left: 80px; }
+  .corner.br { bottom: 60px; right: 80px; }
+  .glitch {
+    position: relative; z-index: 2;
+    margin-top: 18px;
+    font-size: 22px;
+    color: #555555;
+    letter-spacing: 6px;
+    opacity: 0.85;
+  }
+  .divider {
+    position: relative; z-index: 2;
+    margin-top: 24px;
+    color: #333333;
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+  /* decorative ascii borders left/right of the safe area */
+  .side {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    font-size: 22px; color: #2a2a2a; z-index: 1; white-space: pre; line-height: 1.2;
+  }
+  .side.l { left: 90px; }
+  .side.r { right: 90px; }
+</style>
+</head>
+<body>
+<div class="banner">
+
+  <div class="corner tl">// TECHROT.SYS</div>
+  <div class="corner tr">v2.0.26 ▮</div>
+  <div class="corner bl">▟▙ signal: stable ▝▘</div>
+  <div class="corner br">█▒░ decay mode: ON</div>
+
+  <div class="side l">╔════════╗
+║ ◇◆◇◆◇◆ ║
+║ ░▒▓▓▒░ ║
+║ ◆◇◆◇◆◇ ║
+║ ▒░▓▓░▒ ║
+║ ◇◆◇◆◇◆ ║
+╚════════╝</div>
+  <div class="side r">╔════════╗
+║ ◆◇◆◇◆◇ ║
+║ ▒░▓▓░▒ ║
+║ ◇◆◇◆◇◆ ║
+║ ░▒▓▓▒░ ║
+║ ◆◇◆◇◆◇ ║
+╚════════╝</div>
+
+  <div class="title-art">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
+   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
+   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
+   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
+   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></div>
+
+  <div class="divider">▓▒░ ░▒▓ ▓▒░ ░▒▓ ▓▒░ ░▒▓ ▓▒░ ░▒▓ ▓▒░ ░▒▓ ▓▒░ ░▒▓</div>
+
+  <div class="tagline">ROT <span class="accent">▶</span> DECAY <span class="accent">▶</span> REBUILD</div>
+
+  <div class="glitch">[ where technology rots and rebirths ]</div>
+
+</div>
+</body>
+</html>

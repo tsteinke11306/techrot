@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechRot — AI model comparisons & AI news</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg-alt: #111111;
+    --bg-card: #161616;
+    --fg: #e8e8e8;
+    --fg-bright: #f2f2f2;
+    --fg-mid: #888888;
+    --fg-dim: #4a4a4a;
+    --fg-faint: #2a2a2a;
+    --fg-border: #1e1e1e;
+    --accent: #b0b0b0;
+    --grid-line: rgba(255,255,255,0.018);
+    --scanline: rgba(0,0,0,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* global scanline + grid overlay */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 1;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      var(--scanline) 3px, var(--scanline) 4px
+    );
+    pointer-events: none; z-index: 1;
+    opacity: 0.35;
+  }
+
+  .content { position: relative; z-index: 2; }
+
+  /* ── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--fg-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-size: 20px; font-weight: 700; letter-spacing: 3px;
+    color: var(--fg-bright);
+  }
+  nav .logo .rot { color: var(--fg-mid); }
+  nav ul {
+    display: flex; gap: 40px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--fg-bright); }
+  nav .status {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  nav .status .dot {
+    width: 8px; height: 8px; background: var(--fg-mid);
+    border-radius: 50%; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; } 50% { opacity: 1; }
+  }
+
+  /* ── HERO ────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 80px 40px 60px;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 55%);
+  }
+  .hero .ascii-art {
+    font-size: 18px; line-height: 1.0; white-space: pre;
+    color: var(--fg-bright);
+    text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 35px rgba(255,255,255,0.12);
+    margin-bottom: 40px;
+    overflow: hidden; max-width: 100%;
+  }
+  .hero .ascii-art .rot {
+    color: var(--fg-mid);
+    text-shadow: 0 0 10px rgba(136,136,136,0.35), 0 0 35px rgba(136,136,136,0.15);
+  }
+  .hero h1 {
+    font-size: 28px; letter-spacing: 12px; text-transform: uppercase;
+    color: var(--fg-mid); margin-bottom: 20px;
+  }
+  .hero .tagline {
+    font-size: 16px; letter-spacing: 4px; color: var(--fg-dim);
+    text-transform: uppercase; margin-bottom: 48px;
+  }
+  .hero .tagline .accent { color: var(--accent); }
+  .hero .cta {
+    display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    background: transparent;
+    border: 1px solid var(--fg-dim);
+    color: var(--fg); text-decoration: none;
+    font-family: inherit; font-size: 13px; letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    border-color: var(--fg-bright);
+    background: rgba(255,255,255,0.05);
+    color: var(--fg-bright);
+  }
+  .btn.primary {
+    border-color: var(--fg-mid);
+    color: var(--fg-bright);
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 2px;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTION HEADER ──────────────────────────── */
+  .section {
+    max-width: 1200px; margin: 0 auto;
+    padding: 100px 40px;
+  }
+  .section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 60px;
+  }
+  .section-header .num {
+    font-size: 14px; color: var(--fg-faint); letter-spacing: 2px;
+  }
+  .section-header .line {
+    flex: 1; height: 1px; background: var(--fg-border);
+  }
+  .section-header h2 {
+    font-size: 24px; letter-spacing: 6px; text-transform: uppercase;
+    color: var(--fg-bright); font-weight: 700;
+  }
+
+  /* ── ABOUT ───────────────────────────────────── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  }
+  .about-text p {
+    font-size: 15px; color: var(--fg-mid); margin-bottom: 24px;
+    line-height: 1.8;
+  }
+  .about-text p strong { color: var(--fg-bright); font-weight: 700; }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--fg-border);
+    padding: 32px 28px; text-align: center;
+  }
+  .stat-card .num {
+    font-size: 36px; color: var(--fg-bright); font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .stat-card .label {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* ── VIDEOS ──────────────────────────────────── */
+  .subsection-label {
+    font-size: 14px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--fg-bright); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .subsection-label .freq {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    text-transform: lowercase; font-weight: normal;
+  }
+  .video-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+  }
+  .video-card {
+    background: var(--bg-card);
+    border: 1px solid var(--fg-border);
+    text-decoration: none; color: inherit;
+    transition: all 0.2s; overflow: hidden;
+  }
+  .video-card:hover {
+    border-color: var(--fg-dim);
+    transform: translateY(-4px);
+  }
+  .video-thumb {
+    width: 100%; aspect-ratio: 16/9;
+    background: var(--bg-alt);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .video-thumb .placeholder {
+    font-size: 13px; color: var(--fg-faint); letter-spacing: 2px;
+    text-align: center; white-space: pre; line-height: 1.2;
+  }
+  .video-thumb .duration {
+    position: absolute; bottom: 10px; right: 10px;
+    background: rgba(0,0,0,0.8); color: var(--fg);
+    font-size: 11px; padding: 3px 8px; letter-spacing: 1px;
+  }
+  .video-card .info { padding: 20px 22px; }
+  .video-card .info h3 {
+    font-size: 14px; color: var(--fg-bright); margin-bottom: 8px;
+    letter-spacing: 1px; font-weight: 700;
+  }
+  .video-card .info .meta {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+  }
+
+  /* ── TOPICS ──────────────────────────────────── */
+  .topics-list {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  }
+  .topic-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 24px 0; border-bottom: 1px solid var(--fg-border);
+  }
+  .topic-item .icon {
+    font-size: 20px; color: var(--fg-mid); width: 32px; text-align: center;
+  }
+  .topic-item .name {
+    font-size: 15px; color: var(--fg); flex: 1;
+  }
+  .topic-item .count {
+    font-size: 13px; color: var(--fg-dim); letter-spacing: 1px;
+  }
+
+  /* ── NEWSLETTER / CONTACT ────────────────────── */
+  .subscribe {
+    text-align: center; max-width: 600px; margin: 0 auto;
+  }
+  .subscribe p {
+    font-size: 15px; color: var(--fg-mid); margin-bottom: 32px; line-height: 1.7;
+  }
+  .subscribe-form {
+    display: flex; gap: 12px; max-width: 440px; margin: 0 auto;
+  }
+  .subscribe-form input {
+    flex: 1; padding: 14px 18px;
+    background: var(--bg-card); border: 1px solid var(--fg-border);
+    color: var(--fg); font-family: inherit; font-size: 14px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .subscribe-form input:focus { border-color: var(--fg-dim); }
+  .subscribe-form input::placeholder { color: var(--fg-faint); }
+  .subscribe-form button {
+    padding: 14px 28px; background: transparent;
+    border: 1px solid var(--fg-dim); color: var(--fg-bright);
+    font-family: inherit; font-size: 13px; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer; transition: all 0.2s;
+  }
+  .subscribe-form button:hover {
+    background: rgba(255,255,255,0.05); border-color: var(--fg-bright);
+  }
+
+  /* ── FOOTER ──────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--fg-border);
+    padding: 60px 40px 40px; text-align: center;
+  }
+  footer .ascii-mini {
+    font-size: 10px; white-space: pre; color: var(--fg-dim);
+    margin-bottom: 30px; line-height: 1.0;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 40px;
+    margin-bottom: 30px;
+  }
+  footer .links a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  footer .links a:hover { color: var(--fg-bright); }
+  footer .copyright {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .hero .ascii-art { font-size: 10px; }
+    .hero h1 { font-size: 20px; letter-spacing: 6px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
+    .topics-list { grid-template-columns: 1fr; }
+    .section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <div class="logo">TECH<span class="rot">ROT</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#topics">Topics</a></li>
+      <li><a href="#subscribe">Subscribe</a></li>
+    </ul>
+    <div class="status"><div class="dot"></div> SIGNAL: STABLE</div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="ascii-art">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
+   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
+   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
+   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
+   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></div>
+
+    <div class="tagline">ROT <span class="accent">▶</span> DECAY <span class="accent">▶</span> REBUILD</div>
+    <p style="font-size:15px; color:var(--fg-dim); letter-spacing:3px; margin-bottom:48px;">[ AI model comparisons & AI news ]</p>
+
+    <div class="cta">
+      <a href="#videos" class="btn primary">▶ Watch Videos</a>
+      <a href="#subscribe" class="btn">Subscribe</a>
+    </div>
+
+    <div class="scroll-hint">▼ scroll</div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <span class="num">01</span>
+      <h2>About</h2>
+      <div class="line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>TechRot</strong> is a channel dedicated to cutting through the hype of the AI industry. We compare models head-to-head, test them on real workloads, and report on the news that actually matters.</p>
+        <p>Every week we drop a <strong>news episode</strong> covering the latest in AI — releases, drama, research, and what it all means. When a new model lands, we put out a <strong>comparison or deep-dive test</strong> on its own schedule. No filler, no calendar padding — just analysis when there's something worth analyzing.</p>
+        <p>No sponsorships. No hype trains. Just honest comparisons and the AI news you need to make your own decisions.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="num">42</div>
+          <div class="label">Videos</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">8.4K</div>
+          <div class="label">Subscribers</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">312K</div>
+          <div class="label">Total Views</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">2 YRS</div>
+          <div class="label">Active</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VIDEOS ═══ -->
+  <section class="section" id="videos">
+    <div class="section-header">
+      <span class="num">02</span>
+      <h2>Latest Videos</h2>
+      <div class="line"></div>
+    </div>
+
+    <!-- Weekly News -->
+    <div class="subsection-label">▓ WEEKLY NEWS <span class="freq">// every week</span></div>
+    <div class="video-grid">
+
+      <a href="#" class="video-card">
+        <div class="video-thumb">
+          <div class="placeholder">█████
+░░░░░
+▓▓▓▓▓</div>
+          <div class="duration">09:33</div>
+        </div>
+        <div class="info">
+          <h3>AI News Weekly #47: The Cycle Is Broken</h3>
+          <div class="meta">3 days ago ▮ 51K views</div>
+        </div>
+      </a>
+
+      <a href="#" class="video-card">
+        <div class="video-thumb">
+          <div class="placeholder">░▒▓▓▒░
+░▒▓██▓▒░
+░▒▓▓▒░</div>
+          <div class="duration">12:18</div>
+        </div>
+        <div class="info">
+          <h3>AI News Weekly #46: OpenAI Shuffles Again</h3>
+          <div class="meta">1 week ago ▮ 38K views</div>
+        </div>
+      </a>
+
+      <a href="#" class="video-card">
+        <div class="video-thumb">
+          <div class="placeholder">◇◆◇◆◇
+░▒▓▓▒░
+◆◇◆◇◆</div>
+          <div class="duration">10:42</div>
+        </div>
+        <div class="info">
+          <h3>AI News Weekly #45: Regulation Incoming?</h3>
+          <div class="meta">2 weeks ago ▮ 29K views</div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Model Comparisons & Testing -->
+    <div class="subsection-label" style="margin-top:50px;">▒ MODEL COMPARISONS <span class="freq">// as models drop</span></div>
+    <div class="video-grid">
+
+      <a href="#" class="video-card">
+        <div class="video-thumb">
+          <div class="placeholder">▟▙▟▙▟▙
+▒▓██▓▒
+▝▘▝▘▝▘</div>
+          <div class="duration">31:45</div>
+        </div>
+        <div class="info">
+          <h3>GPT-5 vs Claude 4: Full Breakdown</h3>
+          <div class="meta">2 weeks ago ▮ 42K views</div>
+        </div>
+      </a>
+
+      <a href="#" class="video-card">
+        <div class="video-thumb">
+          <div class="placeholder">◆◇◆
+◇◆◇
+◆◇◆</div>
+          <div class="duration">22:08</div>
+        </div>
+        <div class="info">
+          <h3>Local LLMs: Can They Replace Cloud?</h3>
+          <div class="meta">3 weeks ago ▮ 34K views</div>
+        </div>
+      </a>
+
+      <a href="#" class="video-card">
+        <div class="video-thumb">
+          <div class="placeholder">░▒▓
+▒▓█
+▓██</div>
+          <div class="duration">16:50</div>
+        </div>
+        <div class="info">
+          <h3>Why Model Benchmarks Are Misleading</h3>
+          <div class="meta">1 month ago ▮ 67K views</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ TOPICS ═══ -->
+  <section class="section" id="topics">
+    <div class="section-header">
+      <span class="num">03</span>
+      <h2>Topics</h2>
+      <div class="line"></div>
+    </div>
+    <div class="topics-list">
+      <div class="topic-item">
+        <div class="icon">▓</div>
+        <div class="name">AI News Weekly</div>
+        <div class="count">every week</div>
+      </div>
+      <div class="topic-item">
+        <div class="icon">░</div>
+        <div class="name">Model Comparisons</div>
+        <div class="count">as they drop</div>
+      </div>
+      <div class="topic-item">
+        <div class="icon">▒</div>
+        <div class="name">Benchmarks & Testing</div>
+        <div class="count">on release</div>
+      </div>
+      <div class="topic-item">
+        <div class="icon">█</div>
+        <div class="name">Open-Source Models</div>
+        <div class="count">as they drop</div>
+      </div>
+      <div class="topic-item">
+        <div class="icon">◆</div>
+        <div class="name">Local LLMs & Hardware</div>
+        <div class="count">on release</div>
+      </div>
+      <div class="topic-item">
+        <div class="icon">◇</div>
+        <div class="name">Industry & Ethics</div>
+        <div class="count">in the news cycle</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SUBSCRIBE ═══ -->
+  <section class="section" id="subscribe">
+    <div class="section-header">
+      <span class="num">04</span>
+      <h2>Subscribe</h2>
+      <div class="line"></div>
+    </div>
+    <div class="subscribe">
+      <p>Get notified when content drops.</p>
+      <form class="subscribe-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='█ SUBSCRIBED';">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="ascii-mini">╔════════════════════════╗
+║  ROT ▶ DECAY ▶ REBUILD  ║
+╚════════════════════════╝</div>
+    <div class="links">
+      <a href="#">YouTube</a>
+      <a href="#">Twitter / X</a>
+      <a href="#">GitHub</a>
+      <a href="#">RSS</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="copyright">// TECHROT.SYS ▮ AI MODELS · AI NEWS ▮ © 2026 ▮ ALL SIGNALS DEGRADE</div>
+  </footer>
+
+</div>
+</body>
+</html>
