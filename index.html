@@ -295,6 +295,50 @@
     background: rgba(255,255,255,0.05); border-color: var(--fg-bright);
   }
 
+  /* ── MODAL / CONTACT CARD ────────────────────── */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: none; align-items: center; justify-content: center;
+    z-index: 200; backdrop-filter: blur(4px);
+  }
+  .modal-overlay.active { display: flex; }
+  .contact-card {
+    background: var(--bg-card);
+    border: 1px solid var(--fg-dim);
+    padding: 48px 56px; text-align: center;
+    max-width: 420px; position: relative;
+  }
+  .contact-card .close {
+    position: absolute; top: 14px; right: 18px;
+    color: var(--fg-dim); font-size: 20px; cursor: pointer;
+    background: none; border: none; font-family: inherit;
+    transition: color 0.2s;
+  }
+  .contact-card .close:hover { color: var(--fg-bright); }
+  .contact-card h3 {
+    font-size: 18px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--fg-bright); margin-bottom: 30px; font-weight: 700;
+  }
+  .contact-card .contact-links {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .contact-card .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 24px; border: 1px solid var(--fg-border);
+    color: var(--fg); text-decoration: none;
+    font-family: inherit; font-size: 14px; letter-spacing: 1px;
+    transition: all 0.2s;
+  }
+  .contact-card .contact-link:hover {
+    border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+    color: var(--fg-bright);
+  }
+  .contact-card .contact-link .icon {
+    font-size: 18px; color: var(--fg-mid); width: 24px; text-align: center;
+  }
+
   /* ── FOOTER ──────────────────────────────────── */
   footer {
     border-top: 1px solid var(--fg-border);
@@ -361,7 +405,7 @@
 
     <div class="cta">
       <a href="https://www.youtube.com/@TECHROT_AI" class="btn primary" target="_blank">▶ Watch Videos</a>
-      <a href="mailto:business@techrot.tech" class="btn">Contact</a>
+      <button class="btn" onclick="document.getElementById('contact-modal').classList.add('active')">Contact</button>
     </div>
 
     <div class="scroll-hint">▼ scroll</div>
@@ -561,10 +605,33 @@
 ╚════════════════════════╝</div>
     <div class="links">
       <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
-      <a href="mailto:business@techrot.tech">Contact</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <button onclick="document.getElementById('contact-modal').classList.add('active')" style="background:none;border:none;color:var(--fg-dim);font-family:inherit;font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:color 0.2s;" onmouseover="this.style.color='var(--fg-bright)'" onmouseout="this.style.color='var(--fg-dim)'">Contact</button>
     </div>
     <div class="copyright">// TECHROT.SYS ▮ AI MODELS · AI NEWS ▮ © 2026 ▮ ALL SIGNALS DEGRADE</div>
   </footer>
+
+  <!-- ═══ CONTACT MODAL ═══ -->
+  <div class="modal-overlay" id="contact-modal" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="contact-card">
+      <button class="close" onclick="this.closest('.modal-overlay').classList.remove('active')">✕</button>
+      <h3>Contact</h3>
+      <div class="contact-links">
+        <a href="mailto:business@techrot.tech" class="contact-link">
+          <span class="icon">✉</span>
+          business@techrot.tech
+        </a>
+        <a href="https://x.com/TECHROT_AI" class="contact-link" target="_blank">
+          <span class="icon">𝕏</span>
+          @TECHROT_AI
+        </a>
+        <a href="https://www.youtube.com/@TECHROT_AI" class="contact-link" target="_blank">
+          <span class="icon">▶</span>
+          YouTube / @TECHROT_AI
+        </a>
+      </div>
+    </div>
+  </div>
 
 </div>
 </body>
