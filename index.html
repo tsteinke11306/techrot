@@ -69,10 +69,32 @@
     z-index: 100;
   }
   nav .logo {
-    font-size: 20px; font-weight: 700; letter-spacing: 3px;
+    font-size: 4px; font-weight: 700; letter-spacing: 0;
     color: var(--fg-bright);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: pre;
+    line-height: 1.0;
+    text-shadow: 0 0 8px rgba(255,255,255,0.2);
   }
+  nav .logo.visible { opacity: 1; }
   nav .logo .rot { color: var(--fg-mid); }
+
+  /* Floating clone that morphs from hero to nav */
+  .ascii-float {
+    position: fixed; top: 0; left: 0;
+    font-size: 18px; line-height: 1.0; white-space: pre;
+    color: var(--fg-bright);
+    text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 35px rgba(255,255,255,0.12);
+    pointer-events: none;
+    z-index: 101;
+    opacity: 0;
+    transform-origin: top left;
+  }
+  .ascii-float .rot {
+    color: var(--fg-mid);
+    text-shadow: 0 0 10px rgba(136,136,136,0.35), 0 0 35px rgba(136,136,136,0.15);
+  }
   nav ul {
     display: flex; gap: 40px; list-style: none;
   }
@@ -382,7 +404,12 @@
 
   <!-- ═══ NAV ═══ -->
   <nav>
-    <div class="logo">TECH<span class="rot">ROT</span></div>
+    <div class="logo" id="nav-logo">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
+   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
+   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
+   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
+   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></div>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#videos">Videos</a></li>
@@ -394,7 +421,7 @@
 
   <!-- ═══ HERO ═══ -->
   <section class="hero">
-    <div class="ascii-art">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+    <div class="ascii-art" id="hero-ascii">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
 ╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
    <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
    <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
@@ -633,6 +660,88 @@
       </div>
     </div>
   </div>
+
+  <!-- ═══ FLOATING ASCII CLONE ═══ -->
+  <div class="ascii-float" id="ascii-float">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
+   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
+   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
+   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
+   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></div>
+
+  <!-- ═══ SCROLL ANIMATION SCRIPT ═══ -->
+  <script>
+  (function() {
+    var heroAscii = document.getElementById('hero-ascii');
+    var floatEl = document.getElementById('ascii-float');
+    var navLogo = document.getElementById('nav-logo');
+    var heroSection = document.querySelector('.hero');
+
+    function update() {
+      if (!heroAscii || !floatEl) return;
+
+      var heroRect = heroAscii.getBoundingClientRect();
+      var navRect = navLogo.getBoundingClientRect();
+
+      // Progress: 0 when hero ASCII is in its natural position, 1 when scrolled past
+      var heroTop = heroRect.top;
+      var heroHeight = heroRect.height;
+      // Start animating when hero top goes above 0, finish when it's fully scrolled past
+      var start = window.innerHeight * 0.3;
+      var end = -heroHeight * 0.5;
+      var progress = (start - heroTop) / (start - end);
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Source position (where the hero ASCII is on screen)
+      var srcX = heroRect.left;
+      var srcY = heroRect.top;
+      var srcW = heroRect.width;
+
+      // Target position (nav logo slot)
+      var dstX = navRect.left;
+      var dstY = navRect.top;
+      var dstW = navRect.width;
+
+      // Interpolate
+      var x = srcX + (dstX - srcX) * progress;
+      var y = srcY + (dstY - srcY) * progress;
+      var scale = 1 + (dstW / srcW - 1) * progress;
+
+      // Opacity: float visible during transition, hidden at endpoints
+      var floatOpacity;
+      if (progress < 0.05) {
+        floatOpacity = 0;
+      } else if (progress < 0.15) {
+        floatOpacity = (progress - 0.05) / 0.1;
+      } else if (progress > 0.9) {
+        floatOpacity = 1 - (progress - 0.9) / 0.1;
+      } else {
+        floatOpacity = 1;
+      }
+
+      floatEl.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(' + scale + ')';
+      floatEl.style.opacity = floatOpacity;
+
+      // Hero ASCII fades out as we scroll
+      if (heroAscii) {
+        heroAscii.style.opacity = 1 - Math.max(0, (progress - 0.3) / 0.4);
+      }
+
+      // Nav logo (mini ASCII) fades in near the end
+      if (progress > 0.85) {
+        navLogo.classList.add('visible');
+        navLogo.style.opacity = (progress - 0.85) / 0.15;
+      } else {
+        navLogo.classList.remove('visible');
+        navLogo.style.opacity = 0;
+      }
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+  </script>
 
 </div>
 </body>
