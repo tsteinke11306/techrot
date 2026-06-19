@@ -406,13 +406,13 @@
     position: fixed; inset: 0;
     background: var(--bg);
     z-index: 999;
-    display: flex; align-items: center; justify-content: center;
-    padding: 40px;
+    display: flex; align-items: flex-start; justify-content: flex-start;
+    padding: 24px 28px;
     transition: opacity 0.6s ease;
   }
   .boot-overlay.hidden { opacity: 0; pointer-events: none; }
   .boot-terminal {
-    width: 100%; max-width: 680px;
+    width: 100%;
     font-family: inherit; font-size: 14px;
     color: var(--fg);
     line-height: 1.5;
@@ -424,6 +424,7 @@
   }
   .boot-terminal .boot-line .ok { color: var(--fg-mid); }
   .boot-terminal .boot-line .dim { color: var(--fg-dim); }
+  .boot-terminal .boot-line .cmd { color: var(--fg-bright); }
   .boot-terminal .cursor {
     display: inline-block;
     width: 8px; height: 15px;
@@ -757,17 +758,32 @@
     }
 
     var lines = [
-      { t: '$ techrot --init', delay: 400 },
-      { t: '<span class="dim">[boot]</span> Loading signal core........... <span class="ok">OK</span>', delay: 300 },
-      { t: '<span class="dim">[boot]</span> Calibrating hype filter........ <span class="ok">OK</span>', delay: 280 },
-      { t: '<span class="dim">[boot]</span> Mounting model registry........ <span class="ok">OK</span>', delay: 320 },
-      { t: '<span class="dim">[boot]</span> Connecting to feed............. <span class="ok">OK</span>', delay: 260 },
-      { t: '<span class="dim">[boot]</span> Degrading stale signals........ <span class="ok">OK</span>', delay: 280 },
-      { t: '', delay: 200 },
-      { t: '<span class="ok">  ROT ▶ DECAY ▶ REBUILD</span>', delay: 500 },
-      { t: '<span class="dim">  // AI model comparisons & AI news</span>', delay: 300 },
-      { t: '', delay: 200 },
-      { t: '$ <span class="cursor"></span>', delay: 600, final: true }
+      { t: '<span class="cmd">$</span> techrot --init', delay: 120 },
+      { t: '<span class="dim">[boot]</span> kernel: techrot-os v2.6.26', delay: 60 },
+      { t: '<span class="dim">[boot]</span> mounting /dev/signal ......... <span class="ok">OK</span>', delay: 70 },
+      { t: '<span class="dim">[boot]</span> mounting /dev/models ......... <span class="ok">OK</span>', delay: 70 },
+      { t: '<span class="dim">[boot]</span> mounting /dev/news ........... <span class="ok">OK</span>', delay: 70 },
+      { t: '<span class="cmd">$</span> techrot --load-modules', delay: 100 },
+      { t: '<span class="dim">[mod]</span>  signal_core.ko ............. <span class="ok">loaded</span>', delay: 60 },
+      { t: '<span class="dim">[mod]</span>  hype_filter.ko ............. <span class="ok">loaded</span>', delay: 60 },
+      { t: '<span class="dim">[mod]</span>  model_registry.ko .......... <span class="ok">loaded</span>', delay: 60 },
+      { t: '<span class="dim">[mod]</span>  benchmark_engine.ko ........ <span class="ok">loaded</span>', delay: 60 },
+      { t: '<span class="dim">[mod]</span>  news_aggregator.ko ......... <span class="ok">loaded</span>', delay: 60 },
+      { t: '<span class="dim">[mod]</span>  bias_detector.ko ........... <span class="ok">loaded</span>', delay: 60 },
+      { t: '<span class="cmd">$</span> techrot --calibrate', delay: 90 },
+      { t: '<span class="dim">[cal]</span>  hype filter threshold ....... 0.02', delay: 70 },
+      { t: '<span class="dim">[cal]</span>  signal-to-noise ratio ....... 94.7%', delay: 70 },
+      { t: '<span class="dim">[cal]</span>  stale signal degradation .... <span class="ok">active</span>', delay: 70 },
+      { t: '<span class="cmd">$</span> techrot --connect', delay: 90 },
+      { t: '<span class="dim">[net]</span>  feed.techrot.tech:443 ....... <span class="ok">connected</span>', delay: 70 },
+      { t: '<span class="dim">[net]</span>  models.techrot.tech:443 ..... <span class="ok">connected</span>', delay: 70 },
+      { t: '<span class="dim">[net]</span>  latency ..................... 12ms', delay: 70 },
+      { t: '<span class="cmd">$</span> techrot --start', delay: 100 },
+      { t: '', delay: 80 },
+      { t: '<span class="ok">  ROT ▶ DECAY ▶ REBUILD</span>', delay: 150 },
+      { t: '<span class="dim">  // AI model comparisons & AI news</span>', delay: 100 },
+      { t: '', delay: 80 },
+      { t: '<span class="cmd">$</span> <span class="cursor"></span>', delay: 300, final: true }
     ];
 
     var i = 0;
@@ -779,7 +795,7 @@
           if (hero) hero.classList.add('revealed');
           // Remove overlay from DOM after transition
           setTimeout(function() { overlay.style.display = 'none'; }, 700);
-        }, 500);
+        }, 300);
         return;
       }
       var line = lines[i];
