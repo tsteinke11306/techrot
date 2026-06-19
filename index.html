@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TechRot — AI model comparisons & AI news</title>
 <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- ── OPEN GRAPH / SOCIAL META ─────────────────── -->
+  <meta name="description" content="TechRot — AI model comparisons & AI news. Weekly news episodes plus deep-dive model tests as they drop. No hype, no filler.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="TechRot — AI Model Comparisons & AI News">
+  <meta property="og:description" content="Weekly AI news + model comparisons. No hype, no filler — just honest analysis.">
+  <meta property="og:url" content="https://techrot.tech">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta property="og:image:alt" content="TechRot — ROT ▶ DECAY ▶ REBUILD">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="TechRot — AI Model Comparisons & AI News">
+  <meta name="twitter:description" content="Weekly AI news + model comparisons. No hype, no filler — just honest analysis.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -385,8 +401,54 @@
     font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
   }
 
+  /* ── TERMINAL BOOT ───────────────────────────── */
+  .boot-overlay {
+    position: fixed; inset: 0;
+    background: var(--bg);
+    z-index: 999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px;
+    transition: opacity 0.6s ease;
+  }
+  .boot-overlay.hidden { opacity: 0; pointer-events: none; }
+  .boot-terminal {
+    width: 100%; max-width: 680px;
+    font-family: inherit; font-size: 14px;
+    color: var(--fg);
+    line-height: 1.5;
+  }
+  .boot-terminal .boot-line {
+    white-space: pre-wrap;
+    opacity: 0;
+    animation: bootLine 0.1s forwards;
+  }
+  .boot-terminal .boot-line .ok { color: var(--fg-mid); }
+  .boot-terminal .boot-line .dim { color: var(--fg-dim); }
+  .boot-terminal .cursor {
+    display: inline-block;
+    width: 8px; height: 15px;
+    background: var(--fg-bright);
+    vertical-align: text-bottom;
+    animation: bootCursor 0.6s steps(1) infinite;
+  }
+  @keyframes bootLine { to { opacity: 1; } }
+  @keyframes bootCursor { 50% { opacity: 0; } }
+
+  /* Hero initially hidden until boot finishes */
+  .hero { opacity: 0; transition: opacity 0.8s ease; }
+  .hero.revealed { opacity: 1; }
+
+  /* Respect reduced motion — skip boot, show content immediately */
+  @media (prefers-reduced-motion: reduce) {
+    .boot-overlay { display: none; }
+    .hero { opacity: 1; transition: none; }
+    .boot-line { animation: none; opacity: 1; }
+    .cursor { animation: none; }
+  }
+
   /* ── RESPONSIVE ──────────────────────────────── */
   @media (max-width: 768px) {
+    .boot-terminal { font-size: 11px; }
     nav { padding: 0 20px; }
     nav ul { display: none; }
     .hero .ascii-art { font-size: 10px; }
@@ -401,6 +463,11 @@
 <body>
 
 <div class="content">
+
+  <!-- ═══ TERMINAL BOOT OVERLAY ═══ -->
+  <div class="boot-overlay" id="boot-overlay">
+    <div class="boot-terminal" id="boot-terminal"></div>
+  </div>
 
   <!-- ═══ NAV ═══ -->
   <nav>
@@ -668,6 +735,61 @@
    <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
    <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
    <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></div>
+
+  <!-- ═══ TERMINAL BOOT SCRIPT ═══ -->
+  <script>
+  (function() {
+    var terminal = document.getElementById('boot-terminal');
+    var overlay = document.getElementById('boot-overlay');
+    var hero = document.querySelector('.hero');
+    if (!terminal || !overlay) return;
+
+    // Respect reduced motion — skip boot entirely
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      overlay.style.display = 'none';
+      if (hero) hero.classList.add('revealed');
+      return;
+    }
+
+    var lines = [
+      { t: '$ techrot --init', delay: 400 },
+      { t: '<span class="dim">[boot]</span> Loading signal core........... <span class="ok">OK</span>', delay: 300 },
+      { t: '<span class="dim">[boot]</span> Calibrating hype filter........ <span class="ok">OK</span>', delay: 280 },
+      { t: '<span class="dim">[boot]</span> Mounting model registry........ <span class="ok">OK</span>', delay: 320 },
+      { t: '<span class="dim">[boot]</span> Connecting to feed............. <span class="ok">OK</span>', delay: 260 },
+      { t: '<span class="dim">[boot]</span> Degrading stale signals........ <span class="ok">OK</span>', delay: 280 },
+      { t: '', delay: 200 },
+      { t: '<span class="ok">  ROT ▶ DECAY ▶ REBUILD</span>', delay: 500 },
+      { t: '<span class="dim">  // AI model comparisons & AI news</span>', delay: 300 },
+      { t: '', delay: 200 },
+      { t: '$ <span class="cursor"></span>', delay: 600, final: true }
+    ];
+
+    var i = 0;
+    function nextLine() {
+      if (i >= lines.length) {
+        // Fade out overlay, reveal hero
+        setTimeout(function() {
+          overlay.classList.add('hidden');
+          if (hero) hero.classList.add('revealed');
+          // Remove overlay from DOM after transition
+          setTimeout(function() { overlay.style.display = 'none'; }, 700);
+        }, 500);
+        return;
+      }
+      var line = lines[i];
+      var div = document.createElement('div');
+      div.className = 'boot-line';
+      div.innerHTML = line.t;
+      terminal.appendChild(div);
+      i++;
+      setTimeout(nextLine, line.delay);
+    }
+
+    // Start after a brief beat
+    setTimeout(nextLine, 300);
+  })();
+  </script>
 
   <!-- ═══ SCROLL ANIMATION SCRIPT ═══ -->
   <script>
