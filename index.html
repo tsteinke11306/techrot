@@ -440,10 +440,10 @@
   @keyframes bootCursor { 50% { opacity: 0; } }
 
   /* Hero initially hidden until boot finishes */
-  .hero { opacity: 0; transition: opacity 0.4s ease; }
+  .hero { opacity: 0; transition: opacity 0.3s ease; }
   .hero.revealed { opacity: 1; }
 
-  /* Page content hidden during boot+render — prevents flash */
+  /* Page content hidden during boot — prevents flash */
   .content > nav,
   .content > .hero,
   .content > .section,
@@ -455,11 +455,20 @@
   .content.render-done > .section,
   .content.render-done > footer {
     opacity: 1;
-    transition: opacity 0.4s ease;
   }
-  .content.render-done > .hero {
-    transition: opacity 0.4s ease;
+
+  /* ── PRINT OVERLAY ────────────────────────────── */
+  /* After boot text clears, this overlay covers the page
+     and recedes top-to-bottom in steps, printing the page */
+  .print-overlay {
+    position: fixed; inset: 0;
+    background: var(--bg);
+    z-index: 998;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
   }
+  .print-overlay.active { opacity: 1; }
 
   /* Respect reduced motion — skip boot, show content immediately */
   @media (prefers-reduced-motion: reduce) {
@@ -467,6 +476,7 @@
     .hero { opacity: 1; transition: none; }
     .boot-line { animation: none; opacity: 1; }
     .cursor { animation: none; }
+    .print-overlay { display: none; }
     .content > nav,
     .content > .hero,
     .content > .section,
@@ -500,6 +510,9 @@
   <div class="boot-overlay" id="boot-overlay">
     <div class="boot-terminal" id="boot-terminal"></div>
   </div>
+
+  <!-- ═══ PRINT OVERLAY ═══ -->
+  <div class="print-overlay" id="print-overlay"></div>
 
   <!-- ═══ NAV ═══ -->
   <nav>
@@ -877,39 +890,25 @@
       { t: '<span class="cmd">$</span> techrot --render', delay: 120 }
     ];
 
-    // Render lines — appended to same terminal, fast
-    var renderLines = [
-      { t: '<span class="dim">[render]</span> nav ........................ <span class="ok">OK</span>', delay: 50 },
-      { t: '<span class="dim">[render]</span> hero / ascii-art ........... <span class="ok">OK</span>', delay: 50 },
-      { t: '<span class="dim">[render]</span> section: about ............. <span class="ok">OK</span>', delay: 45 },
-      { t: '<span class="dim">[render]</span> section: videos ............ <span class="ok">OK</span>', delay: 45 },
-      { t: '<span class="dim">[render]</span> section: topics ............ <span class="ok">OK</span>', delay: 45 },
-      { t: '<span class="dim">[render]</span> section: subscribe ......... <span class="ok">OK</span>', delay: 45 },
-      { t: '<span class="dim">[render]</span> footer .................... <span class="ok">OK</span>', delay: 50 },
-      { t: '<span class="dim">[render]</span> scanline overlay .......... <span class="ok">OK</span>', delay: 45 },
-      { t: '<span class="dim">[render]</span> scroll animations ......... <span class="ok">OK</span>', delay: 45 },
-      { t: '', delay: 60 },
-      { t: '<span class="ok">  render complete — 100%</span>', delay: 100 },
-      { t: '', delay: 60 },
-      { t: '<span class="cmd">$</span> <span class="cursor"></span>', delay: 250, final: true }
-    ];
-
-    var allLines = lines.concat(renderLines);
     var i = 0;
 
     function nextLine() {
-      if (i >= allLines.length) {
-        // All lines done — fade overlay, reveal page
+      if (i >= lines.length) {
+        // Boot text done — clear terminal, start print animation
         setTimeout(function() {
+          // Fade out boot overlay
           overlay.classList.add('hidden');
-          var content = document.querySelector('.content');
-          if (content) content.classList.add('render-done');
-          if (hero) hero.classList.add('revealed');
-          setTimeout(function() { overlay.style.display = 'none'; }, 600);
-        }, 200);
+          setTimeout(function() {
+            overlay.style.display = 'none';
+            // Clear terminal content
+            terminal.innerHTML = '';
+            // Start the page print animation
+            startPrint();
+          }, 400);
+        }, 150);
         return;
       }
-      var line = allLines[i];
+      var line = lines[i];
       var div = document.createElement('div');
       div.className = 'boot-line';
       div.innerHTML = line.t;
@@ -922,6 +921,64 @@
 
     // Start after a brief beat
     setTimeout(nextLine, 300);
+
+    // ── PRINT ANIMATION ───────────────────────────
+    // Reveals the page top-to-bottom in fast discrete steps
+    // like a terminal printing output line by line
+    function startPrint() {
+      var printOverlay = document.getElementById('print-overlay');
+      if (!printOverlay) {
+        // Fallback — just show everything
+        var content = document.querySelector('.content');
+        if (content) content.classList.add('render-done');
+        if (hero) hero.classList.add('revealed');
+        return;
+      }
+
+      // Reveal page content (opacity 0 → 1 via render-done class)
+      // but it's hidden behind the print overlay
+      var content = document.querySelector('.content');
+      if (content) content.classList.add('render-done');
+      if (hero) hero.classList.add('revealed');
+
+      // Get page height
+      var pageHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      );
+
+      // Activate print overlay — covers entire page
+      printOverlay.classList.add('active');
+      // Start: overlay fully visible (covers everything)
+      printOverlay.style.clipPath = 'inset(0 0 0 0)';
+
+      var stepSize = 24;    // pixels per step (roughly one "line")
+      var stepDelay = 12;   // ms between steps — fast
+      var currentY = 0;
+
+      function printStep() {
+        currentY += stepSize;
+        if (currentY >= pageHeight) {
+          // Fully revealed — clip overlay to nothing
+          printOverlay.style.clipPath = 'inset(100% 0 0 0)';
+          // Done — fade out
+          setTimeout(function() {
+            printOverlay.classList.remove('active');
+            setTimeout(function() { printOverlay.style.display = 'none'; }, 200);
+          }, 50);
+          return;
+        }
+        // Clip overlay so it only shows from currentY downward
+        // inset(top right bottom left) — hide top portion = currentY
+        printOverlay.style.clipPath = 'inset(' + currentY + 'px 0 0 0)';
+        setTimeout(printStep, stepDelay);
+      }
+
+      // Start printing
+      printStep();
+    }
   })();
   </script>
 
