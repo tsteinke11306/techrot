@@ -436,39 +436,42 @@
   @keyframes bootCursor { 50% { opacity: 0; } }
 
   /* Hero initially hidden until boot finishes */
-  .hero { opacity: 0; transition: opacity 0.8s ease; }
+  .hero { opacity: 0; transition: opacity 0.4s ease; }
   .hero.revealed { opacity: 1; }
 
-  /* ── RENDER PROGRESS BAR ─────────────────────── */
-  .render-bar {
-    position: fixed; top: 0; left: 0; right: 0;
-    height: 2px; background: transparent;
-    z-index: 998; opacity: 0;
+  /* ── RENDER SCAN-LINE ─────────────────────────── */
+  .render-overlay {
+    position: fixed; inset: 0;
+    z-index: 998;
+    pointer-events: none;
+    opacity: 0;
     transition: opacity 0.2s ease;
   }
-  .render-bar.active { opacity: 1; }
-  .render-bar .fill {
-    height: 100%; width: 0%;
+  .render-overlay.active { opacity: 1; }
+  /* Dark mask below scan line — uses gradient so we get a clean edge */
+  .render-overlay .mask {
+    position: absolute; inset: 0;
+    background: var(--bg);
+  }
+  /* The scan line itself */
+  .render-overlay .scan-line {
+    position: absolute; left: 0; right: 0;
+    top: 0;
+    height: 2px;
     background: var(--fg-mid);
-    transition: width 0.05s linear;
+    box-shadow: 0 0 8px 2px rgba(176,176,176,0.3),
+                0 0 20px 4px rgba(176,176,176,0.1);
+    transform: translateY(var(--scan-y, 0px));
   }
-  .render-bar .pct {
-    position: fixed; top: 8px; right: 12px;
-    font-size: 11px; color: var(--fg-dim);
+  /* Percentage counter that rides the scan line */
+  .render-overlay .scan-pct {
+    position: absolute; right: 16px;
+    top: 0;
+    transform: translateY(calc(var(--scan-y, 0px) - 100%));
+    font-size: 11px; color: var(--fg-mid);
     letter-spacing: 1px; font-family: inherit;
-    opacity: 0; transition: opacity 0.2s ease;
-  }
-  .render-bar.active .pct { opacity: 1; }
-
-  /* Elements hidden during render phase */
-  .render-hidden {
-    opacity: 0 !important;
-    transform: translateY(8px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  .render-hidden.render-shown {
-    opacity: 1 !important;
-    transform: translateY(0);
+    background: var(--bg);
+    padding: 2px 6px;
   }
 
   /* Respect reduced motion — skip boot, show content immediately */
@@ -477,8 +480,7 @@
     .hero { opacity: 1; transition: none; }
     .boot-line { animation: none; opacity: 1; }
     .cursor { animation: none; }
-    .render-bar { display: none; }
-    .render-hidden { opacity: 1 !important; transform: none; }
+    .render-overlay { display: none; }
   }
 
   /* ── RESPONSIVE ──────────────────────────────── */
@@ -509,10 +511,11 @@
     <div class="boot-terminal" id="boot-terminal"></div>
   </div>
 
-  <!-- ═══ RENDER PROGRESS BAR ═══ -->
-  <div class="render-bar" id="render-bar">
-    <div class="fill" id="render-fill"></div>
-    <div class="pct" id="render-pct">0%</div>
+  <!-- ═══ RENDER SCAN-LINE OVERLAY ═══ -->
+  <div class="render-overlay" id="render-overlay">
+    <div class="mask" id="render-mask"></div>
+    <div class="scan-line" id="render-line"></div>
+    <div class="scan-pct" id="render-pct">0%</div>
   </div>
 
   <!-- ═══ NAV ═══ -->
@@ -921,61 +924,66 @@
     setTimeout(nextLine, 300);
 
     // ── RENDER SEQUENCE ──────────────────────────
-    // Reveals page elements in sequence with a progress bar
+    // Scan-line sweeps top to bottom, "drawing" the page like a terminal
     function startRender() {
-      var bar = document.getElementById('render-bar');
-      var fill = document.getElementById('render-fill');
+      var overlay = document.getElementById('render-overlay');
+      var mask = document.getElementById('render-mask');
       var pct = document.getElementById('render-pct');
-      if (!bar || !fill) {
-        // Fallback — just reveal hero
+      if (!overlay || !mask) {
         if (hero) hero.classList.add('revealed');
         return;
       }
 
-      // Collect elements to reveal in order
-      var nav = document.querySelector('nav');
-      var heroSection = document.querySelector('.hero');
-      var sections = document.querySelectorAll('.section');
-      var footer = document.querySelector('footer');
+      // Get full page height
+      var pageHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      );
 
-      var elements = [nav, heroSection];
-      for (var s = 0; s < sections.length; s++) elements.push(sections[s]);
-      if (footer) elements.push(footer);
+      // Reveal hero immediately (it's at the top, scan line will pass over it fast)
+      hero.classList.add('revealed');
 
-      // Hide them all
-      for (var e = 0; e < elements.length; e++) {
-        if (elements[e]) elements[e].classList.add('render-hidden');
-      }
+      // Activate overlay — mask covers entire page (everything dark)
+      overlay.classList.add('active');
 
-      // Activate progress bar
-      bar.classList.add('active');
+      var currentY = 0;
+      var duration = 1200; // total ms for the sweep
+      var startTime = null;
 
-      var total = elements.length;
-      var step = 0;
-      var stepDelay = 180; // ms between each element
+      function animate(time) {
+        if (startTime === null) startTime = time;
+        var elapsed = time - startTime;
+        var progress = Math.min(elapsed / duration, 1);
 
-      function revealNext() {
-        if (step < total) {
-          var el = elements[step];
-          if (el) el.classList.add('render-shown');
-          step++;
-          var progress = Math.round((step / total) * 100);
-          fill.style.width = progress + '%';
-          if (pct) pct.textContent = progress + '%';
-          // Reveal hero opacity when it's its turn
-          if (el === heroSection) heroSection.classList.add('revealed');
-          setTimeout(revealNext, stepDelay);
+        // Ease-out so it starts fast and decelerates slightly
+        var eased = 1 - Math.pow(1 - progress, 2);
+        currentY = eased * pageHeight;
+
+        // Update mask clip — the dark area shrinks from the bottom
+        // clip-path: inset(top right bottom left)
+        // We want dark from 0 to currentY, so bottom clip = (pageHeight - currentY)px
+        var clipBottom = pageHeight - currentY;
+        mask.style.clipPath = 'inset(0 0 ' + clipBottom + 'px 0)';
+
+        // Position scan line and pct counter
+        overlay.style.setProperty('--scan-y', currentY + 'px');
+
+        var pctVal = Math.round(progress * 100);
+        if (pct) pct.textContent = pctVal + '%';
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
         } else {
-          // Done — fade out progress bar
-          setTimeout(function() {
-            bar.classList.remove('active');
-            setTimeout(function() { bar.style.display = 'none'; }, 300);
-          }, 200);
+          // Done — fade out overlay
+          overlay.classList.remove('active');
+          setTimeout(function() { overlay.style.display = 'none'; }, 300);
         }
       }
 
-      // Small delay after boot overlay fades
-      setTimeout(revealNext, 100);
+      // Start animation on next frame
+      requestAnimationFrame(animate);
     }
   })();
   </script>
