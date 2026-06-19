@@ -416,7 +416,11 @@
     font-family: inherit; font-size: 14px;
     color: var(--fg);
     line-height: 1.5;
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
   }
+  .boot-terminal::-webkit-scrollbar { display: none; }
   .boot-terminal .boot-line {
     white-space: pre-wrap;
     opacity: 0;
@@ -439,39 +443,22 @@
   .hero { opacity: 0; transition: opacity 0.4s ease; }
   .hero.revealed { opacity: 1; }
 
-  /* ── RENDER SCAN-LINE ─────────────────────────── */
-  .render-overlay {
-    position: fixed; inset: 0;
-    z-index: 998;
-    pointer-events: none;
+  /* Page content hidden during boot+render — prevents flash */
+  .content > nav,
+  .content > .hero,
+  .content > .section,
+  .content > footer {
     opacity: 0;
-    transition: opacity 0.2s ease;
   }
-  .render-overlay.active { opacity: 1; }
-  /* Dark mask below scan line — uses gradient so we get a clean edge */
-  .render-overlay .mask {
-    position: absolute; inset: 0;
-    background: var(--bg);
+  .content.render-done > nav,
+  .content.render-done > .hero,
+  .content.render-done > .section,
+  .content.render-done > footer {
+    opacity: 1;
+    transition: opacity 0.4s ease;
   }
-  /* The scan line itself */
-  .render-overlay .scan-line {
-    position: absolute; left: 0; right: 0;
-    top: 0;
-    height: 2px;
-    background: var(--fg-mid);
-    box-shadow: 0 0 8px 2px rgba(176,176,176,0.3),
-                0 0 20px 4px rgba(176,176,176,0.1);
-    transform: translateY(var(--scan-y, 0px));
-  }
-  /* Percentage counter that rides the scan line */
-  .render-overlay .scan-pct {
-    position: absolute; right: 16px;
-    top: 0;
-    transform: translateY(calc(var(--scan-y, 0px) - 100%));
-    font-size: 11px; color: var(--fg-mid);
-    letter-spacing: 1px; font-family: inherit;
-    background: var(--bg);
-    padding: 2px 6px;
+  .content.render-done > .hero {
+    transition: opacity 0.4s ease;
   }
 
   /* Respect reduced motion — skip boot, show content immediately */
@@ -480,7 +467,10 @@
     .hero { opacity: 1; transition: none; }
     .boot-line { animation: none; opacity: 1; }
     .cursor { animation: none; }
-    .render-overlay { display: none; }
+    .content > nav,
+    .content > .hero,
+    .content > .section,
+    .content > footer { opacity: 1; }
   }
 
   /* ── RESPONSIVE ──────────────────────────────── */
@@ -509,13 +499,6 @@
   <!-- ═══ TERMINAL BOOT OVERLAY ═══ -->
   <div class="boot-overlay" id="boot-overlay">
     <div class="boot-terminal" id="boot-terminal"></div>
-  </div>
-
-  <!-- ═══ RENDER SCAN-LINE OVERLAY ═══ -->
-  <div class="render-overlay" id="render-overlay">
-    <div class="mask" id="render-mask"></div>
-    <div class="scan-line" id="render-line"></div>
-    <div class="scan-pct" id="render-pct">0%</div>
   </div>
 
   <!-- ═══ NAV ═══ -->
@@ -860,13 +843,8 @@
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       overlay.style.display = 'none';
       if (hero) hero.classList.add('revealed');
-      // Show all content immediately
-      var allEls = [document.querySelector('nav'), hero];
-      var secs = document.querySelectorAll('.section, footer');
-      for (var se = 0; se < secs.length; se++) allEls.push(secs[se]);
-      for (var ae = 0; ae < allEls.length; ae++) {
-        if (allEls[ae]) { allEls[ae].classList.add('render-shown'); }
-      }
+      var content = document.querySelector('.content');
+      if (content) content.classList.add('render-done');
       return;
     }
 
@@ -896,95 +874,54 @@
       { t: '<span class="ok">  ROT ▶ DECAY ▶ REBUILD</span>', delay: 150 },
       { t: '<span class="dim">  // AI model comparisons & AI news</span>', delay: 100 },
       { t: '', delay: 80 },
-      { t: '<span class="cmd">$</span> techrot --render <span class="cursor"></span>', delay: 200, final: true }
+      { t: '<span class="cmd">$</span> techrot --render', delay: 120 }
     ];
 
+    // Render lines — appended to same terminal, fast
+    var renderLines = [
+      { t: '<span class="dim">[render]</span> nav ........................ <span class="ok">OK</span>', delay: 50 },
+      { t: '<span class="dim">[render]</span> hero / ascii-art ........... <span class="ok">OK</span>', delay: 50 },
+      { t: '<span class="dim">[render]</span> section: about ............. <span class="ok">OK</span>', delay: 45 },
+      { t: '<span class="dim">[render]</span> section: videos ............ <span class="ok">OK</span>', delay: 45 },
+      { t: '<span class="dim">[render]</span> section: topics ............ <span class="ok">OK</span>', delay: 45 },
+      { t: '<span class="dim">[render]</span> section: subscribe ......... <span class="ok">OK</span>', delay: 45 },
+      { t: '<span class="dim">[render]</span> footer .................... <span class="ok">OK</span>', delay: 50 },
+      { t: '<span class="dim">[render]</span> scanline overlay .......... <span class="ok">OK</span>', delay: 45 },
+      { t: '<span class="dim">[render]</span> scroll animations ......... <span class="ok">OK</span>', delay: 45 },
+      { t: '', delay: 60 },
+      { t: '<span class="ok">  render complete — 100%</span>', delay: 100 },
+      { t: '', delay: 60 },
+      { t: '<span class="cmd">$</span> <span class="cursor"></span>', delay: 250, final: true }
+    ];
+
+    var allLines = lines.concat(renderLines);
     var i = 0;
+
     function nextLine() {
-      if (i >= lines.length) {
-        // Fade out boot overlay, then trigger render sequence
+      if (i >= allLines.length) {
+        // All lines done — fade overlay, reveal page
         setTimeout(function() {
           overlay.classList.add('hidden');
+          var content = document.querySelector('.content');
+          if (content) content.classList.add('render-done');
+          if (hero) hero.classList.add('revealed');
           setTimeout(function() { overlay.style.display = 'none'; }, 600);
-          // Start the render animation
-          startRender();
-        }, 250);
+        }, 200);
         return;
       }
-      var line = lines[i];
+      var line = allLines[i];
       var div = document.createElement('div');
       div.className = 'boot-line';
       div.innerHTML = line.t;
       terminal.appendChild(div);
+      // Auto-scroll terminal to keep latest lines visible
+      terminal.scrollTop = terminal.scrollHeight;
       i++;
       setTimeout(nextLine, line.delay);
     }
 
     // Start after a brief beat
     setTimeout(nextLine, 300);
-
-    // ── RENDER SEQUENCE ──────────────────────────
-    // Scan-line sweeps top to bottom, "drawing" the page like a terminal
-    function startRender() {
-      var overlay = document.getElementById('render-overlay');
-      var mask = document.getElementById('render-mask');
-      var pct = document.getElementById('render-pct');
-      if (!overlay || !mask) {
-        if (hero) hero.classList.add('revealed');
-        return;
-      }
-
-      // Get full page height
-      var pageHeight = Math.max(
-        document.body.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
-      );
-
-      // Reveal hero immediately (it's at the top, scan line will pass over it fast)
-      hero.classList.add('revealed');
-
-      // Activate overlay — mask covers entire page (everything dark)
-      overlay.classList.add('active');
-
-      var currentY = 0;
-      var duration = 1200; // total ms for the sweep
-      var startTime = null;
-
-      function animate(time) {
-        if (startTime === null) startTime = time;
-        var elapsed = time - startTime;
-        var progress = Math.min(elapsed / duration, 1);
-
-        // Ease-out so it starts fast and decelerates slightly
-        var eased = 1 - Math.pow(1 - progress, 2);
-        currentY = eased * pageHeight;
-
-        // Update mask clip — the dark area shrinks from the bottom
-        // clip-path: inset(top right bottom left)
-        // We want dark from 0 to currentY, so bottom clip = (pageHeight - currentY)px
-        var clipBottom = pageHeight - currentY;
-        mask.style.clipPath = 'inset(0 0 ' + clipBottom + 'px 0)';
-
-        // Position scan line and pct counter
-        overlay.style.setProperty('--scan-y', currentY + 'px');
-
-        var pctVal = Math.round(progress * 100);
-        if (pct) pct.textContent = pctVal + '%';
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          // Done — fade out overlay
-          overlay.classList.remove('active');
-          setTimeout(function() { overlay.style.display = 'none'; }, 300);
-        }
-      }
-
-      // Start animation on next frame
-      requestAnimationFrame(animate);
-    }
   })();
   </script>
 
