@@ -439,12 +439,46 @@
   .hero { opacity: 0; transition: opacity 0.8s ease; }
   .hero.revealed { opacity: 1; }
 
+  /* ── RENDER PROGRESS BAR ─────────────────────── */
+  .render-bar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 2px; background: transparent;
+    z-index: 998; opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .render-bar.active { opacity: 1; }
+  .render-bar .fill {
+    height: 100%; width: 0%;
+    background: var(--fg-mid);
+    transition: width 0.05s linear;
+  }
+  .render-bar .pct {
+    position: fixed; top: 8px; right: 12px;
+    font-size: 11px; color: var(--fg-dim);
+    letter-spacing: 1px; font-family: inherit;
+    opacity: 0; transition: opacity 0.2s ease;
+  }
+  .render-bar.active .pct { opacity: 1; }
+
+  /* Elements hidden during render phase */
+  .render-hidden {
+    opacity: 0 !important;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .render-hidden.render-shown {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+
   /* Respect reduced motion — skip boot, show content immediately */
   @media (prefers-reduced-motion: reduce) {
     .boot-overlay { display: none; }
     .hero { opacity: 1; transition: none; }
     .boot-line { animation: none; opacity: 1; }
     .cursor { animation: none; }
+    .render-bar { display: none; }
+    .render-hidden { opacity: 1 !important; transform: none; }
   }
 
   /* ── RESPONSIVE ──────────────────────────────── */
@@ -473,6 +507,12 @@
   <!-- ═══ TERMINAL BOOT OVERLAY ═══ -->
   <div class="boot-overlay" id="boot-overlay">
     <div class="boot-terminal" id="boot-terminal"></div>
+  </div>
+
+  <!-- ═══ RENDER PROGRESS BAR ═══ -->
+  <div class="render-bar" id="render-bar">
+    <div class="fill" id="render-fill"></div>
+    <div class="pct" id="render-pct">0%</div>
   </div>
 
   <!-- ═══ NAV ═══ -->
@@ -817,6 +857,13 @@
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       overlay.style.display = 'none';
       if (hero) hero.classList.add('revealed');
+      // Show all content immediately
+      var allEls = [document.querySelector('nav'), hero];
+      var secs = document.querySelectorAll('.section, footer');
+      for (var se = 0; se < secs.length; se++) allEls.push(secs[se]);
+      for (var ae = 0; ae < allEls.length; ae++) {
+        if (allEls[ae]) { allEls[ae].classList.add('render-shown'); }
+      }
       return;
     }
 
@@ -846,19 +893,19 @@
       { t: '<span class="ok">  ROT ▶ DECAY ▶ REBUILD</span>', delay: 150 },
       { t: '<span class="dim">  // AI model comparisons & AI news</span>', delay: 100 },
       { t: '', delay: 80 },
-      { t: '<span class="cmd">$</span> <span class="cursor"></span>', delay: 300, final: true }
+      { t: '<span class="cmd">$</span> techrot --render <span class="cursor"></span>', delay: 200, final: true }
     ];
 
     var i = 0;
     function nextLine() {
       if (i >= lines.length) {
-        // Fade out overlay, reveal hero
+        // Fade out boot overlay, then trigger render sequence
         setTimeout(function() {
           overlay.classList.add('hidden');
-          if (hero) hero.classList.add('revealed');
-          // Remove overlay from DOM after transition
-          setTimeout(function() { overlay.style.display = 'none'; }, 700);
-        }, 300);
+          setTimeout(function() { overlay.style.display = 'none'; }, 600);
+          // Start the render animation
+          startRender();
+        }, 250);
         return;
       }
       var line = lines[i];
@@ -872,6 +919,64 @@
 
     // Start after a brief beat
     setTimeout(nextLine, 300);
+
+    // ── RENDER SEQUENCE ──────────────────────────
+    // Reveals page elements in sequence with a progress bar
+    function startRender() {
+      var bar = document.getElementById('render-bar');
+      var fill = document.getElementById('render-fill');
+      var pct = document.getElementById('render-pct');
+      if (!bar || !fill) {
+        // Fallback — just reveal hero
+        if (hero) hero.classList.add('revealed');
+        return;
+      }
+
+      // Collect elements to reveal in order
+      var nav = document.querySelector('nav');
+      var heroSection = document.querySelector('.hero');
+      var sections = document.querySelectorAll('.section');
+      var footer = document.querySelector('footer');
+
+      var elements = [nav, heroSection];
+      for (var s = 0; s < sections.length; s++) elements.push(sections[s]);
+      if (footer) elements.push(footer);
+
+      // Hide them all
+      for (var e = 0; e < elements.length; e++) {
+        if (elements[e]) elements[e].classList.add('render-hidden');
+      }
+
+      // Activate progress bar
+      bar.classList.add('active');
+
+      var total = elements.length;
+      var step = 0;
+      var stepDelay = 180; // ms between each element
+
+      function revealNext() {
+        if (step < total) {
+          var el = elements[step];
+          if (el) el.classList.add('render-shown');
+          step++;
+          var progress = Math.round((step / total) * 100);
+          fill.style.width = progress + '%';
+          if (pct) pct.textContent = progress + '%';
+          // Reveal hero opacity when it's its turn
+          if (el === heroSection) heroSection.classList.add('revealed');
+          setTimeout(revealNext, stepDelay);
+        } else {
+          // Done — fade out progress bar
+          setTimeout(function() {
+            bar.classList.remove('active');
+            setTimeout(function() { bar.style.display = 'none'; }, 300);
+          }, 200);
+        }
+      }
+
+      // Small delay after boot overlay fades
+      setTimeout(revealNext, 100);
+    }
   })();
   </script>
 
