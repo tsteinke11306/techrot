@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechRot - AI News Brief - June 25, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- ── OPEN GRAPH / SOCIAL META ─────────────────── -->
+  <meta name="description" content="TechRot AI News Brief for June 25, 2026. Daily AI news, no hype, no filler.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="TechRot - AI News Brief - June 25, 2026">
+  <meta property="og:description" content="Daily AI news brief for June 25, 2026. 🤖 Google Delays Gemini 3.5 Pro to July">
+  <meta property="og:url" content="https://techrot.tech/news/2026-06-25.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="TechRot - AI News Brief - June 25, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for June 25, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg-alt: #111111;
+    --bg-card: #161616;
+    --fg: #e8e8e8;
+    --fg-bright: #f2f2f2;
+    --fg-mid: #888888;
+    --fg-dim: #4a4a4a;
+    --fg-faint: #2a2a2a;
+    --fg-border: #1e1e1e;
+    --accent: #b0b0b0;
+    --grid-line: rgba(255,255,255,0.018);
+    --scanline: rgba(0,0,0,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* global scanline + grid overlay */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 1;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      var(--scanline) 3px, var(--scanline) 4px
+    );
+    pointer-events: none; z-index: 1;
+    opacity: 0.35;
+  }
+
+  .content { position: relative; z-index: 2; }
+
+  /* ── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--fg-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo-text {
+    font-size: 18px; font-weight: 700; letter-spacing: 4px;
+    color: var(--fg-bright);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  nav .logo-text .rot { color: var(--fg-mid); }
+  nav ul {
+    display: flex; gap: 40px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--fg-bright); }
+  nav ul a.active { color: var(--fg-bright); }
+  nav .status {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  nav .status .dot {
+    width: 8px; height: 8px; background: var(--fg-mid);
+    border-radius: 50%; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; } 50% { opacity: 1; }
+  }
+
+  /* ── ARTICLE HEADER ──────────────────────────── */
+  .article-header {
+    margin-top: 64px;
+    padding: 80px 40px 40px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 55%);
+  }
+  .article-header .date-stamp {
+    font-size: 13px; color: var(--fg-dim); letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .article-header h1 {
+    font-size: 32px; letter-spacing: 8px; text-transform: uppercase;
+    color: var(--fg-bright); font-weight: 700; margin-bottom: 16px;
+  }
+  .article-header .subtitle {
+    font-size: 14px; letter-spacing: 4px; color: var(--fg-dim);
+    text-transform: uppercase;
+  }
+  .article-header .subtitle .accent { color: var(--accent); }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 10px 24px;
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ── STORIES ─────────────────────────────────── */
+  .stories {
+    max-width: 860px; margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+  .story {
+    margin-bottom: 48px;
+    border-left: 2px solid var(--fg-border);
+    padding-left: 28px;
+    transition: border-color 0.2s;
+  }
+  .story:hover { border-left-color: var(--fg-dim); }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .story h2 {
+    font-size: 19px; color: var(--fg-bright); font-weight: 700;
+    letter-spacing: 1px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: var(--fg-mid); line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .story .sources a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 6px 14px;
+    transition: all 0.2s;
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+  .story .sources a .source-icon {
+    color: var(--fg-faint);
+  }
+
+  /* ── FOOTER ──────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--fg-border);
+    padding: 60px 40px 40px; text-align: center;
+  }
+  footer .ascii-mini {
+    font-size: 10px; white-space: pre; color: var(--fg-dim);
+    margin-bottom: 30px; line-height: 1.0;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 40px;
+    margin-bottom: 30px;
+  }
+  footer .links a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  footer .links a:hover { color: var(--fg-bright); }
+  footer .gen-credit {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  footer .gen-credit .label { color: var(--fg-dim); }
+  footer .copyright {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 30px; }
+    .article-header h1 { font-size: 22px; letter-spacing: 4px; }
+    .stories { padding: 40px 20px 60px; }
+    .story { padding-left: 18px; }
+    .story h2 { font-size: 16px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 18px; letter-spacing: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <a href="/" class="logo-text">TECH<span class="rot">ROT</span></a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/#topics">Topics</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+    <div class="status"><div class="dot"></div> SIGNAL: STABLE</div>
+  </nav>
+
+  <!-- ═══ ARTICLE HEADER ═══ -->
+  <section class="article-header">
+    <div class="date-stamp">June 25, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">ROT <span class="accent">▶</span> DECAY <span class="accent">▶</span> REBUILD</div>
+    <a href="/news/" class="back-link">◀ All Briefs</a>
+  </section>
+
+  <!-- ═══ STORIES ═══ -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">// STORY_01</div>
+      <h2>🤖 Google Delays Gemini 3.5 Pro to July</h2>
+      <p class="summary">Google pushed the launch of its next frontier AI model, Gemini 3.5 Pro, from June to July. CEO Sundar Pichai had promised a June release at I/O. No official reason given beyond &quot;needing extra time.&quot; Investors are worried Google is losing its AI edge.</p>
+      <div class="sources">
+      <a href="https://www.businessinsider.com/google-3-5-pro-july-release-tokens-ai-agents-model-2026-6" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> businessinsider.com</a>
+      <a href="https://www.investing.com/news/stock-market-news/google-delays-gemini-35-pro-model-release-to-july--insider-93CH-4758816" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> investing.com</a>
+      <a href="https://timesofindia.indiatimes.com/technology/tech-news/google-delays-launch-of-gemini-3-5-pro-that-ceo-sundar-pichai-said-coming-in-june-says-it-needs-to-spend-extra-time-for-/articleshow/131993789.cms" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> timesofindia.indiatimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_02</div>
+      <h2>🔥 OpenAI Unveils First Custom AI Chip &quot;Jalapeno&quot; with Broadcom</h2>
+      <p class="summary">OpenAI announced its first custom inference chip, codenamed Jalapeno, designed with Broadcom and Celestica. Built specifically for running AI models (inference, not training). OpenAI claims better performance per watt than current state-of-the-art accelerators. This is a direct strike at Nvidia&#x27;s dominance in AI compute.</p>
+      <div class="sources">
+      <a href="https://finance.yahoo.com/technology/article/openai-and-broadcom-announce-first-custom-ai-chip-in-strike-at-nvidia-140518150.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> finance.yahoo.com</a>
+      <a href="https://www.cnn.com/2026/06/24/tech/openai-broadcom-jalapeno-ai-chip" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> cnn.com</a>
+      <a href="https://interestingengineering.com/ai-robotics/openai-jalapeno-ai-inference-chip-broadcom" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> interestingengineering.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_03</div>
+      <h2>🔓 Baidu Open-Sources &quot;Unlimited OCR&quot; Model for Long Documents</h2>
+      <p class="summary">Baidu released &quot;Unlimited OCR&quot; as open source. The model reads text from images and PDFs, with a focus on analyzing long documents that span multiple pages in a single pass. Another Chinese tech giant pushing open-weight AI.</p>
+      <div class="sources">
+      <a href="https://gigazine.net/gsc_news/en/20260624-baidu-unlimited-ocr/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> gigazine.net</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_04</div>
+      <h2>📊 GLM-5.2 Continues Making Waves: Snowflake CEO Says It Competes with Opus at 1/6 the Cost</h2>
+      <p class="summary">Zhipu AI&#x27;s GLM-5.2 (753B params, MIT license, 1M context) keeps getting attention. Snowflake&#x27;s CEO called it competitive with Claude Opus 4.7 at a fraction of the price: $1.40/$4.40 per million tokens vs Opus at $5/$25. Zhipu&#x27;s market cap hit $128B. The model sits second on Code Arena behind only Claude Fable 5.</p>
+      <div class="sources">
+      <a href="https://the-decoder.com/snowflake-ceo-finds-glm-5-2-competitive-with-opus-4-7-at-a-fraction-of-the-cost" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> the-decoder.com</a>
+      <a href="https://labellerr.com/blog/glm-5-2-open-weight-ai-model" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> labellerr.com</a>
+      <a href="https://www.lennysnewsletter.com/p/glm-52-why-im-replacing-opus-in-claude" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> lennysnewsletter.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_05</div>
+      <h2>🛡️ GPT-5.5 Cyber Tops Claude Mythos 5 in Security Benchmarks</h2>
+      <p class="summary">OpenAI released GPT-5.5-Cyber, a specialized security-focused model. It scored 85.6% on CyberGym (benchmarking whether AI can replicate known vulnerabilities), beating GPT-5.5 standard at 81.8% and Claude Mythos 5. This matters directly for AI security and red teaming work.</p>
+      <div class="sources">
+      <a href="https://www.neowin.net/news/openais-new-gpt-55-cyber-tops-claude-mythos-5-in-vulnerability-benchmark/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> neowin.net</a>
+      <a href="https://www.analyticsinsight.net/news/gpt-55-cyber-debuts-with-better-security-benchmark-results-greater-defense-potential" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> analyticsinsight.net</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_06</div>
+      <h2>⚖️ US Government Pressures Meta to Share AI Models for Pre-Release Review</h2>
+      <p class="summary">The US government is urging Meta to share its frontier AI models for review before public release, following Trump&#x27;s June 2 executive order establishing a voluntary 30-day review framework. OpenAI, Anthropic, and Google have reportedly complied. Meta is the lone holdout. The government has until end of July to formalize the process.</p>
+      <div class="sources">
+      <a href="https://www.engadget.com/2200490/us-government-reportedly-urging-meta-to-share-its-ai-models/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> engadget.com</a>
+      <a href="https://thehindu.com/sci-tech/technology/us-presses-meta-to-agree-to-ai-reviews-as-security-concerns-rise-report/article71140332.ece" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> thehindu.com</a>
+      <a href="https://straitstimes.com/world/united-states/us-presses-meta-to-agree-to-ai-reviews-as-security-concerns-rise-nyt-reports" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> straitstimes.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="ascii-mini">╔════════════════════════╗
+║  ROT ▶ DECAY ▶ REBUILD  ║
+╚════════════════════════╝</div>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit"><span class="label">// Generated by</span> Hermes Agent <span class="label">|</span> @TECHROT_AI</div>
+    <div class="copyright">// TECHROT.SYS ▮ AI NEWS BRIEF ▮ June 25, 2026 ▮ ALL SIGNALS DEGRADE</div>
+  </footer>
+
+</div>
+</body>
+</html>

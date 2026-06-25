@@ -223,7 +223,6 @@ def update_index(date_str: str, top_headline: str):
     new_entry = generate_archive_entry(date_str, top_headline)
 
     # Check if this date already exists in the index
-    # Pattern: href="YYYY-MM-DD.html"
     existing_pattern = re.compile(
         r'<a class="archive-entry" href="' + re.escape(date_str) + r'\.html"'
     )
@@ -231,10 +230,9 @@ def update_index(date_str: str, top_headline: str):
         print(f"NOTE: Entry for {date_str} already exists in index. Skipping index update.")
         return
 
-    # Find the archive entries marker and insert the new entry after it
+    # Insert the new entry after the archive entries marker
     marker = '<!--ARCHIVE_ENTRIES-->'
     if marker in index_content:
-        # Insert new entry right after the marker
         index_content = index_content.replace(
             marker,
             marker + '\n' + new_entry
@@ -250,47 +248,26 @@ def update_index(date_str: str, top_headline: str):
             print("WARNING: Could not find insertion point in index. Index not updated.", file=sys.stderr)
             return
 
-    # Remove the empty state if entries exist now
-    # The empty state only shows when there are no entries
-    # After inserting, check if we have any archive-entry elements
-    entry_count = index_content.count('class="archive-entry"')
-    if entry_count > 0:
-        # Remove the empty state div
-        empty_pattern = re.compile(
-            r'\s*<div class="empty-state">.*?</div>\s*</div>\s*',
-            re.DOTALL
-        )
-        index_content = empty_pattern.sub('\n    </section>\n\n', index_content, count=1)
-        # That's messy - let's be more careful. Actually just leave the empty state;
-        # it will be pushed below entries and won't show because entries exist.
-        # Re-read and do it properly:
-        pass
-
-    # Actually, let's handle the empty state removal more carefully
-    # The empty state is inside the .archive section, after the entries
-    # We want to remove it once we have at least one entry
-    with open(INDEX_PATH, 'r', encoding='utf-8') as f:
-        fresh_content = f.read()
-
-    # Re-do the insertion on fresh content
-    if marker in fresh_content:
-        fresh_content = fresh_content.replace(
-            marker,
-            marker + '\n' + new_entry
-        )
-
-    # Now remove empty-state block if entries exist
-    if 'class="archive-entry"' in fresh_content:
-        # Remove the empty state div block
-        fresh_content = re.sub(
-            r'\n\s*<div class="empty-state">[\s\S]*?</div>\s*</div>\s*',
-            '\n  ',
-            fresh_content,
-            count=1
+    # Remove the empty-state block now that at least one entry exists
+    # The empty-state div contains two child divs:
+    #   <div class="empty-state">
+    #     <div class="icon">...</div>
+    #     <div>...</div>
+    #   </div>
+    if 'class="archive-entry"' in index_content:
+        index_content = re.sub(
+            r'\n\s*<div class="empty-state">\s*'
+            r'<div class="icon">.*?</div>\s*'
+            r'<div>.*?</div>\s*'
+            r'</div>',
+            '',
+            index_content,
+            count=1,
+            flags=re.DOTALL
         )
 
     with open(INDEX_PATH, 'w', encoding='utf-8') as f:
-        f.write(fresh_content)
+        f.write(index_content)
 
     print(f"Updated index: {INDEX_PATH}")
 
