@@ -862,6 +862,21 @@
       return;
     }
 
+    // Skip boot animation on repeat visits in the same browser session
+    if (sessionStorage.getItem('techrot-boot-played')) {
+      overlay.style.display = 'none';
+      if (hero) hero.classList.add('revealed');
+      var content = document.querySelector('.content');
+      if (content) content.classList.add('render-done');
+      var printOverlay = document.getElementById('print-overlay');
+      if (printOverlay) printOverlay.style.display = 'none';
+      // Show nav logo immediately (scroll animation handles it after)
+      var navLogo = document.getElementById('nav-logo');
+      if (navLogo) navLogo.classList.add('visible');
+      return;
+    }
+    sessionStorage.setItem('techrot-boot-played', '1');
+
     var lines = [
       { t: '<span class="cmd">$</span> techrot --init', delay: 120 },
       { t: '<span class="dim">[boot]</span> kernel: techrot-os v2.6.26', delay: 60 },
