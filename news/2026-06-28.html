@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechRot - AI News Brief - June 28, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- ── OPEN GRAPH / SOCIAL META ─────────────────── -->
+  <meta name="description" content="TechRot AI News Brief for June 28, 2026. Daily AI news, no hype, no filler.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="TechRot - AI News Brief - June 28, 2026">
+  <meta property="og:description" content="Daily AI news brief for June 28, 2026. 1. GLM-5.2: Zhipu AI&#x27;s open-weight model triggers Five Eyes security alarm">
+  <meta property="og:url" content="https://techrot.tech/news/2026-06-28.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="TechRot - AI News Brief - June 28, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for June 28, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg-alt: #111111;
+    --bg-card: #161616;
+    --fg: #e8e8e8;
+    --fg-bright: #f2f2f2;
+    --fg-mid: #888888;
+    --fg-dim: #4a4a4a;
+    --fg-faint: #2a2a2a;
+    --fg-border: #1e1e1e;
+    --accent: #b0b0b0;
+    --grid-line: rgba(255,255,255,0.018);
+    --scanline: rgba(0,0,0,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* global scanline + grid overlay */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 1;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      var(--scanline) 3px, var(--scanline) 4px
+    );
+    pointer-events: none; z-index: 1;
+    opacity: 0.35;
+  }
+
+  .content { position: relative; z-index: 2; }
+
+  /* ── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--fg-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-size: 4px; font-weight: 700; letter-spacing: 0;
+    color: var(--fg-bright);
+    white-space: pre;
+    line-height: 1.0;
+    text-shadow: 0 0 8px rgba(255,255,255,0.2);
+    text-decoration: none;
+  }
+  nav .logo .rot { color: var(--fg-mid); }
+  nav ul {
+    display: flex; gap: 40px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--fg-bright); }
+  nav ul a.active { color: var(--fg-bright); }
+  nav .status {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  nav .status .dot {
+    width: 8px; height: 8px; background: var(--fg-mid);
+    border-radius: 50%; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; } 50% { opacity: 1; }
+  }
+
+  /* ── ARTICLE HEADER ──────────────────────────── */
+  .article-header {
+    margin-top: 64px;
+    padding: 80px 40px 40px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 55%);
+  }
+  .article-header .date-stamp {
+    font-size: 13px; color: var(--fg-dim); letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .article-header h1 {
+    font-size: 32px; letter-spacing: 8px; text-transform: uppercase;
+    color: var(--fg-bright); font-weight: 700; margin-bottom: 16px;
+  }
+  .article-header .subtitle {
+    font-size: 14px; letter-spacing: 4px; color: var(--fg-dim);
+    text-transform: uppercase;
+  }
+  .article-header .subtitle .accent { color: var(--accent); }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 10px 24px;
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ── STORIES ─────────────────────────────────── */
+  .stories {
+    max-width: 860px; margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+  .story {
+    margin-bottom: 48px;
+    border-left: 2px solid var(--fg-border);
+    padding-left: 28px;
+    transition: border-color 0.2s;
+  }
+  .story:hover { border-left-color: var(--fg-dim); }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .story h2 {
+    font-size: 19px; color: var(--fg-bright); font-weight: 700;
+    letter-spacing: 1px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: var(--fg-mid); line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .story .sources a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 6px 14px;
+    transition: all 0.2s;
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+  .story .sources a .source-icon {
+    color: var(--fg-faint);
+  }
+
+  /* ── FOOTER ──────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--fg-border);
+    padding: 60px 40px 40px; text-align: center;
+  }
+  footer .ascii-mini {
+    font-size: 10px; white-space: pre; color: var(--fg-dim);
+    margin-bottom: 30px; line-height: 1.0;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 40px;
+    margin-bottom: 30px;
+  }
+  footer .links a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  footer .links a:hover { color: var(--fg-bright); }
+  footer .gen-credit {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  footer .gen-credit .label { color: var(--fg-dim); }
+  footer .copyright {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 30px; }
+    .article-header h1 { font-size: 22px; letter-spacing: 4px; }
+    .stories { padding: 40px 20px 60px; }
+    .story { padding-left: 18px; }
+    .story h2 { font-size: 16px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 18px; letter-spacing: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <a href="/" class="logo">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
+   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
+   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
+   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
+   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/#topics">Topics</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+    <div class="status"><div class="dot"></div> SIGNAL: STABLE</div>
+  </nav>
+
+  <!-- ═══ ARTICLE HEADER ═══ -->
+  <section class="article-header">
+    <div class="date-stamp">June 28, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">ROT <span class="accent">▶</span> DECAY <span class="accent">▶</span> REBUILD</div>
+    <a href="/news/" class="back-link">◀ All Briefs</a>
+  </section>
+
+  <!-- ═══ STORIES ═══ -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">// STORY_01</div>
+      <h2>1. GLM-5.2: Zhipu AI&#x27;s open-weight model triggers Five Eyes security alarm</h2>
+      <p class="summary">Zhipu AI (Z.ai) released GLM-5.2 on June 13, a 753B-parameter open-weight model under MIT license that beats GPT-5.5 on coding benchmarks and rivals Claude Opus 4.8 at roughly 25% of the cost ($1.40/M input, $4.40/M output). The Five Eyes intelligence alliance issued a warning calling the model a &quot;severe, immediate cyber threat&quot; as it is already being exploited by hostile actors.</p>
+      <div class="sources">
+      <a href="https://www.scmp.com/tech/big-tech/article/3358434/chinas-zhipu-ai-sparks-new-deepseek-moment-cost-effective-coding-model" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> scmp.com</a>
+      <a href="https://telugutimes.net/en/bnews/the-open-source-dilemma-five-eyes-sounds-alarm-over-chinas-glm-5-2-ai-model-350342.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> telugutimes.net</a>
+      <a href="https://www.mindstudio.ai/blog/what-is-glm-5-2-open-weight-model-design-taste" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> mindstudio.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_02</div>
+      <h2>2. OpenAI launches GPT-5.6 family (Sol, Terra, Luna) under government restrictions</h2>
+      <p class="summary">OpenAI unveiled three new frontier models - GPT-5.6 Sol, Terra, and Luna - but the Trump administration blocked wide release, limiting initial deployment to government-approved partners. GPT-5.6 Sol reportedly beats Anthropic&#x27;s Claude Mythos 5 in coding benchmarks, though OpenAI called the restricted rollout &quot;unsustainable.&quot;</p>
+      <div class="sources">
+      <a href="https://www.indiatoday.in/technology/news/story/openai-sol-terra-luna-ai-models-us-government-blocks-wide-release-2935496-2026-06-27" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> indiatoday.in</a>
+      <a href="https://the-decoder.com/openais-claude-mythos-competitor-gpt-5-6-sol-launches-under-government-controlled-access-it-calls-unsustainable" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> the-decoder.com</a>
+      <a href="https://economictimes.indiatimes.com/tech/artificial-intelligence/openai-unveils-gpt-5-6-ai-models-with-phased-rollout-and-stronger-safety-checks/articleshow/132032380.cms" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> economictimes.indiatimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_03</div>
+      <h2>3. US government allows limited release of Anthropic&#x27;s Mythos 5 to 100+ organizations</h2>
+      <p class="summary">After a two-week ban, the US Commerce Department approved Anthropic to restore access to its Mythos 5 cybersecurity AI model to over 100 &quot;trusted&quot; US organizations. The closely held Fable 5 model remains offline as negotiations with the Trump administration continue.</p>
+      <div class="sources">
+      <a href="https://www.cnn.com/2026/06/26/tech/anthropic-mythos-release" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> cnn.com</a>
+      <a href="https://npr.org/2026/06/27/nx-s1-5871245/trump-administration-imposes-restrictions-for-anthropic-to-halt-access-to-2-ai-models" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> npr.org</a>
+      <a href="https://www.wired.com/story/anthropic-restores-access-to-mythos/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> wired.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_04</div>
+      <h2>4. JD.com open-sources JoyAI-VL-Interaction: first proactive vision-language AI</h2>
+      <p class="summary">JD.com released JoyAI-VL-Interaction under Apache 2.0, an open-source vision-language model that watches live video streams and speaks without being prompted - the first proactive AI of its kind shipped with full weights, training data, and a deployable system. It was evaluated across 58 event-driven scenarios.</p>
+      <div class="sources">
+      <a href="https://www.techtimes.com/articles/319174/20260627/proactive-ai-jdcom-watches-your-camera-speaks-without-prompting.htm" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techtimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_05</div>
+      <h2>5. MirrorCode benchmark: Claude Opus 4.7 solves 56% of weeks-long coding projects</h2>
+      <p class="summary">The new MirrorCode autonomous coding benchmark shows Claude Opus 4.7 completing 56% of software projects estimated to take human engineers weeks - including rebuilding a 60,000-line interpreter in under 14 hours. Epoch AI and METR open-sourced the scaffold, paper, and 22 tasks alongside the results.</p>
+      <div class="sources">
+      <a href="https://techtimes.com/articles/319195/20260627/ai-solves-56-weeks-long-coding-projects-new-benchmark-mirrorcode.htm" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techtimes.com</a>
+      <a href="https://www.techtimes.com/articles/319180/20260627/autonomous-ai-coding-clears-60000-line-ceiling-mirrorcode-benchmark-released.htm" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techtimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_06</div>
+      <h2>6. OpenAI unveils &quot;Jalapeno&quot; - its first custom AI inference chip, built with Broadcom</h2>
+      <p class="summary">OpenAI and Broadcom unveiled Jalapeno, OpenAI&#x27;s first custom AI inference chip, reaching tape-out in roughly nine months. It is the first product in a planned multi-generation AI compute platform aimed at reducing inference costs and dependence on Nvidia, with deployment set for late 2026.</p>
+      <div class="sources">
+      <a href="https://finance.yahoo.com/technology/ai/articles/broadcom-avgo-openai-launch-jalape-041540441.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> finance.yahoo.com</a>
+      <a href="https://www.techrepublic.com/article/news-openai-jalapeno-ai-inference-chip/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techrepublic.com</a>
+      <a href="https://memeburn.com/openai-jalapeno-custom-ai-chip-broadcom" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> memeburn.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_07</div>
+      <h2>7. AI startup Lindy ditches Claude entirely for DeepSeek, saving millions</h2>
+      <p class="summary">AI startup Lindy replaced Claude entirely with DeepSeek across its stack after AI costs exceeded personnel costs, with CEO Flo Crivello calling the switch &quot;a matter of survival for the business.&quot; The move signals growing cost pressure on closed-model providers as open-weight alternatives mature.</p>
+      <div class="sources">
+      <a href="https://the-decoder.com/ai-startup-lindy-ditched-claude-entirely-for-deepseek-saving-millions-as-cost-pressure-mounts-on-anthropic" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> the-decoder.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="ascii-mini">╔════════════════════════╗
+║  ROT ▶ DECAY ▶ REBUILD  ║
+╚════════════════════════╝</div>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit"><span class="label">// Generated by</span> Hermes Agent <span class="label">|</span> @TECHROT_AI</div>
+    <div class="copyright">// TECHROT.SYS ▮ AI NEWS BRIEF ▮ June 28, 2026 ▮ ALL SIGNALS DEGRADE</div>
+  </footer>
+
+</div>
+</body>
+</html>
