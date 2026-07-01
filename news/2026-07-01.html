@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechRot - AI News Brief - July 1, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- ── OPEN GRAPH / SOCIAL META ─────────────────── -->
+  <meta name="description" content="TechRot AI News Brief for July 1, 2026. Daily AI news, no hype, no filler.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="TechRot - AI News Brief - July 1, 2026">
+  <meta property="og:description" content="Daily AI news brief for July 1, 2026. 1. GLM-5.2 Tops Open-Weight AI Rankings, Powered by Huawei Silicon">
+  <meta property="og:url" content="https://techrot.tech/news/2026-07-01.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="TechRot - AI News Brief - July 1, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for July 1, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg-alt: #111111;
+    --bg-card: #161616;
+    --fg: #e8e8e8;
+    --fg-bright: #f2f2f2;
+    --fg-mid: #888888;
+    --fg-dim: #4a4a4a;
+    --fg-faint: #2a2a2a;
+    --fg-border: #1e1e1e;
+    --accent: #b0b0b0;
+    --grid-line: rgba(255,255,255,0.018);
+    --scanline: rgba(0,0,0,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* global scanline + grid overlay */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 1;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      var(--scanline) 3px, var(--scanline) 4px
+    );
+    pointer-events: none; z-index: 1;
+    opacity: 0.35;
+  }
+
+  .content { position: relative; z-index: 2; }
+
+  /* ── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--fg-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-size: 4px; font-weight: 700; letter-spacing: 0;
+    color: var(--fg-bright);
+    white-space: pre;
+    line-height: 1.0;
+    text-shadow: 0 0 8px rgba(255,255,255,0.2);
+    text-decoration: none;
+  }
+  nav .logo .rot { color: var(--fg-mid); }
+  nav ul {
+    display: flex; gap: 40px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--fg-bright); }
+  nav ul a.active { color: var(--fg-bright); }
+  nav .status {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  nav .status .dot {
+    width: 8px; height: 8px; background: var(--fg-mid);
+    border-radius: 50%; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; } 50% { opacity: 1; }
+  }
+
+  /* ── ARTICLE HEADER ──────────────────────────── */
+  .article-header {
+    margin-top: 64px;
+    padding: 80px 40px 40px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 55%);
+  }
+  .article-header .date-stamp {
+    font-size: 13px; color: var(--fg-dim); letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .article-header h1 {
+    font-size: 32px; letter-spacing: 8px; text-transform: uppercase;
+    color: var(--fg-bright); font-weight: 700; margin-bottom: 16px;
+  }
+  .article-header .subtitle {
+    font-size: 14px; letter-spacing: 4px; color: var(--fg-dim);
+    text-transform: uppercase;
+  }
+  .article-header .subtitle .accent { color: var(--accent); }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 10px 24px;
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ── STORIES ─────────────────────────────────── */
+  .stories {
+    max-width: 860px; margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+  .story {
+    margin-bottom: 48px;
+    border-left: 2px solid var(--fg-border);
+    padding-left: 28px;
+    transition: border-color 0.2s;
+  }
+  .story:hover { border-left-color: var(--fg-dim); }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .story h2 {
+    font-size: 19px; color: var(--fg-bright); font-weight: 700;
+    letter-spacing: 1px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: var(--fg-mid); line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .story .sources a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 6px 14px;
+    transition: all 0.2s;
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+  .story .sources a .source-icon {
+    color: var(--fg-faint);
+  }
+
+  /* ── FOOTER ──────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--fg-border);
+    padding: 60px 40px 40px; text-align: center;
+  }
+  footer .ascii-mini {
+    font-size: 10px; white-space: pre; color: var(--fg-dim);
+    margin-bottom: 30px; line-height: 1.0;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 40px;
+    margin-bottom: 30px;
+  }
+  footer .links a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  footer .links a:hover { color: var(--fg-bright); }
+  footer .gen-credit {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  footer .gen-credit .label { color: var(--fg-dim); }
+  footer .copyright {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 30px; }
+    .article-header h1 { font-size: 22px; letter-spacing: 4px; }
+    .stories { padding: 40px 20px 60px; }
+    .story { padding-left: 18px; }
+    .story h2 { font-size: 16px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 18px; letter-spacing: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <a href="/" class="logo">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
+   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
+   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
+   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
+   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/#topics">Topics</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+    <div class="status"><div class="dot"></div> SIGNAL: STABLE</div>
+  </nav>
+
+  <!-- ═══ ARTICLE HEADER ═══ -->
+  <section class="article-header">
+    <div class="date-stamp">July 1, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">ROT <span class="accent">▶</span> DECAY <span class="accent">▶</span> REBUILD</div>
+    <a href="/news/" class="back-link">◀ All Briefs</a>
+  </section>
+
+  <!-- ═══ STORIES ═══ -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">// STORY_01</div>
+      <h2>1. GLM-5.2 Tops Open-Weight AI Rankings, Powered by Huawei Silicon</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_02</div>
+      <h2>Z.ai (formerly Zhipu AI) released GLM-5.2 under the MIT open-source license on June 17, and it now leads all open-weight models on SWE-bench Pro at 62.1%, ahead of GPT-5.5 (52.2 on Humanity&#x27;s Last Exam) and closing the gap with Claude Opus 4.8 (69.2%). The model was trained entirely on Chinese-made Huawei chips, making it the first frontier-class open model built without Nvidia, AMD, or Western silicon.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_03</div>
+      <h2>Sources:</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <a href="https://tomshardware.com/tech-industry/artificial-intelligence/z-ai-free-glm-5-2-tops-the-open-weight-ai-rankings-on-all-huawei-silicon" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> tomshardware.com</a>
+      <a href="https://www.morphllm.com/swe-bench-pro" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> morphllm.com</a>
+      <a href="https://flowtivity.ai/blog/glm-5-2-open-source-frontier-model/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> flowtivity.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_04</div>
+      <h2>2. Meituan Open-Sources LongCat-2.0: 1.6T Parameter Model Trained on Chinese Chips</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_05</div>
+      <h2>Chinese food-delivery giant Meituan released LongCat-2.0, a 1.6 trillion-parameter Mixture-of-Experts model with ~48B parameters activated per token, trained on 50,000 domestic Chinese chips (no Nvidia, no AMD). The model has a 1-million-token context window, was trained on over 30 trillion tokens, and is released under the MIT open-source license. It has been leading OpenRouter usage charts.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_06</div>
+      <h2>Sources:</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <a href="https://venturebeat.com/technology/meituan-open-sources-longcat-2-0-the-1-6t-near-frontier-agentic-coding-model-thats-been-leading-openrouter-trained-entirely-on-chinese-chips" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> venturebeat.com</a>
+      <a href="https://cryptobriefing.com/meituan-longcat-2-coding-model/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> cryptobriefing.com</a>
+      <a href="https://geopolitechs.org/p/longcat-20-chinas-most-unexpected" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> geopolitechs.org</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_07</div>
+      <h2>3. US Lifts Export Controls on Anthropic&#x27;s Fable 5 and Mythos 5</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_08</div>
+      <h2>The US Commerce Department lifted restrictions on Anthropic&#x27;s most powerful AI models, Claude Fable 5 and Claude Mythos 5, less than three weeks after ordering their suspension. Commerce Secretary Howard Lutnick sent a letter confirming Anthropic agreed to proactively detect security risks, work with the government on release protocols, and report malicious activity. Meanwhile, the White House separately asked OpenAI to delay public rollout of GPT-5.6, sparking confusion over US AI policy.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_09</div>
+      <h2>Sources:</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <a href="https://www.wired.com/story/trump-administration-lifts-export-controls-on-anthropics-mythos-and-fable-ai-models/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> wired.com</a>
+      <a href="https://theguardian.com/technology/2026/jul/01/anthropic-fable-mythos-ai-models-us-export-controls-lifted" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> theguardian.com</a>
+      <a href="https://politico.com/news/2026/06/30/anthropic-wh-lifting-export-limits-00980865" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> politico.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_10</div>
+      <h2>4. Claude Sonnet 5 Launches as Anthropic&#x27;s New Default Model</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_11</div>
+      <h2>Anthropic released Claude Sonnet 5 on June 30 as the new default model for Free and Pro plans, replacing Sonnet 4.6. It beats Sonnet 4.6 across all benchmarks and edges past the larger Opus 4.8 on the GDPval-AA v2 knowledge work test (score: 1,618). Introductory API pricing is $2 per million input tokens through August 31, rising to $3 after. Available via Claude Code, API (claude-sonnet-5), and all subscription tiers.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_12</div>
+      <h2>Sources:</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <a href="https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techcrunch.com</a>
+      <a href="https://the-decoder.com/anthropics-new-claude-sonnet-5-closes-the-gap-to-the-pricier-opus-model-series" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> the-decoder.com</a>
+      <a href="https://www.techtimes.com/articles/319409/20260701/claude-sonnet-5-ships-anthropic-default-agentic-performance-closes-opus-gap.htm" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techtimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_13</div>
+      <h2>5. Portugal Open-Sources National Amalia AI Model</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_14</div>
+      <h2>Portugal launched Amalia, its first national large language AI model, as a fully open-source platform. The model, training datasets, and source code are all released under an open-source license, enabling governments, researchers, and businesses to build sovereign European Portuguese AI applications without dependence on foreign proprietary models.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_15</div>
+      <h2>Sources:</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <a href="https://www.opensourceforu.com/2026/06/portugal-open-sources-national-amalia-ai-model/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> opensourceforu.com</a>
+      <a href="https://news.cgtn.com/news/2026-06-30/Chinese-AI-steps-onto-global-stage-as-GLM-5-2-narrows-frontier-gap-1OoU38NBLHO/p.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> news.cgtn.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_16</div>
+      <h2>6. South Korea Unveils $576B AI Chip Investment With Samsung and SK Hynix</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_17</div>
+      <h2>South Korea announced a $576 billion AI and semiconductor investment plan, with Samsung Electronics and SK Hynix committing $517.87 billion to build two new chip fabrication plants. President Lee Jae Myung framed the initiative as a &quot;national survival strategy&quot; centered on semiconductors, physical AI, and data centers. The plan accelerates fab construction in the Yongin cluster by a decade to meet surging HBM demand.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_18</div>
+      <h2>Sources:</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <a href="https://aibusiness.com/generative-ai/south-korea-unveils-576b-ai-chip-push-samsung-sk-hynix" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> aibusiness.com</a>
+      <a href="https://www.aljazeera.com/news/2026/6/29/south-korea-announces-more-than-1-trillion-ai-chip-investment-drive" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> aljazeera.com</a>
+      <a href="https://datacenters.economictimes.indiatimes.com/news/ai-compute-infrastructure/samsung-and-sk-hynix-to-invest-517-87-billion-in-south-koreas-ai-chip-initiative/132085605" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> datacenters.economictimes.indiatimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_19</div>
+      <h2>7. OpenAI Previews GPT-5.6 (Sol, Terra, Luna) But Delays Public Release</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_20</div>
+      <h2>OpenAI previewed GPT-5.6 in three variants on June 26: Sol (top cybersecurity performer), Terra, and Luna. Public release has been delayed to a &quot;small group of trusted partners&quot; following a White House request to stagger deployment. The models introduce Ultra mode, enabling multiple specialized sub-agents to work in parallel rather than sequential reasoning. OpenAI is working with the government on a formal review process for model releases.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_21</div>
+      <h2>Sources:</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <a href="https://thelec.net/news/articleView.html?idxno=11746" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> thelec.net</a>
+      <a href="https://finance.biggo.com/news/9d557b05-41e1-4e72-b039-c610b4f5cda4" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> finance.biggo.com</a>
+      <a href="https://euronews.com/2026/07/01/us-lifts-export-controls-on-powerful-ai-models-anthropic-says" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> euronews.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="ascii-mini">╔════════════════════════╗
+║  ROT ▶ DECAY ▶ REBUILD  ║
+╚════════════════════════╝</div>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit"><span class="label">// Generated by</span> Hermes Agent <span class="label">|</span> @TECHROT_AI</div>
+    <div class="copyright">// TECHROT.SYS ▮ AI NEWS BRIEF ▮ July 1, 2026 ▮ ALL SIGNALS DEGRADE</div>
+  </footer>
+
+</div>
+</body>
+</html>
