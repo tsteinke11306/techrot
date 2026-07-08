@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechRot - AI News Brief - July 8, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- ── OPEN GRAPH / SOCIAL META ─────────────────── -->
+  <meta name="description" content="TechRot AI News Brief for July 8, 2026. Daily AI news, no hype, no filler.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="TechRot - AI News Brief - July 8, 2026">
+  <meta property="og:description" content="Daily AI news brief for July 8, 2026. 1. OpenAI GPT-5.6 Family Launches Publicly Thursday After US Security Review">
+  <meta property="og:url" content="https://techrot.tech/news/2026-07-08.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="TechRot - AI News Brief - July 8, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for July 8, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg-alt: #111111;
+    --bg-card: #161616;
+    --fg: #e8e8e8;
+    --fg-bright: #f2f2f2;
+    --fg-mid: #888888;
+    --fg-dim: #4a4a4a;
+    --fg-faint: #2a2a2a;
+    --fg-border: #1e1e1e;
+    --accent: #b0b0b0;
+    --grid-line: rgba(255,255,255,0.018);
+    --scanline: rgba(0,0,0,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* global scanline + grid overlay */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 1;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      var(--scanline) 3px, var(--scanline) 4px
+    );
+    pointer-events: none; z-index: 1;
+    opacity: 0.35;
+  }
+
+  .content { position: relative; z-index: 2; }
+
+  /* ── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--fg-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-size: 4px; font-weight: 700; letter-spacing: 0;
+    color: var(--fg-bright);
+    white-space: pre;
+    line-height: 1.0;
+    text-shadow: 0 0 8px rgba(255,255,255,0.2);
+    text-decoration: none;
+  }
+  nav .logo .rot { color: var(--fg-mid); }
+  nav ul {
+    display: flex; gap: 40px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--fg-bright); }
+  nav ul a.active { color: var(--fg-bright); }
+  nav .status {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  nav .status .dot {
+    width: 8px; height: 8px; background: var(--fg-mid);
+    border-radius: 50%; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; } 50% { opacity: 1; }
+  }
+
+  /* ── ARTICLE HEADER ──────────────────────────── */
+  .article-header {
+    margin-top: 64px;
+    padding: 80px 40px 40px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 55%);
+  }
+  .article-header .date-stamp {
+    font-size: 13px; color: var(--fg-dim); letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .article-header h1 {
+    font-size: 32px; letter-spacing: 8px; text-transform: uppercase;
+    color: var(--fg-bright); font-weight: 700; margin-bottom: 16px;
+  }
+  .article-header .subtitle {
+    font-size: 14px; letter-spacing: 4px; color: var(--fg-dim);
+    text-transform: uppercase;
+  }
+  .article-header .subtitle .accent { color: var(--accent); }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 10px 24px;
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ── STORIES ─────────────────────────────────── */
+  .stories {
+    max-width: 860px; margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+  .story {
+    margin-bottom: 48px;
+    border-left: 2px solid var(--fg-border);
+    padding-left: 28px;
+    transition: border-color 0.2s;
+  }
+  .story:hover { border-left-color: var(--fg-dim); }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .story h2 {
+    font-size: 19px; color: var(--fg-bright); font-weight: 700;
+    letter-spacing: 1px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: var(--fg-mid); line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .story .sources a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 6px 14px;
+    transition: all 0.2s;
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+  .story .sources a .source-icon {
+    color: var(--fg-faint);
+  }
+
+  /* ── FOOTER ──────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--fg-border);
+    padding: 60px 40px 40px; text-align: center;
+  }
+  footer .ascii-mini {
+    font-size: 10px; white-space: pre; color: var(--fg-dim);
+    margin-bottom: 30px; line-height: 1.0;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 40px;
+    margin-bottom: 30px;
+  }
+  footer .links a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  footer .links a:hover { color: var(--fg-bright); }
+  footer .gen-credit {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  footer .gen-credit .label { color: var(--fg-dim); }
+  footer .copyright {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 30px; }
+    .article-header h1 { font-size: 22px; letter-spacing: 4px; }
+    .stories { padding: 40px 20px 60px; }
+    .story { padding-left: 18px; }
+    .story h2 { font-size: 16px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 18px; letter-spacing: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <a href="/" class="logo">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
+   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
+   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
+   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
+   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/#topics">Topics</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+    <div class="status"><div class="dot"></div> SIGNAL: STABLE</div>
+  </nav>
+
+  <!-- ═══ ARTICLE HEADER ═══ -->
+  <section class="article-header">
+    <div class="date-stamp">July 8, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">ROT <span class="accent">▶</span> DECAY <span class="accent">▶</span> REBUILD</div>
+    <a href="/news/" class="back-link">◀ All Briefs</a>
+  </section>
+
+  <!-- ═══ STORIES ═══ -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">// STORY_01</div>
+      <h2>1. OpenAI GPT-5.6 Family Launches Publicly Thursday After US Security Review</h2>
+      <p class="summary">OpenAI will publicly launch its GPT-5.6 model family (Sol, Terra, Luna) on Thursday July 9, after delaying the release in June at the Trump administration&#x27;s request over national security concerns. GPT-5.6 Sol scored 88.8% on TerminalBench 2.1, outpacing Anthropic&#x27;s Claude Opus 4.8 at 78.9% in coding benchmarks.</p>
+      <div class="sources">
+      <a href="https://bloomberg.com/news/articles/2026-07-08/openai-to-roll-out-top-ai-model-globally-after-limited-preview" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> bloomberg.com</a>
+      <a href="https://mashable.com/tech/openai-gpt-5-6-sol-public-release" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> mashable.com</a>
+      <a href="https://digitaltrends.com/computing/youll-finally-be-able-to-try-openais-gpt-5-6-sol-terra-and-luna-models-this-week" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> digitaltrends.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_02</div>
+      <h2>2. China Weighs Restricting Overseas Access to Its Most Advanced AI Models</h2>
+      <p class="summary">Chinese authorities have held talks with Alibaba, ByteDance, and Z.ai over the past month about restricting foreign access to their most advanced AI models, including open-weight releases not yet published. A proposed tiered system would require basic open-source models to file simple registrations, while the most sensitive frontier systems could be barred from public release or restricted to domestic use.</p>
+      <div class="sources">
+      <a href="https://time.com/article/2026/07/07/china-ai-models-alibaba-bytedance" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> time.com</a>
+      <a href="https://gizmodo.com/china-built-cheap-ai-now-its-building-a-great-wall-around-it-2000782403" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> gizmodo.com</a>
+      <a href="https://firstpost.com/tech/beijing-curbs-overseas-access-china-top-ai-models14029619-14029619.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> firstpost.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_03</div>
+      <h2>3. DeepSeek Developing Own AI Inference Chip to Cut Nvidia Reliance</h2>
+      <p class="summary">Reuters reports that Chinese AI startup DeepSeek is designing its own inference chip, reportedly to be fabbed at SMIC, to reduce dependence on Nvidia and Huawei. Chinese firms plan to route 46% of their AI-accelerator budgets to domestic chips over the next year, up from 30% today, as US export controls limit access to advanced hardware.</p>
+      <div class="sources">
+      <a href="https://www.hindustantimes.com/world-news/us-news/deepseek-ai-chip-china-startup-develops-custom-chip-to-reduce-nvidia-reliance-101783429324946.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> hindustantimes.com</a>
+      <a href="https://www.bloomberg.com/news/articles/2026-07-07/chinese-ai-startup-deepseek-developing-own-ai-chip-reuters-says" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> bloomberg.com</a>
+      <a href="https://thenextweb.com/news/deepseek-own-ai-chip-smic-inference-report" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> thenextweb.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_04</div>
+      <h2>4. Microsoft Replaces OpenAI and Anthropic With In-House MAI Models in Excel and Outlook</h2>
+      <p class="summary">Microsoft has begun deploying its own MAI-Thinking-1 model across productivity apps like Excel and Outlook, replacing OpenAI and Anthropic models to cut costs. In blind tests across 1,276 tasks, evaluators preferred MAI-Thinking-1 over Claude Sonnet 4.6; it scores 52.8% on SWE-Bench, matching Claude Opus 4.6 on coding.</p>
+      <div class="sources">
+      <a href="https://bloomberg.com/news/articles/2026-07-07/microsoft-replaces-openai-anthropic-with-own-ai-in-some-apps" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> bloomberg.com</a>
+      <a href="https://techtimes.com/articles/319878/20260708/microsofts-house-ai-takes-over-excel-outlook-squeezing-openai-anthropic.htm" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techtimes.com</a>
+      <a href="https://techcrunch.com/2026/07/07/microsoft-joins-ai-cost-cutting-trend-by-relying-more-on-its-own-models/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techcrunch.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_05</div>
+      <h2>5. Meta Debuts Muse Image, First AI Model From Superintelligence Labs</h2>
+      <p class="summary">Meta&#x27;s Superintelligence Labs, led by Chief AI Officer Alexandr Wang, released its first image generation model, Muse Image, rolling out inside the Meta AI chatbot, Instagram, and WhatsApp. The model can build images from scratch, edit photos, blend references, and pull real-time web context. Meta says Muse Video is already in development.</p>
+      <div class="sources">
+      <a href="https://cnbc.com/2026/07/07/meta-ai-muse-image.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> cnbc.com</a>
+      <a href="https://bloomberg.com/news/articles/2026-07-07/meta-debuts-new-ai-image-generation-model-inside-chatbot-instagram" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> bloomberg.com</a>
+      <a href="https://theverge.com/tech/962485/meta-muse-image-ai-model-instagram" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> theverge.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_06</div>
+      <h2>6. SambaNova Valued at $11 Billion; Samsung Profit Surges 1,800% on AI Chip Demand</h2>
+      <p class="summary">AI chip startup SambaNova raised $1 billion at an $11 billion valuation, with JPMorgan Chase selecting it as an inference infrastructure partner. Separately, Samsung&#x27;s quarterly profit surged 19-fold on runaway AI memory chip demand, though shares fell 10% as investors had expected even stronger results.</p>
+      <div class="sources">
+      <a href="https://finance.yahoo.com/technology/ai/articles/ai-chip-startup-sambanova-valued-102253770.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> finance.yahoo.com</a>
+      <a href="https://www.bloomberg.com/news/articles/2026-07-06/samsung-scores-profit-beat-due-to-runaway-demand-for-ai-memory" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> bloomberg.com</a>
+      <a href="https://www.hindustantimes.com/world-news/us-news/whats-behind-samsung-s-1800-profit-surge-all-we-know-as-ai-stocks-continue-to-plummet-101783425192657.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> hindustantimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_07</div>
+      <h2>7. Illinois Signs Landmark AI Safety Measures Act, First State to Mandate Independent Audits</h2>
+      <p class="summary">Governor JB Pritzker signed the AI Safety Measures Act, making Illinois the first state to require independent safety audits of frontier AI developers and mandate reporting of critical safety incidents. With similar bills in California and New York, the three states cover roughly 40% of the US AI market, creating a de facto national standard.</p>
+      <div class="sources">
+      <a href="https://news.wttw.com/2026/07/06/pritzker-signs-landmark-ai-regulation-bill-aims-mitigate-risks" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> news.wttw.com</a>
+      <a href="https://governing.com/artificial-intelligence/illinois-sets-a-new-standard-for-ai-oversight" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> governing.com</a>
+      <a href="https://govtech.com/artificial-intelligence/illinois-governor-signs-bipartisan-ai-oversight-bill-into-law" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> govtech.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="ascii-mini">╔════════════════════════╗
+║  ROT ▶ DECAY ▶ REBUILD  ║
+╚════════════════════════╝</div>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit"><span class="label">// Generated by</span> Hermes Agent <span class="label">|</span> @TECHROT_AI</div>
+    <div class="copyright">// TECHROT.SYS ▮ AI NEWS BRIEF ▮ July 8, 2026 ▮ ALL SIGNALS DEGRADE</div>
+  </footer>
+
+</div>
+</body>
+</html>
