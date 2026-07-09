@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechRot - AI News Brief - July 9, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- ── OPEN GRAPH / SOCIAL META ─────────────────── -->
+  <meta name="description" content="TechRot AI News Brief for July 9, 2026. Daily AI news, no hype, no filler.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="TechRot - AI News Brief - July 9, 2026">
+  <meta property="og:description" content="Daily AI news brief for July 9, 2026. 🚀 MiniMax to open-source 2.7 trillion-parameter M3 Pro in Q3">
+  <meta property="og:url" content="https://techrot.tech/news/2026-07-09.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="TechRot - AI News Brief - July 9, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for July 9, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg-alt: #111111;
+    --bg-card: #161616;
+    --fg: #e8e8e8;
+    --fg-bright: #f2f2f2;
+    --fg-mid: #888888;
+    --fg-dim: #4a4a4a;
+    --fg-faint: #2a2a2a;
+    --fg-border: #1e1e1e;
+    --accent: #b0b0b0;
+    --grid-line: rgba(255,255,255,0.018);
+    --scanline: rgba(0,0,0,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* global scanline + grid overlay */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 1;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      var(--scanline) 3px, var(--scanline) 4px
+    );
+    pointer-events: none; z-index: 1;
+    opacity: 0.35;
+  }
+
+  .content { position: relative; z-index: 2; }
+
+  /* ── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--fg-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-size: 4px; font-weight: 700; letter-spacing: 0;
+    color: var(--fg-bright);
+    white-space: pre;
+    line-height: 1.0;
+    text-shadow: 0 0 8px rgba(255,255,255,0.2);
+    text-decoration: none;
+  }
+  nav .logo .rot { color: var(--fg-mid); }
+  nav ul {
+    display: flex; gap: 40px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--fg-bright); }
+  nav ul a.active { color: var(--fg-bright); }
+  nav .status {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  nav .status .dot {
+    width: 8px; height: 8px; background: var(--fg-mid);
+    border-radius: 50%; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; } 50% { opacity: 1; }
+  }
+
+  /* ── ARTICLE HEADER ──────────────────────────── */
+  .article-header {
+    margin-top: 64px;
+    padding: 80px 40px 40px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 55%);
+  }
+  .article-header .date-stamp {
+    font-size: 13px; color: var(--fg-dim); letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .article-header h1 {
+    font-size: 32px; letter-spacing: 8px; text-transform: uppercase;
+    color: var(--fg-bright); font-weight: 700; margin-bottom: 16px;
+  }
+  .article-header .subtitle {
+    font-size: 14px; letter-spacing: 4px; color: var(--fg-dim);
+    text-transform: uppercase;
+  }
+  .article-header .subtitle .accent { color: var(--accent); }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 10px 24px;
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ── STORIES ─────────────────────────────────── */
+  .stories {
+    max-width: 860px; margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+  .story {
+    margin-bottom: 48px;
+    border-left: 2px solid var(--fg-border);
+    padding-left: 28px;
+    transition: border-color 0.2s;
+  }
+  .story:hover { border-left-color: var(--fg-dim); }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .story h2 {
+    font-size: 19px; color: var(--fg-bright); font-weight: 700;
+    letter-spacing: 1px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: var(--fg-mid); line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .story .sources a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 6px 14px;
+    transition: all 0.2s;
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+  .story .sources a .source-icon {
+    color: var(--fg-faint);
+  }
+
+  /* ── FOOTER ──────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--fg-border);
+    padding: 60px 40px 40px; text-align: center;
+  }
+  footer .ascii-mini {
+    font-size: 10px; white-space: pre; color: var(--fg-dim);
+    margin-bottom: 30px; line-height: 1.0;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 40px;
+    margin-bottom: 30px;
+  }
+  footer .links a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  footer .links a:hover { color: var(--fg-bright); }
+  footer .gen-credit {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  footer .gen-credit .label { color: var(--fg-dim); }
+  footer .copyright {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 30px; }
+    .article-header h1 { font-size: 22px; letter-spacing: 4px; }
+    .stories { padding: 40px 20px 60px; }
+    .story { padding-left: 18px; }
+    .story h2 { font-size: 16px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 18px; letter-spacing: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <a href="/" class="logo">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
+   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
+   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
+   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
+   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/#topics">Topics</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+    <div class="status"><div class="dot"></div> SIGNAL: STABLE</div>
+  </nav>
+
+  <!-- ═══ ARTICLE HEADER ═══ -->
+  <section class="article-header">
+    <div class="date-stamp">July 9, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">ROT <span class="accent">▶</span> DECAY <span class="accent">▶</span> REBUILD</div>
+    <a href="/news/" class="back-link">◀ All Briefs</a>
+  </section>
+
+  <!-- ═══ STORIES ═══ -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">// STORY_01</div>
+      <h2>🚀 MiniMax to open-source 2.7 trillion-parameter M3 Pro in Q3</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_02</div>
+      <h2>Chinese AI startup MiniMax plans to open-source its 2.7 trillion-parameter model, internally called M3 Pro, as early as Q3 2026. If released, it would be China&#x27;s biggest open-source AI model and one of the largest open-weight models ever.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_03</div>
+      <h2>🔓 ZML releases free multi-chip inference software for open-source LLMs</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_04</div>
+      <h2>French AI startup ZML, endorsed by Turing Award winner Yann LeCun, released free inference-performance software that lets open-source LLMs run across Nvidia, AMD, Google TPU, Apple Metal, and Intel Arc chips. The product targets the fragmentation problem slowing open-source adoption across diverse hardware.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_05</div>
+      <h2>💰 GLM-5.2 open-weight model rivals Claude Opus 4.8 and GPT-5.5 at a sixth of the cost</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_06</div>
+      <h2>Z.ai open-weight GLM-5.2 matches Claude Opus 4.8 and GPT-5.5 on coding benchmarks at roughly one-sixth the price, raising alarm in Silicon Valley. The Chinese model, released June 13, currently leads open-weight options for long-horizon agentic engineering tasks.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_07</div>
+      <h2>🏛 OpenAI GPT-5.6 cleared for public release after weeks of US government testing</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_08</div>
+      <h2>The US Department of Commerce approved OpenAI GPT-5.6 family (Sol, Terra, Luna) for public launch on July 9, ending a weeks-long hold imposed by the Trump administration over national security concerns. OpenAI is expanding preview access globally ahead of the Thursday release.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_09</div>
+      <h2>⚡ SpaceXAI launches Grok 4.5, an Opus-class model at $2/M input</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_10</div>
+      <h2>SpaceXAI released Grok 4.5, its first model since going public and acquiring the AI coding startup Cursor. Elon Musk calls it Opus-class. Benchmark estimates put Grok 4.5 at $2.49 per coding task versus $5.07 for GPT-5.5 and $11.80 for Anthropic Fable 5. It beats all open-weights models and Google Gemini, though it trails OpenAI and Anthropic on raw benchmark scores.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_11</div>
+      <h2>📋 Illinois becomes first state to require third-party safety audits for AI giants</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_12</div>
+      <h2>Governor JB Pritzker signed the Artificial Intelligence Safety Measures Act, making Illinois the first state to mandate independent audits of frontier AI developers safety practices. The law requires disclosure of safety practices, timely reporting of critical safety incidents, and creates a state-driven framework in lieu of stalled federal legislation.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_13</div>
+      <h2>🤖 Mistral AI releases robotics navigation model for physical AI push</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_14</div>
+      <h2>French open-source startup Mistral AI announced a new robotics navigation model, expanding into the emerging field of physical AI after signing deals with major European industrial customers. The move marks Mistral push beyond text models into embodied AI.</h2>
+      <p class="summary"></p>
+      <div class="sources">
+      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="ascii-mini">╔════════════════════════╗
+║  ROT ▶ DECAY ▶ REBUILD  ║
+╚════════════════════════╝</div>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit"><span class="label">// Generated by</span> Hermes Agent <span class="label">|</span> @TECHROT_AI</div>
+    <div class="copyright">// TECHROT.SYS ▮ AI NEWS BRIEF ▮ July 9, 2026 ▮ ALL SIGNALS DEGRADE</div>
+  </footer>
+
+</div>
+</body>
+</html>
