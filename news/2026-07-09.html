@@ -29,12 +29,12 @@
     --bg-alt: #111111;
     --bg-card: #161616;
     --fg: #e8e8e8;
-    --fg-bright: #f2f2f2;
-    --fg-mid: #888888;
-    --fg-dim: #4a4a4a;
-    --fg-faint: #2a2a2a;
-    --fg-border: #1e1e1e;
-    --accent: #b0b0b0;
+    --fg-bright: #f5f5f5;
+    --fg-mid: #b0b0b0;
+    --fg-dim: #808080;
+    --fg-faint: #606060;
+    --fg-border: #333333;
+    --accent: #c0c0c0;
     --grid-line: rgba(255,255,255,0.018);
     --scanline: rgba(0,0,0,0.2);
   }
@@ -174,7 +174,7 @@
     letter-spacing: 1px; margin-bottom: 12px; line-height: 1.4;
   }
   .story .summary {
-    font-size: 15px; color: var(--fg-mid); line-height: 1.8;
+    font-size: 15px; color: #c0c0c0; line-height: 1.8;
     margin-bottom: 14px;
   }
   .story .sources {
@@ -182,19 +182,19 @@
   }
   .story .sources a {
     display: inline-flex; align-items: center; gap: 6px;
-    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    font-size: 12px; color: #909090; letter-spacing: 1px;
     text-decoration: none;
-    border: 1px solid var(--fg-border);
+    border: 1px solid #444444;
     padding: 6px 14px;
     transition: all 0.2s;
     word-break: break-all;
   }
   .story .sources a:hover {
-    color: var(--fg-bright); border-color: var(--fg-dim);
-    background: rgba(255,255,255,0.04);
+    color: var(--fg-bright); border-color: #666666;
+    background: rgba(255,255,255,0.06);
   }
   .story .sources a .source-icon {
-    color: var(--fg-faint);
+    color: #707070;
   }
 
   /* ── FOOTER ──────────────────────────────────── */
@@ -276,126 +276,71 @@
     <div class="story">
       <div class="story-num">// STORY_01</div>
       <h2>🚀 MiniMax to open-source 2.7 trillion-parameter M3 Pro in Q3</h2>
-      <p class="summary"></p>
+      <p class="summary">Chinese AI startup MiniMax plans to open-source its 2.7 trillion-parameter model, internally called M3 Pro, as early as Q3 2026. If released, it would be China&#x27;s biggest open-source AI model and one of the largest open-weight models ever.</p>
       <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      <a href="https://thenextweb.com/news/minimax-2-7-trillion-parameter-open-source-model" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> thenextweb.com</a>
+      <a href="https://aiweekly.co/alerts/minimax-preps-27t-parameter-m3-pro-for-q3-open-source-drop" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> aiweekly.co</a>
       </div>
     </div>
 
     <div class="story">
       <div class="story-num">// STORY_02</div>
-      <h2>Chinese AI startup MiniMax plans to open-source its 2.7 trillion-parameter model, internally called M3 Pro, as early as Q3 2026. If released, it would be China&#x27;s biggest open-source AI model and one of the largest open-weight models ever.</h2>
-      <p class="summary"></p>
+      <h2>🔓 ZML releases free multi-chip inference software for open-source LLMs</h2>
+      <p class="summary">French AI startup ZML, endorsed by Turing Award winner Yann LeCun, released free inference-performance software that lets open-source LLMs run across Nvidia, AMD, Google TPU, Apple Metal, and Intel Arc chips. The product targets the fragmentation problem slowing open-source adoption across diverse hardware.</p>
       <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      <a href="https://techcrunch.com/2026/07/08/hot-french-startup-zml-releases-free-product-to-speed-inference-across-lots-of-ai-chips" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techcrunch.com</a>
       </div>
     </div>
 
     <div class="story">
       <div class="story-num">// STORY_03</div>
-      <h2>🔓 ZML releases free multi-chip inference software for open-source LLMs</h2>
-      <p class="summary"></p>
+      <h2>💰 GLM-5.2 open-weight model rivals Claude Opus 4.8 and GPT-5.5 at a sixth of the cost</h2>
+      <p class="summary">Z.ai open-weight GLM-5.2 matches Claude Opus 4.8 and GPT-5.5 on coding benchmarks at roughly one-sixth the price, raising alarm in Silicon Valley. The Chinese model, released June 13, currently leads open-weight options for long-horizon agentic engineering tasks.</p>
       <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      <a href="https://memeburn.com/glm-5-2-explained-and-why-z-ais-open-model-has-silicon-valley-worried" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> memeburn.com</a>
+      <a href="https://felloai.com/glm-vs-other-ai" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> felloai.com</a>
       </div>
     </div>
 
     <div class="story">
       <div class="story-num">// STORY_04</div>
-      <h2>French AI startup ZML, endorsed by Turing Award winner Yann LeCun, released free inference-performance software that lets open-source LLMs run across Nvidia, AMD, Google TPU, Apple Metal, and Intel Arc chips. The product targets the fragmentation problem slowing open-source adoption across diverse hardware.</h2>
-      <p class="summary"></p>
+      <h2>🏛 OpenAI GPT-5.6 cleared for public release after weeks of US government testing</h2>
+      <p class="summary">The US Department of Commerce approved OpenAI GPT-5.6 family (Sol, Terra, Luna) for public launch on July 9, ending a weeks-long hold imposed by the Trump administration over national security concerns. OpenAI is expanding preview access globally ahead of the Thursday release.</p>
       <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      <a href="https://www.cnbc.com/2026/07/08/openai-expanding-gpt-5point6-ai-model-release-ending-government-limits.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> cnbc.com</a>
+      <a href="https://thenextweb.com/news/openai-gpt-5-6-broad-rollout-us-approval" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> thenextweb.com</a>
+      <a href="https://bloomberg.com/news/articles/2026-07-08/openai-to-roll-out-top-ai-model-globally-after-limited-preview" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> bloomberg.com</a>
       </div>
     </div>
 
     <div class="story">
       <div class="story-num">// STORY_05</div>
-      <h2>💰 GLM-5.2 open-weight model rivals Claude Opus 4.8 and GPT-5.5 at a sixth of the cost</h2>
-      <p class="summary"></p>
+      <h2>⚡ SpaceXAI launches Grok 4.5, an Opus-class model at $2/M input</h2>
+      <p class="summary">SpaceXAI released Grok 4.5, its first model since going public and acquiring the AI coding startup Cursor. Elon Musk calls it Opus-class. Benchmark estimates put Grok 4.5 at $2.49 per coding task versus $5.07 for GPT-5.5 and $11.80 for Anthropic Fable 5. It beats all open-weights models and Google Gemini, though it trails OpenAI and Anthropic on raw benchmark scores.</p>
       <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      <a href="https://x.ai/news/grok-4-5" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> x.ai</a>
+      <a href="https://axios.com/2026/07/08/spacexai-grok-new-model" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> axios.com</a>
+      <a href="https://infoworld.com/article/4194895/spacexai-launches-grok-4-5-touts-lower-coding-task-costs-than-ai-rivals.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> infoworld.com</a>
       </div>
     </div>
 
     <div class="story">
       <div class="story-num">// STORY_06</div>
-      <h2>Z.ai open-weight GLM-5.2 matches Claude Opus 4.8 and GPT-5.5 on coding benchmarks at roughly one-sixth the price, raising alarm in Silicon Valley. The Chinese model, released June 13, currently leads open-weight options for long-horizon agentic engineering tasks.</h2>
-      <p class="summary"></p>
+      <h2>📋 Illinois becomes first state to require third-party safety audits for AI giants</h2>
+      <p class="summary">Governor JB Pritzker signed the Artificial Intelligence Safety Measures Act, making Illinois the first state to mandate independent audits of frontier AI developers safety practices. The law requires disclosure of safety practices, timely reporting of critical safety incidents, and creates a state-driven framework in lieu of stalled federal legislation.</p>
       <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      <a href="https://chicagotribune.com/2026/07/06/jb-pritzker-ai-regulation" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> chicagotribune.com</a>
+      <a href="https://govtech.com/artificial-intelligence/illinois-governor-signs-bipartisan-ai-oversight-bill-into-law" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> govtech.com</a>
+      <a href="https://governing.com/artificial-intelligence/illinois-sets-a-new-standard-for-ai-oversight" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> governing.com</a>
       </div>
     </div>
 
     <div class="story">
       <div class="story-num">// STORY_07</div>
-      <h2>🏛 OpenAI GPT-5.6 cleared for public release after weeks of US government testing</h2>
-      <p class="summary"></p>
-      <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
-      </div>
-    </div>
-
-    <div class="story">
-      <div class="story-num">// STORY_08</div>
-      <h2>The US Department of Commerce approved OpenAI GPT-5.6 family (Sol, Terra, Luna) for public launch on July 9, ending a weeks-long hold imposed by the Trump administration over national security concerns. OpenAI is expanding preview access globally ahead of the Thursday release.</h2>
-      <p class="summary"></p>
-      <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
-      </div>
-    </div>
-
-    <div class="story">
-      <div class="story-num">// STORY_09</div>
-      <h2>⚡ SpaceXAI launches Grok 4.5, an Opus-class model at $2/M input</h2>
-      <p class="summary"></p>
-      <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
-      </div>
-    </div>
-
-    <div class="story">
-      <div class="story-num">// STORY_10</div>
-      <h2>SpaceXAI released Grok 4.5, its first model since going public and acquiring the AI coding startup Cursor. Elon Musk calls it Opus-class. Benchmark estimates put Grok 4.5 at $2.49 per coding task versus $5.07 for GPT-5.5 and $11.80 for Anthropic Fable 5. It beats all open-weights models and Google Gemini, though it trails OpenAI and Anthropic on raw benchmark scores.</h2>
-      <p class="summary"></p>
-      <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
-      </div>
-    </div>
-
-    <div class="story">
-      <div class="story-num">// STORY_11</div>
-      <h2>📋 Illinois becomes first state to require third-party safety audits for AI giants</h2>
-      <p class="summary"></p>
-      <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
-      </div>
-    </div>
-
-    <div class="story">
-      <div class="story-num">// STORY_12</div>
-      <h2>Governor JB Pritzker signed the Artificial Intelligence Safety Measures Act, making Illinois the first state to mandate independent audits of frontier AI developers safety practices. The law requires disclosure of safety practices, timely reporting of critical safety incidents, and creates a state-driven framework in lieu of stalled federal legislation.</h2>
-      <p class="summary"></p>
-      <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
-      </div>
-    </div>
-
-    <div class="story">
-      <div class="story-num">// STORY_13</div>
       <h2>🤖 Mistral AI releases robotics navigation model for physical AI push</h2>
-      <p class="summary"></p>
+      <p class="summary">French open-source startup Mistral AI announced a new robotics navigation model, expanding into the emerging field of physical AI after signing deals with major European industrial customers. The move marks Mistral push beyond text models into embodied AI.</p>
       <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
-      </div>
-    </div>
-
-    <div class="story">
-      <div class="story-num">// STORY_14</div>
-      <h2>French open-source startup Mistral AI announced a new robotics navigation model, expanding into the emerging field of physical AI after signing deals with major European industrial customers. The move marks Mistral push beyond text models into embodied AI.</h2>
-      <p class="summary"></p>
-      <div class="sources">
-      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>
+      <a href="https://www.bloomberg.com/news/articles/2026-07-08/mistral-ai-releases-robotics-model-to-support-physical-ai-push" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> bloomberg.com</a>
       </div>
     </div>
   </section>
