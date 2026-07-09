@@ -58,66 +58,98 @@ def parse_stories(content: str) -> list:
     Parse the plain-text report into a list of story dicts.
     Each story: {headline, summary, sources: [url, ...]}
 
-    Format:
-        HEADLINE
-        Summary line(s).
-        Source: URL
-        Source: URL
-
-        (blank line separates stories)
+    Handles content where stories may have blank lines between headline,
+    summary, and source sections by merging adjacent blocks that belong
+    to the same story. Story boundaries are detected by numbered entries
+    (1., 2), etc.) or by the headline-only-block + following-blocks pattern.
     """
     stories = []
-    # Split on blank lines (one or more) to get story blocks
-    blocks = re.split(r'\n\s*\n', content.strip())
+    # Split on blank lines to get raw blocks
+    raw_blocks = re.split(r'\n\s*\n', content.strip())
 
-    for block in blocks:
+    # Classify each block into text lines and source URLs
+    classified = []
+    for block in raw_blocks:
         block = block.strip()
         if not block:
             continue
 
         lines = block.split('\n')
-        headline = None
-        summary_lines = []
+        text_lines = []
         sources = []
 
-        for i, line in enumerate(lines):
+        for line in lines:
             line = line.strip()
             if not line:
                 continue
-
-            # Check for source line
             source_match = re.match(r'^Source:\s*(.+)$', line, re.IGNORECASE)
             if source_match:
-                url = source_match.group(1).strip()
-                sources.append(url)
-                continue
-
-            # Also catch bare URLs (http/https)
-            if re.match(r'^https?://', line):
+                sources.append(source_match.group(1).strip())
+            elif re.match(r'^https?://', line):
                 sources.append(line)
-                continue
-
-            # First non-source, non-URL line is the headline
-            if headline is None:
-                headline = line
             else:
-                # Remaining lines are summary
-                summary_lines.append(line)
+                text_lines.append(line)
 
-        if not headline:
+        classified.append({
+            'text_lines': text_lines,
+            'sources': sources,
+        })
+
+    # Walk through classified blocks and merge into stories
+    i = 0
+    while i < len(classified):
+        block = classified[i]
+        text_lines = list(block['text_lines'])
+        sources = list(block['sources'])
+
+        # Source-only block: orphan, append to previous story if exists
+        if not text_lines and sources:
+            if stories:
+                stories[-1]['sources'].extend(sources)
+            i += 1
             continue
 
-        # Join summary lines
-        summary = ' '.join(summary_lines).strip()
-        if not summary:
-            # If no summary found, use empty string
-            summary = ''
+        # If headline-only (1 text line, no sources), look ahead for summary + sources
+        if len(text_lines) <= 1 and not sources:
+            j = i + 1
+            while j < len(classified):
+                nb = classified[j]
+                if not nb['text_lines'] and nb['sources']:
+                    # Source-only block: add sources and stop
+                    sources.extend(nb['sources'])
+                    j += 1
+                    break
+                elif nb['text_lines'] and not nb['sources']:
+                    # Text-only block: this is the summary
+                    text_lines.extend(nb['text_lines'])
+                    j += 1
+                    # Check if the next block has sources
+                    if j < len(classified) and not classified[j]['text_lines'] and classified[j]['sources']:
+                        sources.extend(classified[j]['sources'])
+                        j += 1
+                    break
+                else:
+                    # Mixed block or empty: stop merging
+                    break
+            i_next = j
+        else:
+            i_next = i + 1
 
-        stories.append({
-            'headline': headline,
-            'summary': summary,
-            'sources': sources
-        })
+        # First text line is headline, rest are summary
+        headline = text_lines[0] if text_lines else ''
+        summary = ' '.join(text_lines[1:]).strip() if len(text_lines) > 1 else ''
+
+        # Strip leading number prefix from headline (e.g., "1)", "1.", "1:")
+        headline = re.sub(r'^\d+[\.\)\:]\s*', '', headline)
+
+        if headline:
+            stories.append({
+                'headline': headline,
+                'summary': summary,
+                'sources': sources,
+            })
+
+        i = i_next
 
     return stories
 
