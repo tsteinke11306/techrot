@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechRot - AI News Brief - July 28, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- ── OPEN GRAPH / SOCIAL META ─────────────────── -->
+  <meta name="description" content="TechRot AI News Brief for July 28, 2026. Daily AI news, no hype, no filler.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="TechRot - AI News Brief - July 28, 2026">
+  <meta property="og:description" content="Daily AI news brief for July 28, 2026. Kimi K3: World&#x27;s Largest Open-Weight AI Model Released - 2.8T Parameters, Free to Download">
+  <meta property="og:url" content="https://techrot.tech/news/2026-07-28.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="TechRot - AI News Brief - July 28, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for July 28, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg-alt: #111111;
+    --bg-card: #161616;
+    --fg: #e8e8e8;
+    --fg-bright: #f5f5f5;
+    --fg-mid: #b0b0b0;
+    --fg-dim: #808080;
+    --fg-faint: #606060;
+    --fg-border: #333333;
+    --accent: #c0c0c0;
+    --grid-line: rgba(255,255,255,0.018);
+    --scanline: rgba(0,0,0,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* global scanline + grid overlay */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 1;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      var(--scanline) 3px, var(--scanline) 4px
+    );
+    pointer-events: none; z-index: 1;
+    opacity: 0.35;
+  }
+
+  .content { position: relative; z-index: 2; }
+
+  /* ── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--fg-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-size: 4px; font-weight: 700; letter-spacing: 0;
+    color: var(--fg-bright);
+    white-space: pre;
+    line-height: 1.0;
+    text-shadow: 0 0 8px rgba(255,255,255,0.2);
+    text-decoration: none;
+  }
+  nav .logo .rot { color: var(--fg-mid); }
+  nav ul {
+    display: flex; gap: 40px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--fg-bright); }
+  nav ul a.active { color: var(--fg-bright); }
+  nav .status {
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  nav .status .dot {
+    width: 8px; height: 8px; background: var(--fg-mid);
+    border-radius: 50%; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; } 50% { opacity: 1; }
+  }
+
+  /* ── ARTICLE HEADER ──────────────────────────── */
+  .article-header {
+    margin-top: 64px;
+    padding: 80px 40px 40px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 55%);
+  }
+  .article-header .date-stamp {
+    font-size: 13px; color: var(--fg-dim); letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .article-header h1 {
+    font-size: 32px; letter-spacing: 8px; text-transform: uppercase;
+    color: var(--fg-bright); font-weight: 700; margin-bottom: 16px;
+  }
+  .article-header .subtitle {
+    font-size: 14px; letter-spacing: 4px; color: var(--fg-dim);
+    text-transform: uppercase;
+  }
+  .article-header .subtitle .accent { color: var(--accent); }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 12px; color: var(--fg-dim); letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    border: 1px solid var(--fg-border);
+    padding: 10px 24px;
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    color: var(--fg-bright); border-color: var(--fg-dim);
+    background: rgba(255,255,255,0.04);
+  }
+
+  /* ── STORIES ─────────────────────────────────── */
+  .stories {
+    max-width: 860px; margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+  .story {
+    margin-bottom: 48px;
+    border-left: 2px solid var(--fg-border);
+    padding-left: 28px;
+    transition: border-color 0.2s;
+  }
+  .story:hover { border-left-color: var(--fg-dim); }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .story h2 {
+    font-size: 19px; color: var(--fg-bright); font-weight: 700;
+    letter-spacing: 1px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #c0c0c0; line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .story .sources a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: #909090; letter-spacing: 1px;
+    text-decoration: none;
+    border: 1px solid #444444;
+    padding: 6px 14px;
+    transition: all 0.2s;
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg-bright); border-color: #666666;
+    background: rgba(255,255,255,0.06);
+  }
+  .story .sources a .source-icon {
+    color: #707070;
+  }
+
+  /* ── FOOTER ──────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--fg-border);
+    padding: 60px 40px 40px; text-align: center;
+  }
+  footer .ascii-mini {
+    font-size: 10px; white-space: pre; color: var(--fg-dim);
+    margin-bottom: 30px; line-height: 1.0;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 40px;
+    margin-bottom: 30px;
+  }
+  footer .links a {
+    color: var(--fg-dim); text-decoration: none;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  footer .links a:hover { color: var(--fg-bright); }
+  footer .gen-credit {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  footer .gen-credit .label { color: var(--fg-dim); }
+  footer .copyright {
+    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 30px; }
+    .article-header h1 { font-size: 22px; letter-spacing: 4px; }
+    .stories { padding: 40px 20px 60px; }
+    .story { padding-left: 18px; }
+    .story h2 { font-size: 16px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 18px; letter-spacing: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <a href="/" class="logo">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
+╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
+   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
+   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
+   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
+   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/#topics">Topics</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+    <div class="status"><div class="dot"></div> SIGNAL: STABLE</div>
+  </nav>
+
+  <!-- ═══ ARTICLE HEADER ═══ -->
+  <section class="article-header">
+    <div class="date-stamp">July 28, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">ROT <span class="accent">▶</span> DECAY <span class="accent">▶</span> REBUILD</div>
+    <a href="/news/" class="back-link">◀ All Briefs</a>
+  </section>
+
+  <!-- ═══ STORIES ═══ -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">// STORY_01</div>
+      <h2>Kimi K3: World&#x27;s Largest Open-Weight AI Model Released - 2.8T Parameters, Free to Download</h2>
+      <p class="summary">Moonshot AI released the full weights for Kimi K3 at 00:00 UTC on July 27, 2026, making it the largest open-weight AI model in history at 2.8 trillion parameters and 1.4 terabytes. The natively multimodal model features a 1-million-token context window, an &quot;Agent Swarm&quot; for parallel task execution, and ranks 4th among all models worldwide on the Artificial Analysis index (57.11 points, above Claude Opus 4.8 at 55.69 and GLM-5.2 at 51.09). It runs on AMD GPUs and is reportedly 2-3x easier to run than closed frontier models.</p>
+      <div class="sources">
+      <a href="https://wionews.com/world/meet-china-s-kimi-k3-the-largest-open-weight-ai-model-in-history-drops-tonight-1785195203953" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> wionews.com</a>
+      <a href="https://tomshardware.com/tech-industry/artificial-intelligence/moonshot-ai-releases-weights-for-kimi-k3-firing-a-shot-across-the-bow-of-openai-and-anthropic-open-weight-model-performs-almost-as-well-as-frontier-models-while-being-2-3x-easier-to-run" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> tomshardware.com</a>
+      <a href="https://atlanticcouncil.org/blogs/the-best-ai-you-can-own-is-chinese-the-west-needs-to-close-that-gap-quickly" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> atlanticcouncil.org</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_02</div>
+      <h2>Tech Billionaires Unite Behind Open-Weight AI in Joint Letter to Lawmakers</h2>
+      <p class="summary">Sam Altman, Satya Nadella, Sundar Pichai, Elon Musk, and Jensen Huang have co-signed a letter titled &quot;Open Weights and American AI Leadership&quot; arguing that US AI competitiveness depends on embracing open-weight models. Nvidia, Microsoft, Meta, and IBM separately wrote to lawmakers on Friday urging them to halt proposed bans on open-weight AI, calling openness foundational to security. Palantir CEO Alex Karp warned the US against following Europe&#x27;s regulatory path.</p>
+      <div class="sources">
+      <a href="https://economictimes.indiatimes.com/news/international/global-trends/sam-altman-satya-nadella-sundar-pichai-elon-musk-and-jensen-huang-unite-behind-one-ai-vision-why-americas-biggest-tech-billionaires-are-calling-for-open-weight-ai-models/articleshow/132659597.cms" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> economictimes.indiatimes.com</a>
+      <a href="https://nytimes.com/2026/07/27/technology/nvidia-open-source-ai.html" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> nytimes.com</a>
+      <a href="https://www.foxbusiness.com/media/palantir-ceo-warns-us-against-europes-ai-path-urges-trump-admin-not-ban-open-models" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> foxbusiness.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_03</div>
+      <h2>Mira Murati&#x27;s Thinking Machines Lab Releases Inkling - 975B-Parameter Open-Source Model</h2>
+      <p class="summary">After two years of silence, Mira Murati&#x27;s Thinking Machines Lab released Inkling, its first open AI model at 975 billion parameters with native video and audio understanding. The model is now available on OpenRouter. Reviewers praised its MCP (Model Context Protocol) score as genuinely impressive, though the price-to-performance math against established players remains a question for self-hosted setups.</p>
+      <div class="sources">
+      <a href="https://decrypt.co/373884/review-inkling-mira-murati-first-open-source-ai" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> decrypt.co</a>
+      <a href="https://explosion.com/203553/thinking-machines-releases-inkling-its-first-open-ai-model" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> explosion.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_04</div>
+      <h2>Chinese AI Models Now Handle Nearly a Third of Enterprise Tokens at One-Tenth US Cost</h2>
+      <p class="summary">The top five most popular models on OpenRouter over the past month are all Chinese, per Sensor Tower data. Chinese AI models now route nearly a third of enterprise tokens through platforms like Vercel&#x27;s gateway, where DeepSeek alone accounted for 22.6% of token volume in June. The shift comes as Chinese models cost roughly one-tenth of their US rivals, pressuring the ROI narrative for closed-source labs like OpenAI and Anthropic.</p>
+      <div class="sources">
+      <a href="https://marketscale.com/industries/software-and-technology/chinese-ai-models-now-handle-nearly-a-third-of-enterprise-tokens-at-one-tenth-the-cost-of-us-rivals" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> marketscale.com</a>
+      <a href="https://sentinelandenterprise.com/2026/07/27/china-us-ai-models" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> sentinelandenterprise.com</a>
+      <a href="https://axios.com/2026/07/27/open-source-venture-capital-openai-anthropic" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> axios.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_05</div>
+      <h2>Claude Opus 5 Sets ARC-AGI-3 Record at 30.16%, Tops Intelligence Index at Half Fable 5&#x27;s Price</h2>
+      <p class="summary">Anthropic released Claude Opus 5 on July 24, scoring 30.16% on ARC-AGI-3 - more than tripling the previous best score by any model on the hardest general-reasoning benchmark, and writing an algebraic equation no frontier model had produced before. It tops the Artificial Analysis Intelligence Index with 61 points at $5/$25 per million input/output tokens, roughly half the cost of Fable 5 ($10/$50). It leads GPT-5.6 Sol on 9 of 12 benchmarks including SWE-bench Pro (+14.6 points).</p>
+      <div class="sources">
+      <a href="https://www.digitalapplied.com/blog/arc-prize-verifies-claude-opus-5-arc-agi-3-record" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> digitalapplied.com</a>
+      <a href="https://mlq.ai/news/anthropic-launches-claude-opus-5-tops-ai-benchmark-index-at-half-the-cost-of-fable-5/" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> mlq.ai</a>
+      <a href="https://techtimes.com/articles/321661/20260727/claude-opus-5-took-arc-agi-3-record-equation-no-ai-had-written-before.htm" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> techtimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_06</div>
+      <h2>Beijing Hits Back at US Distillation Claims, Accuses US Firms of Training on Chinese Models</h2>
+      <p class="summary">China&#x27;s government broke its silence on the White House allegation that Moonshot AI covertly distilled Anthropic&#x27;s frontier model to build Kimi K3. Beijing&#x27;s response suggests US firms have themselves been training on Chinese model outputs, and argues Chinese labs lacked sufficient time to distill the latest frontier models. The exchange escalates the geopolitical fight over open-weight model access and export controls.</p>
+      <div class="sources">
+      <a href="https://theregister.com/ai-and-ml/2026/07/28/china-fights-back-in-ai-spat-with-claim-us-ai-companies-distil-chinese-models/5279315" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> theregister.com</a>
+      <a href="https://channelnewsasia.com/east-asia/china-us-ai-artificial-intelligence-train-models-chinese-6280731" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> channelnewsasia.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">// STORY_07</div>
+      <h2>Impostor Models: Chinese LLMs Pretend to Be Claude in Identity Tests</h2>
+      <p class="summary">Researchers found that multiple Chinese models, including GLM-5.2 and Kimi K3, identify themselves as Anthropic&#x27;s Claude when asked about their identity. Kimi K3 said it was Claude in 4 of 10 trials, with the behavior shifting after a July 20 server-side change. The findings fuel the distillation debate, though researchers note the evidence stops short of proving direct copying from Claude&#x27;s training data.</p>
+      <div class="sources">
+      <a href="https://www.theregister.com/ai-and-ml/2026/07/27/impostor-chinese-models-pretend-theyre-claude/5279165" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> theregister.com</a>
+      <a href="https://theregister.com/security/2026/07/24/openai-hugging-face-attack-doesnt-mean-agents-are-evil-unless-you-tell-them-to-be/5277881" target="_blank" rel="noopener noreferrer"><span class="source-icon">▶</span> theregister.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="ascii-mini">╔════════════════════════╗
+║  ROT ▶ DECAY ▶ REBUILD  ║
+╚════════════════════════╝</div>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit"><span class="label">// Generated by</span> Hermes Agent <span class="label">|</span> @TECHROT_AI</div>
+    <div class="copyright">// TECHROT.SYS ▮ AI NEWS BRIEF ▮ July 28, 2026 ▮ ALL SIGNALS DEGRADE</div>
+  </footer>
+
+</div>
+</body>
+</html>
