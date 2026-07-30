@@ -58,99 +58,60 @@ def parse_stories(content: str) -> list:
     Parse the plain-text report into a list of story dicts.
     Each story: {headline, summary, sources: [url, ...]}
 
-    Handles content where stories may have blank lines between headline,
-    summary, and source sections by merging adjacent blocks that belong
-    to the same story. Story boundaries are detected by numbered entries
-    (1., 2), etc.) or by the headline-only-block + following-blocks pattern.
+    A story is: a headline line, summary text, then one or more "Source: URL"
+    lines. Blank lines may appear between headline and summary, and between
+    summary and sources. The parser classifies every non-blank line as either
+    a source or text, then groups: text lines accumulate as headline+summary
+    until sources appear; the next text line after sources starts a new story.
     """
-    stories = []
-    # Split on blank lines to get raw blocks
-    raw_blocks = re.split(r'\n\s*\n', content.strip())
+    lines = content.strip().split('\n')
 
-    # Classify each block into text lines and source URLs
+    # First pass: classify every line
     classified = []
-    for block in raw_blocks:
-        block = block.strip()
-        if not block:
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
             continue
-
-        lines = block.split('\n')
-        text_lines = []
-        sources = []
-
-        for line in lines:
-            line = line.strip()
-            if not line:
-                continue
-            source_match = re.match(r'^Source:\s*(.+)$', line, re.IGNORECASE)
-            if source_match:
-                sources.append(source_match.group(1).strip())
-            elif re.match(r'^https?://', line):
-                sources.append(line)
-            else:
-                text_lines.append(line)
-
-        classified.append({
-            'text_lines': text_lines,
-            'sources': sources,
-        })
-
-    # Walk through classified blocks and merge into stories
-    i = 0
-    while i < len(classified):
-        block = classified[i]
-        text_lines = list(block['text_lines'])
-        sources = list(block['sources'])
-
-        # Source-only block: orphan, append to previous story if exists
-        if not text_lines and sources:
-            if stories:
-                stories[-1]['sources'].extend(sources)
-            i += 1
-            continue
-
-        # If headline-only (1 text line, no sources), look ahead for summary + sources
-        if len(text_lines) <= 1 and not sources:
-            j = i + 1
-            while j < len(classified):
-                nb = classified[j]
-                if not nb['text_lines'] and nb['sources']:
-                    # Source-only block: add sources and stop
-                    sources.extend(nb['sources'])
-                    j += 1
-                    break
-                elif nb['text_lines'] and not nb['sources']:
-                    # Text-only block: this is the summary
-                    text_lines.extend(nb['text_lines'])
-                    j += 1
-                    # Check if the next block has sources
-                    if j < len(classified) and not classified[j]['text_lines'] and classified[j]['sources']:
-                        sources.extend(classified[j]['sources'])
-                        j += 1
-                    break
-                else:
-                    # Mixed block or empty: stop merging
-                    break
-            i_next = j
+        source_match = re.match(r'^Source:\s*(.+)$', stripped, re.IGNORECASE)
+        if source_match:
+            classified.append(('source', source_match.group(1).strip()))
+        elif re.match(r'^https?://', stripped):
+            classified.append(('source', stripped))
         else:
-            i_next = i + 1
+            classified.append(('text', stripped))
 
-        # First text line is headline, rest are summary
-        headline = text_lines[0] if text_lines else ''
-        summary = ' '.join(text_lines[1:]).strip() if len(text_lines) > 1 else ''
+    # Second pass: group into stories
+    stories = []
+    current_headline = None
+    current_summary_parts = []
+    current_sources = []
 
-        # Strip leading number prefix from headline (e.g., "1)", "1.", "1:")
-        headline = re.sub(r'^\d+[\.\)\:]\s*', '', headline)
-
-        if headline:
+    def flush():
+        nonlocal current_headline, current_summary_parts, current_sources
+        if current_headline:
+            headline = re.sub(r'^\d+[\.\)\:]\s*', '', current_headline)
+            summary = ' '.join(current_summary_parts).strip()
             stories.append({
                 'headline': headline,
                 'summary': summary,
-                'sources': sources,
+                'sources': current_sources,
             })
+        current_headline = None
+        current_summary_parts = []
+        current_sources = []
 
-        i = i_next
+    for item_type, value in classified:
+        if item_type == 'source':
+            current_sources.append(value)
+        else:  # text line
+            if current_sources:
+                flush()
+            if current_headline is None:
+                current_headline = value
+            else:
+                current_summary_parts.append(value)
 
+    flush()
     return stories
 
 
@@ -173,12 +134,22 @@ def extract_domain(url: str) -> str:
     return domain
 
 
+def strip_emoji(text: str) -> str:
+    """Remove leading emoji + whitespace from a headline."""
+    cleaned = re.sub(
+        r'^[\U0001F000-\U0001FFFF\u2600-\u27BF\u2693\u26A0\u26A1\u2696\uFE0F\u2705\u2728\u274C\u274E\u2753\u2757\s]+',
+        '',
+        text
+    )
+    return cleaned.strip()
+
+
 def generate_story_html(stories: list) -> str:
     """Generate the HTML for the stories section."""
     story_blocks = []
 
     for idx, story in enumerate(stories, 1):
-        headline = escape_html(story['headline'])
+        headline = escape_html(strip_emoji(story['headline']))
         summary = escape_html(story['summary'])
 
         # Build source links
@@ -187,14 +158,13 @@ def generate_story_html(stories: list) -> str:
             domain = escape_html(extract_domain(url))
             safe_url = escape_html(url)
             source_links.append(
-                f'      <a href="{safe_url}" target="_blank" rel="noopener noreferrer">'
-                f'<span class="source-icon">▶</span> {domain}</a>'
+                f'      <a href="{safe_url}" target="_blank" rel="noopener noreferrer">{domain}</a>'
             )
 
-        sources_html = '\n'.join(source_links) if source_links else '      <span style="font-size:12px;color:var(--fg-faint);">// no sources</span>'
+        sources_html = '\n'.join(source_links) if source_links else '      <span class="no-sources">No sources</span>'
 
         story_html = f"""    <div class="story">
-      <div class="story-num">// STORY_{idx:02d}</div>
+      <div class="story-num">{idx:02d}</div>
       <h2>{headline}</h2>
       <p class="summary">{summary}</p>
       <div class="sources">
@@ -342,8 +312,8 @@ def main():
 
     print(f"Parsed {len(stories)} stories from content.")
 
-    # Get top headline for index/meta
-    top_headline = stories[0]['headline']
+    # Get top headline for index/meta (stripped of emoji)
+    top_headline = strip_emoji(stories[0]['headline'])
     print(f"Top headline: {top_headline}")
 
     # Generate the article HTML

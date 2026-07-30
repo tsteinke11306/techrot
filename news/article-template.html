@@ -3,241 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TechRot - AI News Brief - {{DATE_DISPLAY}}</title>
+<title>AI News Brief - {{DATE_DISPLAY}}</title>
 <link rel="icon" type="image/png" href="/favicon.png">
 
-  <!-- ── OPEN GRAPH / SOCIAL META ─────────────────── -->
-  <meta name="description" content="TechRot AI News Brief for {{DATE_DISPLAY}}. Daily AI news, no hype, no filler.">
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for {{DATE_DISPLAY}}. Daily AI news, sourced from Brave News API.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="TechRot">
-  <meta property="og:title" content="TechRot - AI News Brief - {{DATE_DISPLAY}}">
+  <meta property="og:title" content="AI News Brief - {{DATE_DISPLAY}}">
   <meta property="og:description" content="Daily AI news brief for {{DATE_DISPLAY}}. {{TOP_HEADLINE}}">
   <meta property="og:url" content="https://techrot.tech/news/{{DATE}}.html">
   <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@TECHROT_AI">
   <meta name="twitter:creator" content="@TECHROT_AI">
-  <meta name="twitter:title" content="TechRot - AI News Brief - {{DATE_DISPLAY}}">
+  <meta name="twitter:title" content="AI News Brief - {{DATE_DISPLAY}}">
   <meta name="twitter:description" content="Daily AI news brief for {{DATE_DISPLAY}}.">
   <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #0d0d0d;
-    --bg-alt: #111111;
-    --bg-card: #161616;
-    --fg: #e8e8e8;
-    --fg-bright: #f5f5f5;
-    --fg-mid: #b0b0b0;
-    --fg-dim: #808080;
-    --fg-faint: #606060;
-    --fg-border: #333333;
-    --accent: #c0c0c0;
-    --grid-line: rgba(255,255,255,0.018);
-    --scanline: rgba(0,0,0,0.2);
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: "JetBrains Mono", "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.6;
-    overflow-x: hidden;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* global scanline + grid overlay */
+  /* Background orbs for glassmorphism depth */
   body::before {
-    content: "";
-    position: fixed; inset: 0;
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none; z-index: 1;
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
   }
   body::after {
-    content: "";
-    position: fixed; inset: 0;
-    background: repeating-linear-gradient(
-      0deg, transparent, transparent 3px,
-      var(--scanline) 3px, var(--scanline) 4px
-    );
-    pointer-events: none; z-index: 1;
-    opacity: 0.35;
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
   }
 
-  .content { position: relative; z-index: 2; }
+  .content { position: relative; z-index: 1; }
 
-  /* ── NAV ─────────────────────────────────────── */
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
-    height: 64px;
-    background: rgba(13,13,13,0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--fg-border);
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 48px;
     z-index: 100;
   }
   nav .logo {
-    font-size: 4px; font-weight: 700; letter-spacing: 0;
-    color: var(--fg-bright);
-    white-space: pre;
-    line-height: 1.0;
-    text-shadow: 0 0 8px rgba(255,255,255,0.2);
-    text-decoration: none;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
   }
-  nav .logo .rot { color: var(--fg-mid); }
   nav ul {
-    display: flex; gap: 40px; list-style: none;
+    display: flex; gap: 32px; list-style: none;
   }
   nav ul a {
-    color: var(--fg-dim); text-decoration: none;
-    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-    transition: color 0.2s;
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
   }
-  nav ul a:hover { color: var(--fg-bright); }
-  nav ul a.active { color: var(--fg-bright); }
-  nav .status {
-    font-size: 12px; color: var(--fg-dim); letter-spacing: 1px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  nav .status .dot {
-    width: 8px; height: 8px; background: var(--fg-mid);
-    border-radius: 50%; animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%,100% { opacity: 0.4; } 50% { opacity: 1; }
-  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
 
-  /* ── ARTICLE HEADER ──────────────────────────── */
+  /* ARTICLE HEADER */
   .article-header {
-    margin-top: 64px;
-    padding: 80px 40px 40px;
+    margin-top: 60px;
+    padding: 80px 40px 48px;
     text-align: center;
-    background:
-      radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 55%),
-      radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 55%);
   }
   .article-header .date-stamp {
-    font-size: 13px; color: var(--fg-dim); letter-spacing: 3px;
-    text-transform: uppercase; margin-bottom: 20px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
   }
   .article-header h1 {
-    font-size: 32px; letter-spacing: 8px; text-transform: uppercase;
-    color: var(--fg-bright); font-weight: 700; margin-bottom: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
   }
   .article-header .subtitle {
-    font-size: 14px; letter-spacing: 4px; color: var(--fg-dim);
-    text-transform: uppercase;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
   }
-  .article-header .subtitle .accent { color: var(--accent); }
 
   .back-link {
     display: inline-block;
-    margin-top: 24px;
-    font-size: 12px; color: var(--fg-dim); letter-spacing: 2px;
-    text-transform: uppercase; text-decoration: none;
-    border: 1px solid var(--fg-border);
-    padding: 10px 24px;
-    transition: all 0.2s;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
   }
   .back-link:hover {
-    color: var(--fg-bright); border-color: var(--fg-dim);
-    background: rgba(255,255,255,0.04);
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
   }
 
-  /* ── STORIES ─────────────────────────────────── */
+  /* STORIES */
   .stories {
-    max-width: 860px; margin: 0 auto;
-    padding: 60px 40px 80px;
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
   }
   .story {
-    margin-bottom: 48px;
-    border-left: 2px solid var(--fg-border);
-    padding-left: 28px;
-    transition: border-color 0.2s;
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
   }
-  .story:hover { border-left-color: var(--fg-dim); }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
   .story:last-child { margin-bottom: 0; }
   .story .story-num {
-    font-size: 12px; color: var(--fg-faint); letter-spacing: 2px;
-    margin-bottom: 8px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
   }
   .story h2 {
-    font-size: 19px; color: var(--fg-bright); font-weight: 700;
-    letter-spacing: 1px; margin-bottom: 12px; line-height: 1.4;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
   }
   .story .summary {
-    font-size: 15px; color: #c0c0c0; line-height: 1.8;
-    margin-bottom: 14px;
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
   }
   .story .sources {
-    display: flex; flex-wrap: wrap; gap: 12px;
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
   }
   .story .sources a {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 12px; color: #909090; letter-spacing: 1px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
     text-decoration: none;
-    border: 1px solid #444444;
-    padding: 6px 14px;
-    transition: all 0.2s;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
     word-break: break-all;
   }
   .story .sources a:hover {
-    color: var(--fg-bright); border-color: #666666;
-    background: rgba(255,255,255,0.06);
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
   }
-  .story .sources a .source-icon {
-    color: #707070;
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
   }
 
-  /* ── FOOTER ──────────────────────────────────── */
+  /* FOOTER */
   footer {
-    border-top: 1px solid var(--fg-border);
-    padding: 60px 40px 40px; text-align: center;
-  }
-  footer .ascii-mini {
-    font-size: 10px; white-space: pre; color: var(--fg-dim);
-    margin-bottom: 30px; line-height: 1.0;
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
   }
   footer .links {
-    display: flex; justify-content: center; gap: 40px;
-    margin-bottom: 30px;
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
   }
   footer .links a {
-    color: var(--fg-dim); text-decoration: none;
-    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-    transition: color 0.2s;
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
   }
-  footer .links a:hover { color: var(--fg-bright); }
+  footer .links a:hover { color: var(--fg); }
   footer .gen-credit {
-    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
-    margin-bottom: 16px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
   }
-  footer .gen-credit .label { color: var(--fg-dim); }
   footer .copyright {
-    font-size: 12px; color: var(--fg-faint); letter-spacing: 1px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
   }
 
-  /* ── RESPONSIVE ──────────────────────────────── */
+  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     nav ul { display: none; }
-    .article-header { padding: 80px 20px 30px; }
-    .article-header h1 { font-size: 22px; letter-spacing: 4px; }
-    .stories { padding: 40px 20px 60px; }
-    .story { padding-left: 18px; }
-    .story h2 { font-size: 16px; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
     .story .summary { font-size: 14px; }
   }
   @media (max-width: 400px) {
-    .article-header h1 { font-size: 18px; letter-spacing: 2px; }
+    .article-header h1 { font-size: 24px; }
   }
 </style>
 </head>
@@ -245,49 +239,39 @@
 
 <div class="content">
 
-  <!-- ═══ NAV ═══ -->
+  <!-- NAV -->
   <nav>
-    <a href="/" class="logo">████████╗███████╗ ██████╗██╗  ██╗██████╗  ██████╗ ████████╗
-╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗██╔═══██╗╚══██╔══╝
-   <span class="rot">██║   █████╗  ██║     ███████║██████╔╝██║   ██║   ██║   </span>
-   <span class="rot">██║   ██╔══╝  ██║     ██╔══██║██╔══██╗██║   ██║   ██║   </span>
-   <span class="rot">██║   ███████╗╚██████╗██║  ██║██║  ██║╚██████╔╝   ██║   </span>
-   <span class="rot">╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   </span></a>
+    <a href="/" class="logo">TS</a>
     <ul>
       <li><a href="/#about">About</a></li>
       <li><a href="/#videos">Videos</a></li>
-      <li><a href="/#topics">Topics</a></li>
       <li><a href="/news/" class="active">News</a></li>
       <li><a href="/#subscribe">Subscribe</a></li>
     </ul>
-    <div class="status"><div class="dot"></div> SIGNAL: STABLE</div>
   </nav>
 
-  <!-- ═══ ARTICLE HEADER ═══ -->
+  <!-- ARTICLE HEADER -->
   <section class="article-header">
     <div class="date-stamp">{{DATE_DISPLAY}}</div>
     <h1>AI News Brief</h1>
-    <div class="subtitle">ROT <span class="accent">▶</span> DECAY <span class="accent">▶</span> REBUILD</div>
-    <a href="/news/" class="back-link">◀ All Briefs</a>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
   </section>
 
-  <!-- ═══ STORIES ═══ -->
+  <!-- STORIES -->
   <section class="stories">
 <!--STORIES-->
   </section>
 
-  <!-- ═══ FOOTER ═══ -->
+  <!-- FOOTER -->
   <footer>
-    <div class="ascii-mini">╔════════════════════════╗
-║  ROT ▶ DECAY ▶ REBUILD  ║
-╚════════════════════════╝</div>
     <div class="links">
       <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
       <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
       <a href="/news/">News</a>
     </div>
-    <div class="gen-credit"><span class="label">// Generated by</span> Hermes Agent <span class="label">|</span> @TECHROT_AI</div>
-    <div class="copyright">// TECHROT.SYS ▮ AI NEWS BRIEF ▮ {{DATE_DISPLAY}} ▮ ALL SIGNALS DEGRADE</div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; {{DATE_DISPLAY}}</div>
   </footer>
 
 </div>
