@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - August 13, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for August 13, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - August 13, 2026">
+  <meta property="og:description" content="Daily AI news brief for August 13, 2026. Meta Returns to Open Weights with Muse Glimmer 30B">
+  <meta property="og:url" content="https://techrot.tech/news/2026-08-13.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - August 13, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for August 13, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">August 13, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Meta Returns to Open Weights with Muse Glimmer 30B</h2>
+      <p class="summary">Meta Superintelligence Labs released Muse Glimmer, a 30-billion-parameter open-weight model under the Apache 2.0 license, designed to run AI agents locally on a single consumer GPU (24-32GB VRAM). Quantized to under 20GB, it was tested on MacBook M4/M5 Max and NVIDIA RTX 5090. CEO Mark Zuckerberg confirmed the frontier-class Muse Spark 1.2 weights will be released next, marking Meta&#x27;s return to open weights after the Llama 4 flop.</p>
+      <div class="sources">
+      <a href="https://venturebeat.com/technology/meta-returns-to-open-source-with-muse-glimmer-an-apache-2-0-licensed-30b-parameter-ai-model-optimized-for-agents-available-now" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://theregister.com/ai-and-ml/2026/08/10/zuck-rekindles-open-weights-llama-drama-with-muse-glimmer/5285666" target="_blank" rel="noopener noreferrer">theregister.com</a>
+      <a href="https://opensourceforu.com/2026/08/meta-open-sources-muse-glimmer" target="_blank" rel="noopener noreferrer">opensourceforu.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>Nvidia Launches Nemotron 3.5 Lightning, Plans 1-Trillion-Parameter Nemotron 4</h2>
+      <p class="summary">Nvidia released Nemotron 3.5 Lightning, its first open-source AI model, a 30-billion-parameter model built for single-GPU agentic AI workloads. The company is also developing Nemotron 4, a family of models with the largest version expected to exceed 1 trillion parameters, aimed at challenging top open-source models globally. Nvidia could release the most advanced version as early as late 2026.</p>
+      <div class="sources">
+      <a href="https://beingguru.com/nvidia-launches-nemotron-3-5-lightning-as-its-first-open-source-ai-model" target="_blank" rel="noopener noreferrer">beingguru.com</a>
+      <a href="https://www.business-standard.com/technology/tech-news/nvidia-building-1-trillion-parameter-nemotron-4-to-rival-leading-ai-models-126081200516_1.html" target="_blank" rel="noopener noreferrer">business-standard.com</a>
+      <a href="https://opensourceforu.com/2026/08/nvidia-releases-nemotron-3-5-lightning" target="_blank" rel="noopener noreferrer">opensourceforu.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>Grok 4.6 Matches GPT-5.6 Sol for World&#x27;s Third-Best AI Model</h2>
+      <p class="summary">xAI released Grok 4.6 on August 12, matching GPT-5.6 Sol for third place on the Artificial Analysis Intelligence Index and overtaking Kimi K3. The model reused the 1.5-trillion-parameter base from Grok 4.5 but delivered a flagship upgrade through post-training alone. On AA-Briefcase workloads, Grok 4.6 completed tasks in roughly 53 turns and 0.5 billion input tokens, versus approximately 103 turns and 2 billion tokens for Claude Opus 5.</p>
+      <div class="sources">
+      <a href="https://venturebeat.com/technology/spacexai-debuts-grok-4-6-overtaking-kimi-k3s-performance-and-matching-gpt-5-6-sol-for-worlds-third-best-on-artificial-analysis" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://coingape.com/elon-musks-spacexai-releases-grok-4-6-ai-model/" target="_blank" rel="noopener noreferrer">coingape.com</a>
+      <a href="https://aireleasetracker.com/model/xai/grok-4.6" target="_blank" rel="noopener noreferrer">aireleasetracker.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Mistral AI Targets 1 Gigawatt of European Compute, Will Host GLM-5.2</h2>
+      <p class="summary">Mistral AI announced plans to scale European inference to 1 gigawatt by 2030, up from under 200 MW today across three sites. The company launched Mistral Regional Endpoints (US or Europe), secured five-year contracts with Amadeus, ASML, CMA CGM, and Capgemini, and will host China&#x27;s GLM-5.2 (by Z.ai) as the first third-party open-weight model on its platform.</p>
+      <div class="sources">
+      <a href="https://venturebeat.com/infrastructure/mistral-ai-wants-to-build-1-gigawatt-of-european-compute-by-2030-and-lock-in-customers-now" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://bankinfosecurity.com/mistral-expands-sovereign-ai-push-european-compute-a-32527" target="_blank" rel="noopener noreferrer">bankinfosecurity.com</a>
+      <a href="https://journalduweb.org/mistral-ai-veut-planter-1-gigawatt-de-calcul-souverain-en-europe-dici-2030-et-verrouille-deja-ses-clients-pour-cinq-ans" target="_blank" rel="noopener noreferrer">journalduweb.org</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>LiteLLM Supply Chain Attack Exposes 2,500+ Organizations, 434,000 CI/CD Pipelines</h2>
+      <p class="summary">A supply chain attack on LiteLLM, a popular open-source LLM gateway, exposed over 2,500 organizations and 434,000 CI/CD pipelines. The breach was enabled by a compromise of Aqua Security&#x27;s Trivy open-source scanner, which was used to distribute malicious LiteLLM PyPI packages that stole cloud credentials, SSH keys, and Kubernetes tokens.</p>
+      <div class="sources">
+      <a href="https://itpro.com/security/cyber-attacks/the-litellm-supply-chain-attack-this-year-could-be-the-biggest-ever" target="_blank" rel="noopener noreferrer">itpro.com</a>
+      <a href="https://securityweek.com/over-2500-organizations-impacted-by-litellm-supply-chain-attack" target="_blank" rel="noopener noreferrer">securityweek.com</a>
+      <a href="https://thehackernews.com/2026/08/malicious-litellm-releases-tied-to.html" target="_blank" rel="noopener noreferrer">thehackernews.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>Alibaba&#x27;s Qwen3.8-Max Open Model Claims Benchmark Wins Over Claude and GPT</h2>
+      <p class="summary">Alibaba&#x27;s Qwen3.8-Max scored 56 on the Artificial Analysis Intelligence Index, a 10-point jump over Qwen3.7 Max (46), claiming to beat Claude Opus 4.8 and split with GPT-5.6 Sol on key benchmarks. The open-weight model is priced at $2 per million tokens, though Alibaba will require large commercial users to share revenue.</p>
+      <div class="sources">
+      <a href="https://startupfortune.com/alibabas-qwen38-max-claims-it-beats-claude-and-gpt-on-key-benchmarks/" target="_blank" rel="noopener noreferrer">startupfortune.com</a>
+      <a href="https://the-decoder.com/qwen3-8-max-catches-claude-opus-4-8-but-kimi-k3-still-scores-higher-for-25-percent-less" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+      <a href="https://www.digitaltoday.co.kr/en/view/92388/alibaba-set-to-unveil-qwen3-8-max-open-ai-model-will-charge-large-commercial-users" target="_blank" rel="noopener noreferrer">digitaltoday.co.kr</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>Zuckerberg Publishes 6,500-Word AI Manifesto for Open Weights</h2>
+      <p class="summary">Mark Zuckerberg published a 6,500-word essay arguing against AI regulation and for open-weight models, calling for &quot;personal superintelligence&quot; over institutional AI. He urged the US to reduce policy barriers for open-source AI to compete with Chinese rivals, while also calling for global regulation of physical AI components to limit harmful material production.</p>
+      <div class="sources">
+      <a href="https://politico.com/news/2026/08/10/mark-zuckerberg-ai-power-01030904" target="_blank" rel="noopener noreferrer">politico.com</a>
+      <a href="https://cryptobriefing.com/zuckerberg-ai-manifesto-meta-regulation/" target="_blank" rel="noopener noreferrer">cryptobriefing.com</a>
+      <a href="https://foxsanantonio.com/news/nation-world/mark-zuckerberg-says-ai-needs-to-be-regulated-globally-meta-artificial-intelligence-labs" target="_blank" rel="noopener noreferrer">foxsanantonio.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; August 13, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
