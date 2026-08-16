@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - August 16, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for August 16, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - August 16, 2026">
+  <meta property="og:description" content="Daily AI news brief for August 16, 2026. Zhipu ships GLM-5.3 with 50% coding jump, open weights held back for cyber safety review">
+  <meta property="og:url" content="https://techrot.tech/news/2026-08-16.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - August 16, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for August 16, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">August 16, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Zhipu ships GLM-5.3 with 50% coding jump, open weights held back for cyber safety review</h2>
+      <p class="summary">Z.ai released GLM-5.3 built on the same base as GLM-5.2, with all gains from extended post-training. Terminal-Bench 3.0 climbed from 4.6 to 28.3, DeepSWE v1.1 from 46.2 to 66.9, and CyberGym reached 84.5%, slightly surpassing Anthropic&#x27;s Mythos 5 and OpenAI&#x27;s GPT-5.6 Sol. Open weights are delayed roughly two weeks pending a safety evaluation, a decision Z.ai attributes to the model&#x27;s strong cybersecurity capabilities.</p>
+      <div class="sources">
+      <a href="https://marktechpost.com/2026/08/14/z-ai-ships-glm-5-3-without-retraining-the-base-model-better-at-complex-coding-and-long-horizon-tasks" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+      <a href="https://decrypt.co/375684/china-z-ai-glm-5-3-top-open-weight-coding-model" target="_blank" rel="noopener noreferrer">decrypt.co</a>
+      <a href="https://scmp.com/tech/big-tech/article/3364077/zhipu-launches-flagship-model-glm-53-china-seeks-mythos-level-edge-cyber-defence" target="_blank" rel="noopener noreferrer">scmp.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>Alibaba&#x27;s Qwen surpasses 3 billion downloads, claims over 50% of open-source model share</h2>
+      <p class="summary">Alibaba&#x27;s Qwen family has been downloaded more than 3 billion times over six months, with 460+ open-sourced models and 300,000+ derivative versions. According to a Hugging Face report cited by Alibaba, Google recorded 418 million downloads and Meta 227 million over the same period, putting Qwen well ahead of both.</p>
+      <div class="sources">
+      <a href="https://bloomberg.com/news/articles/2026-08-15/alibaba-ai-models-hit-3-billion-downloads-passing-meta-google" target="_blank" rel="noopener noreferrer">bloomberg.com</a>
+      <a href="https://cryptobriefing.com/alibaba-qwen-3-billion-downloads" target="_blank" rel="noopener noreferrer">cryptobriefing.com</a>
+      <a href="https://finance.biggo.com/news/cf7c25bc-f0d5-408e-9151-d8cf6365e846" target="_blank" rel="noopener noreferrer">finance.biggo.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>DeepSeek launches V4 Pro and open-source Harness, a rival to Claude Code</h2>
+      <p class="summary">DeepSeek released V4 Pro 0813 with stronger agentic capabilities and coding upgrades, alongside Harness, an open-source coding agent positioned as a competitor to Anthropic&#x27;s Claude Code. V4 Pro is available on API with higher pricing than its preview predecessor, and DeepSeek published its own benchmark results showing gains in multi-step tool-use workflows.</p>
+      <div class="sources">
+      <a href="https://venturebeat.com/technology/deepseek-harness-launches-as-open-source-rival-to-claude-code-alongside-v4-pro-on-api-with-higher-prices" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://techgenyz.com/deepseek-v4-pro-stronger-ai-agents-coding-upgrades/" target="_blank" rel="noopener noreferrer">techgenyz.com</a>
+      <a href="https://news.cgtn.com/news/2026-08-14/DeepSeek-launches-V4-Pro-model-with-enhanced-AI-agent-capabilities-1PAXZBW64P6/p.html" target="_blank" rel="noopener noreferrer">news.cgtn.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Anthropic watermarks Claude-generated text to comply with EU law</h2>
+      <p class="summary">Anthropic began watermarking text generated by Claude to comply with EU regulations. The company will release an API with &quot;keys&quot; to decode the watermark and verify whether Claude generated a given block of text. The watermark applies even when Claude is used only for proofreading, a scope that tech analyst Ben Thompson called &quot;clearly absurd.&quot;</p>
+      <div class="sources">
+      <a href="https://engadget.com/2237691/anthropic-watermarking-text-generated-by-claude" target="_blank" rel="noopener noreferrer">engadget.com</a>
+      <a href="https://www.businessinsider.com/ben-thompson-ai-watermarking-anthropic-claude-2026-8" target="_blank" rel="noopener noreferrer">businessinsider.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>Vals AI raises $40M from a16z after finding frontier models fail 52% of real finance analyst tasks</h2>
+      <p class="summary">San Francisco startup Vals AI closed a $40 million Series A at a $400 million valuation, led by Andreessen Horowitz. The company&#x27;s testing found that frontier AI models fail 52% of real-world finance analyst tasks, highlighting what Vals AI calls an &quot;Akerlof problem&quot; where labs know far more about their models&#x27; weaknesses than the enterprises buying them.</p>
+      <div class="sources">
+      <a href="https://www.techtimes.com/articles/324479/20260814/vals-ai-raises-40m-a16z-frontier-models-fail-52-real-finance-analyst-tasks.htm" target="_blank" rel="noopener noreferrer">techtimes.com</a>
+      <a href="https://techfundingnews.com/a16z-leads-40m-vals-ai-round-at-400m-valuation-to-test-ai-on-real-world-tasks" target="_blank" rel="noopener noreferrer">techfundingnews.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>Nvidia partners with Wall Street for $500 billion AI infrastructure financing</h2>
+      <p class="summary">Nvidia announced partnerships with Apollo, BlackRock, Goldman Sachs, KKR, Brookfield, and Blackstone to finance up to $500 billion in AI infrastructure, making AI factory compute an &quot;investable asset class.&quot; The deal aims to fund data centers, power capacity, and chip deployments for Nvidia customers, though analysts warn it could increase enterprise AI costs and worsen chip shortages.</p>
+      <div class="sources">
+      <a href="https://theguardian.com/technology/2026/aug/11/nvidia-wall-street-finance-ai-infrastructure" target="_blank" rel="noopener noreferrer">theguardian.com</a>
+      <a href="https://www.cnbc.com/2026/08/14/ai-infrastructure-debt-leverage-risks.html" target="_blank" rel="noopener noreferrer">cnbc.com</a>
+      <a href="https://blogs.nvidia.com/blog/nvidia-ai-factory-compute" target="_blank" rel="noopener noreferrer">blogs.nvidia.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>Grok 4.6 launches with 500K context and $2/$6 pricing, matches GPT-5.6 on benchmarks</h2>
+      <p class="summary">SpaceXAI released Grok 4.6 as a post-training upgrade with 500K context window, priced at $2 per million input tokens and $6 per million output tokens. The model matches GPT-5.6 on benchmark scores and is tuned for long-running agents, coding, and knowledge work, reportedly needing half the steps of Claude Opus 5 to complete equivalent tasks.</p>
+      <div class="sources">
+      <a href="https://www.webpronews.com/grok-4-6-matches-gpt-5-6-on-ai-benchmark-2-m-input-pricing/" target="_blank" rel="noopener noreferrer">webpronews.com</a>
+      <a href="https://marktechpost.com/2026/08/12/spacexai-releases-grok-4-6" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+      <a href="https://codingfleet.com/blog/grok-4-6-vs-gemini-3-7-flash" target="_blank" rel="noopener noreferrer">codingfleet.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; August 16, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
