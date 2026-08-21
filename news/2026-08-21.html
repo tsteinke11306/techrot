@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - August 21, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for August 21, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - August 21, 2026">
+  <meta property="og:description" content="Daily AI news brief for August 21, 2026. GLM-5.3 Ships as Open-Weight Coding and Cybersecurity Model from Z.ai">
+  <meta property="og:url" content="https://techrot.tech/news/2026-08-21.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - August 21, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for August 21, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">August 21, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>GLM-5.3 Ships as Open-Weight Coding and Cybersecurity Model from Z.ai</h2>
+      <p class="summary">Z.ai released GLM-5.3 on August 14, built on the same base as GLM-5.2 with extended post-training. It scored 84.5 on the CyberGym cybersecurity benchmark, edging out Anthropic&#x27;s Mythos 5 by 0.7 points, and enters the best-available ranking tied for 11th of 681 models. API pricing is $1.40 per million input tokens and $4.40 per million output tokens, significantly cheaper than Grok 4.6 at $8 combined. On Terminal-Bench 3.0 and DeepSWE, it still trails Claude Fable 5 and GPT-5.6 Sol.</p>
+      <div class="sources">
+      <a href="https://venturebeat.com/technology/glm-5-3-hits-the-api-at-1-4-4-4-per-million-tokens" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://decrypt.co/375684/china-z-ai-glm-5-3-top-open-weight-coding-model" target="_blank" rel="noopener noreferrer">decrypt.co</a>
+      <a href="https://artificialintelligence-news.com/news/zhipu-glm-5-3-benchmarks-explained" target="_blank" rel="noopener noreferrer">artificialintelligence-news.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>Mistral Begins Hosting Z.ai&#x27;s GLM-5.2 in Push for European AI Sovereignty</h2>
+      <p class="summary">Mistral is now hosting third-party open models for the first time, starting with GLM-5.2 from Z.ai (Zhipu), a Chinese lab on the US entity list. GLM-5.2 offers a 1-million-token context window at $1.40 per million input tokens with open weights and no usage restrictions. ASML, Amadeus, Capgemini, Caisse des Depots, and CMA CGM signed multi-year compute commitments for Mistral&#x27;s planned 1GW European data center buildout by 2030.</p>
+      <div class="sources">
+      <a href="https://scmp.com/news/china/diplomacy/article/3364745/mistral-paradox-europes-push-tech-sovereignty-relies-chinas-zai" target="_blank" rel="noopener noreferrer">scmp.com</a>
+      <a href="https://techzine.eu/news/analytics/143617/mistral-to-host-external-models-chinese-z-ai-to-be-first" target="_blank" rel="noopener noreferrer">techzine.eu</a>
+      <a href="https://thenextweb.com/news/mistral-data-centre-buildout-asml-compute-units" target="_blank" rel="noopener noreferrer">thenextweb.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>Ornith-1.5: Open-Source Coding Models Claim Near-Claude Opus 4.8 Performance</h2>
+      <p class="summary">Ornith released three new open-source coding models, including a 397B parameter mixture-of-experts model and a 9B parameter model with quantized builds for local deployment. The lab claims its largest system approaches Claude Opus 4.8 on coding benchmarks, though the comparison is vendor-reported. The 9B model is the practical release for developers, runnable on local hardware with quantized builds.</p>
+      <div class="sources">
+      <a href="https://startupfortune.com/ornith-15-is-a-free-open-source-model-that-claims-to-rival-claude-opus-48/" target="_blank" rel="noopener noreferrer">startupfortune.com</a>
+      <a href="https://gigazine.net/gsc_news/en/20260820-ornith-1-5" target="_blank" rel="noopener noreferrer">gigazine.net</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Alibaba Open-Sources Qwen3.8 Max Weights as Cloud Revenue Hits 45% Growth</h2>
+      <p class="summary">Alibaba Cloud reported 45% external revenue growth in Q1 2027, a 22-quarter high, with adjusted EBITDA margin of 11.6%. The company open-sourced the weights of its flagship Qwen3.8 Max model after three months, and also launched Qwen3.8-27B, a 27B parameter multimodal model under Apache 2.0 license. Alibaba Cloud cut hyperscale AI data center delivery time to 100 days.</p>
+      <div class="sources">
+      <a href="https://www.benzinga.com/news/26/08/61329366/transcript-alibaba-gr-hldgs-q1-2027-earnings-conference-call" target="_blank" rel="noopener noreferrer">benzinga.com</a>
+      <a href="https://emergent.sh/news/qwen38-27b-officially-launched" target="_blank" rel="noopener noreferrer">emergent.sh</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>Broadcom Seeks $60B+ in Debt Financing for AI Chip Procurement</h2>
+      <p class="summary">Broadcom is in talks with multiple lenders to raise more than $60 billion in debt to support chip procurement and computing infrastructure, adding to a rush of deals aimed at financing AI infrastructure. The financing comes as AI chips increasingly become an investable asset class, with billionaire investor Jeff Gundlach warning it could signal a market peak.</p>
+      <div class="sources">
+      <a href="https://tradingkey.com/analysis/cryptocurrencies/btc/262123641-btc-price-prediction-bitcoin-reaches-75000-price-continue-rise-tradingkey" target="_blank" rel="noopener noreferrer">tradingkey.com</a>
+      <a href="https://www.startuphub.ai/ai-news/funding-round/2026/broadcom-in-talks-for-60b-ai-chip-financing" target="_blank" rel="noopener noreferrer">startuphub.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>Data Center Capex Forecast to Surpass $3 Trillion by 2030</h2>
+      <p class="summary">Dell&#x27;Oro Group forecasts worldwide data center capital expenditure will surpass $3 trillion by 2030, with high-end accelerators powering AI-optimized servers representing the largest share. General-purpose server demand is expected to benefit from growing inference, agentic AI, and storage workloads, broadening infrastructure growth beyond accelerated computing.</p>
+      <div class="sources">
+      <a href="https://prnewswire.com/news-releases/ai-buildout-maintains-momentum-as-data-center-capex-surpasses-3-trillion-by-2030-according-to-delloro-group-302852171.html" target="_blank" rel="noopener noreferrer">prnewswire.com</a>
+      <a href="https://datacenterknowledge.com/ai-data-centers/ai-infrastructure-pushes-data-center-capex-forecast-above-3-trillion" target="_blank" rel="noopener noreferrer">datacenterknowledge.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>Vals AI Raises $40M from a16z for Independent AI Benchmarking</h2>
+      <p class="summary">Vals AI closed a $40 million Series A at a $400 million valuation, led by Andreessen Horowitz, to expand independent AI benchmarks across coding, cybersecurity, and professional domains. The company&#x27;s benchmarks revealed that frontier models fail 52% of real finance analyst tasks, highlighting the gap between vendor-reported performance and real-world capability.</p>
+      <div class="sources">
+      <a href="https://www.techtimes.com/articles/324479/20260814/vals-ai-raises-40m-a16z-frontier-models-fail-52-real-finance-analyst-tasks.htm" target="_blank" rel="noopener noreferrer">techtimes.com</a>
+      <a href="https://citybiz.co/article/890247/vals-ai-raises-40m-to-expand-independent-ai-benchmarking" target="_blank" rel="noopener noreferrer">citybiz.co</a>
+      <a href="https://techfundingnews.com/a16z-leads-40m-vals-ai-round-at-400m-valuation-to-test-ai-on-real-world-tasks" target="_blank" rel="noopener noreferrer">techfundingnews.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; August 21, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
