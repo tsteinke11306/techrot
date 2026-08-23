@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - August 23, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for August 23, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - August 23, 2026">
+  <meta property="og:description" content="Daily AI news brief for August 23, 2026. Mystery model &quot;Ox Alpha&quot; beats Claude Fable 5 and GPT-5.6 Sol at coding, forensics point to Zhipu AI">
+  <meta property="og:url" content="https://techrot.tech/news/2026-08-23.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - August 23, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for August 23, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">August 23, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Mystery model &quot;Ox Alpha&quot; beats Claude Fable 5 and GPT-5.6 Sol at coding, forensics point to Zhipu AI</h2>
+      <p class="summary">A free 1M-context AI model called Ox Alpha appeared on OpenRouter on August 20 with no named creator, and is reportedly outperforming Claude Fable 5 and GPT-5.6 Sol at coding tasks. Serving-layer forensics published August 22 point with high confidence to Zhipu AI&#x27;s Z.ai infrastructure as its source, though the provider&#x27;s data retention practices remain unresolved.</p>
+      <div class="sources">
+      <a href="https://bloomberg.com/news/articles/2026-08-23/mystery-ai-model-ox-alpha-draws-developers-with-free-access" target="_blank" rel="noopener noreferrer">bloomberg.com</a>
+      <a href="https://businessinsider.com/ox-alpha-ai-model-mystery-2026-8" target="_blank" rel="noopener noreferrer">businessinsider.com</a>
+      <a href="https://www.techtimes.com/articles/325244/20260823/coding-model-ox-alpha-retains-every-prompt-you-cannot-name-company-holding-them.htm" target="_blank" rel="noopener noreferrer">techtimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>Zhipu&#x27;s open-source GLM-5.3 tops CyberGym cybersecurity benchmark, edging Anthropic&#x27;s Mythos 5</h2>
+      <p class="summary">Z.ai&#x27;s open-weight GLM-5.3 scored highest on the CyberGym benchmark for AI vulnerability detection, beating Anthropic&#x27;s Mythos 5 (83.8%) and OpenAI&#x27;s GPT-5.6 Sol (83.6%). The model is positioned around agentic coding and cybersecurity, and as an open-weight release it can be run on one&#x27;s own hardware at a fraction of closed-model cost.</p>
+      <div class="sources">
+      <a href="https://developer-tech.com/news/z-ai-glm-5-3-cybergym-cybersecurity-ai-model-benchmark" target="_blank" rel="noopener noreferrer">developer-tech.com</a>
+      <a href="https://wired.com/story/zai-open-weight-ai-models-release-cybersecurity-hacking" target="_blank" rel="noopener noreferrer">wired.com</a>
+      <a href="https://artificialintelligence-news.com/news/zhipu-glm-5-3-benchmarks-explained" target="_blank" rel="noopener noreferrer">artificialintelligence-news.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>Mistral AI turns to Zhipu&#x27;s GLM-5.2 for European sovereign AI push</h2>
+      <p class="summary">French AI champion Mistral will offer Zhipu&#x27;s GLM-5.2 through its new platform as part of a pivot toward building a full-stack European sovereign AI platform and compute infrastructure. The move exposes the gap between EU rhetoric on tech sovereignty and the reality of dependence on foreign, even sanctioned, technology.</p>
+      <div class="sources">
+      <a href="https://newsbriefing.eu/technology/mistral-ai-turns-to-chinese-model-for-european-sovereign-ai-push" target="_blank" rel="noopener noreferrer">newsbriefing.eu</a>
+      <a href="https://moneycontrol.com/news/opinion/mistral-ai-s-strategy-pivot-and-europe-s-sovereign-ai-ambitions-14008293.html" target="_blank" rel="noopener noreferrer">moneycontrol.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Liquid AI releases LFM2.5-DSpark draft models with up to 3.18x faster decoding</h2>
+      <p class="summary">Liquid AI released DSpark draft models that add speculative decoding to its LFM2.5 family, delivering up to 3.18x faster decoding without changing model outputs. The open-source models let developers accelerate inference on existing hardware without retraining or accuracy loss.</p>
+      <div class="sources">
+      <a href="https://marktechpost.com/2026/08/20/liquid-ai-releases-lfm2-5-dspark-draft-models-that-deliver-up-to-3-18x-faster-decoding" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>NVIDIA AVO reaches 100% on ARC-AGI-3, showing the agent harness matters more than the model</h2>
+      <p class="summary">NVIDIA&#x27;s AVO agent system scored 100% on ARC-AGI-3, demonstrating a frontier-level general-purpose architecture for long-horizon autonomous agents. Separately, Nvidia research found that the surrounding agent harness - not the model itself - is now the dominant factor in agentic performance, with Opus 5 scoring only 30% without its harness despite leading bare models.</p>
+      <div class="sources">
+      <a href="https://developer.nvidia.com/blog/nvidia-avo-reaches-100-on-arc-agi-3-demonstrating-a-frontier-level-general-purpose-architecture-for-long-horizon-autonomous-agents" target="_blank" rel="noopener noreferrer">developer.nvidia.com</a>
+      <a href="https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>Alibaba to issue HK$80 billion in shares for global AI push as in-house chips hit full commercialization</h2>
+      <p class="summary">Alibaba announced it will issue HK$80 billion in new shares to fully fund its global AI push, while Alibaba Cloud posted its 12th straight quarter of triple-digit AI revenue growth. The company says its in-house AI chips have achieved a full commercialization loop, making it the only China-concept stock with full-stack AI capabilities spanning in-house chips, disclosed AI revenue, and public cloud.</p>
+      <div class="sources">
+      <a href="https://www.scmp.com/tech/big-tech/article/3364957/alibaba-issue-hk80-billion-new-shares-global-ai-push" target="_blank" rel="noopener noreferrer">scmp.com</a>
+      <a href="https://finance.biggo.com/news/58ddb0d5-e53c-4bff-a06e-48be2f515763" target="_blank" rel="noopener noreferrer">finance.biggo.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>China&#x27;s open-source bout is changing AI as US labs build behind closed doors</h2>
+      <p class="summary">A growing gap has opened where Chinese labs like Zhipu, DeepSeek, and Moonshot AI are releasing leading models as open weights while US frontier labs increasingly keep their work proprietary. Moonshot&#x27;s Kimi K3, released in July, and DeepSeek models have approached US frontier performance at a fraction of the cost, shifting the open-source center of gravity toward China.</p>
+      <div class="sources">
+      <a href="https://economictimes.indiatimes.com/ai/ai-insights/chinas-open-source-bout-is-changing-ai/articleshow/133433706.cms" target="_blank" rel="noopener noreferrer">economictimes.indiatimes.com</a>
+      <a href="https://businessinsider.com/ox-alpha-ai-model-mystery-2026-8" target="_blank" rel="noopener noreferrer">businessinsider.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; August 23, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
