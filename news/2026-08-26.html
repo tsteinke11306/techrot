@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - August 26, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for August 26, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - August 26, 2026">
+  <meta property="og:description" content="Daily AI news brief for August 26, 2026. Ox Alpha Mystery Model Revealed as Z.AI/Zhipu GLM Flagship">
+  <meta property="og:url" content="https://techrot.tech/news/2026-08-26.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - August 26, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for August 26, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">August 26, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Ox Alpha Mystery Model Revealed as Z.AI/Zhipu GLM Flagship</h2>
+      <p class="summary">The anonymous &quot;stealth&quot; AI model that topped OpenRouter usage charts since August 20 has been confirmed by Bloomberg as the work of China&#x27;s Z.AI (Zhipu). The free model, available until August 27, features a 1M-token context window and multimodal input. Developer Ben Davis scored it 80% Pass@1 on the DeepSWE coding benchmark in a 10-task sample, beating Claude Fable 5 (65%) and GLM-5.3 (62%), though two full 113-task runs landed near 63%, roughly level with GPT-5.6 Sol. Technical fingerprinting of tokenizer patterns and emoji usage pointed to GLM-5.x origins.</p>
+      <div class="sources">
+      <a href="https://bloomberg.com/news/articles/2026-08-26/china-s-z-ai-made-ox-alpha-stealth-model-that-rivals-deepseek" target="_blank" rel="noopener noreferrer">bloomberg.com</a>
+      <a href="https://officechai.com/ai/ox-alpha-z-ai" target="_blank" rel="noopener noreferrer">officechai.com</a>
+      <a href="https://decrypt.co/376396/mysterious-ai-model-ox-alpha" target="_blank" rel="noopener noreferrer">decrypt.co</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>OpenAI Unveils Jalapeno, First In-House Inference Chip, Beating NVIDIA Blackwell in Efficiency</h2>
+      <p class="summary">OpenAI revealed its first custom silicon, the Jalapeno inference chip, developed with Broadcom. On SemiAnalysis&#x27;s InferenceX benchmark, Jalapeno delivered more tokens per user and higher throughput per kilowatt than NVIDIA&#x27;s GB300 Blackwell system. OpenAI&#x27;s AI models assisted in the chip&#x27;s design, going from initial design to tapeout in nine months. Deployment within OpenAI&#x27;s infrastructure is planned by end of 2026.</p>
+      <div class="sources">
+      <a href="https://www.neowin.net/news/openais-upcoming-jalapeo-ai-chip-outperforms-nvidia-gb300-in-inference-tests/" target="_blank" rel="noopener noreferrer">neowin.net</a>
+      <a href="https://stockpil.com/openai-jalapeno-chip-benchmarks-hot-chips-2026/" target="_blank" rel="noopener noreferrer">stockpil.com</a>
+      <a href="https://www.storyboard18.com/digital/openai-unveils-jalapeo-ai-chip-with-broadcom-as-it-moves-deeper-into-ai-hardware-108866.htm" target="_blank" rel="noopener noreferrer">storyboard18.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>NVIDIA AVO Harness Pushes Claude Opus 5 to Perfect 100% on ARC-AGI-3</h2>
+      <p class="summary">NVIDIA&#x27;s AVO agent system achieved a perfect 100% score on ARC-AGI-3 using Claude Opus 5 as the base model. Without the harness, Opus 5 alone scored just 30%, demonstrating that the agent scaffolding (context management, tool use, state maintenance) now matters more than raw model capability. The same week, NVIDIA reportedly agreed to pay $6 billion to license Poolside&#x27;s coding model software.</p>
+      <div class="sources">
+      <a href="https://forbes.com/sites/jonmarkman/2026/08/24/nvidia-avo-pushes-claude-opus-5-to-a-perfect-arc-agi-3-benchmark-score" target="_blank" rel="noopener noreferrer">forbes.com</a>
+      <a href="https://developer.nvidia.com/blog/nvidia-avo-reaches-100-on-arc-agi-3-demonstrating-a-frontier-level-general-purpose-architecture-for-long-horizon-autonomous-agents" target="_blank" rel="noopener noreferrer">developer.nvidia.com</a>
+      <a href="https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Intel Reveals Crescent Island AI Accelerator at Hot Chips 2026</h2>
+      <p class="summary">Intel detailed its Crescent Island AI accelerator at Hot Chips 2026, featuring larger caches and deeper XMX engines targeting maximum AI FLOPS per watt. The accelerator is part of a broader portfolio including Diamond Rapids CPUs and Wildcat Lake for data centers, enterprises, and edge devices, all using the UCIe open chiplet interconnect standard. Intel also showcased SN50 rack-scale systems for the accelerator.</p>
+      <div class="sources">
+      <a href="https://www.tomshardware.com/pc-components/gpus/hot-chips-2026-intel-dives-deep-on-crescent-island-ai-accelerator-larger-caches-and-deeper-xmx-engines-target-maximum-ai-flops-per-watt" target="_blank" rel="noopener noreferrer">tomshardware.com</a>
+      <a href="https://newsroom.intel.com/client-computing/intel-outlines-architectures-for-agentic-ai-at-hot-chips-2026" target="_blank" rel="noopener noreferrer">newsroom.intel.com</a>
+      <a href="https://www.tipranks.com/news/intel-stock-nasdaqintc-notches-up-with-new-ai-infrastructure-systems" target="_blank" rel="noopener noreferrer">tipranks.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>Bill Gates Warns AI More Dangerous Than Big Tech Admits, Seeks China Talks on Restrictions</h2>
+      <p class="summary">In an interview with the New York Times, Bill Gates said the AI industry is downplaying risks including mass unemployment and bioterrorism. Gates told Reuters he believes China might agree to restricting potentially dangerous AI model releases if the US takes the initiative, and he wants to discuss policy ideas directly with China&#x27;s Xi Jinping.</p>
+      <div class="sources">
+      <a href="https://nytimes.com/2026/08/26/technology/bill-gates-ai-risks.html" target="_blank" rel="noopener noreferrer">nytimes.com</a>
+      <a href="https://economictimes.indiatimes.com/tech/artificial-intelligence/bill-gates-alarmed-by-ai-has-policy-ideas-he-wants-to-discuss-with-chinas-xi-jinping/articleshow/133533998.cms" target="_blank" rel="noopener noreferrer">economictimes.indiatimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>IBM Building Dual-Architecture Chip to Run Arm and Z Mainframe Workloads on Same Cores</h2>
+      <p class="summary">IBM is developing an unnamed chip that runs both z/OS and Arm-native Linux workloads simultaneously on the same core, a first in mainframe history. Built for &quot;the next era of enterprise infrastructure,&quot; the chip is a likely candidate for a future z18 mainframe family. Arm collaborated on the design, which targets running Arm-native AI applications on IBM Z systems.</p>
+      <div class="sources">
+      <a href="https://siliconangle.com/2026/08/24/ibm-is-developing-a-dual-architecture-chip-to-run-arm-native-ai-apps-on-z-mainframes-and-linux-servers/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+      <a href="https://www.techspot.com/news/113600-ibm-building-dual-architecture-mainframe-chip-run-arm.html" target="_blank" rel="noopener noreferrer">techspot.com</a>
+      <a href="https://www.pcgamer.com/hardware/processors/two-architectures-on-one-chip-arm-and-ibm-team-up-in-a-legendary-crossover-but-alas-its-for-enterprise-infrastructure/" target="_blank" rel="noopener noreferrer">pcgamer.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; August 26, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
