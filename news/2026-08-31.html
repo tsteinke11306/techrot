@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - August 31, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for August 31, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - August 31, 2026">
+  <meta property="og:description" content="Daily AI news brief for August 31, 2026. Z.ai Unmasks Mystery Model &quot;Ox Alpha&quot; as GLM-5.3-Flash, Run Entirely on Chinese Chips">
+  <meta property="og:url" content="https://techrot.tech/news/2026-08-31.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - August 31, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for August 31, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">August 31, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Z.ai Unmasks Mystery Model &quot;Ox Alpha&quot; as GLM-5.3-Flash, Run Entirely on Chinese Chips</h2>
+      <p class="summary">The anonymous model that topped OpenRouter usage charts for six days, called over 340 million times while processing roughly 62 trillion tokens, was revealed on Aug 26 as Z.ai&#x27;s GLM-5.3-Flash: a 320B-A18B natively multimodal MoE with a 1M-token context, MIT-licensed weights on Hugging Face, priced at $0.15/M input and $0.50/M output. Z.ai says all traffic was served on a 100,000-chip domestic cluster (Huawei Ascend, Cambricon, Moore Threads - Cambricon claims Day 0 compatibility), scoring 63.4 on DeepSWE v1.1 and 84.3 on Terminal-Bench 2.1 vs Claude Opus 4.8&#x27;s 85.0.</p>
+      <div class="sources">
+      <a href="https://www.cnbc.com/2026/08/27/zai-shares-surge-new-ai-model-using-chinese-chips.html" target="_blank" rel="noopener noreferrer">cnbc.com</a>
+      <a href="https://marktechpost.com/2026/08/26/z-ai-releases-glm-5-3-flash-a-320b-a18b-natively-multimodal-moe-with-a-1m-token-context" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+      <a href="https://officechai.com/ai/ox-alpha-glm-5-3-flash-was-powered-by-pure-chinese-chips-is-priced-at-1-100th-of-frontier-z-ai-founder-jie-tang" target="_blank" rel="noopener noreferrer">officechai.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>Tencent Open-Sources Hy4 Preview: 770B-Parameter MoE With 1M Context</h2>
+      <p class="summary">Tencent&#x27;s Hunyuan team released and open-sourced Hy4 preview on Aug 28: 770B total parameters with 49B active per token, a context window exceeding 1M tokens, and weights on Hugging Face (1.56TB). In Tencent&#x27;s blind internal eval with 163 experts across 203 engineering tasks, it scored 2.99 average vs 2.92 for GLM-5.3 and 2.94 for Kimi K3. API pricing is $0.834/M input and $2.501/M output, and Tencent says the model participated in a &quot;recursive self-improvement loop&quot; that raised end-to-end inference throughput 31.8% over baseline.</p>
+      <div class="sources">
+      <a href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" target="_blank" rel="noopener noreferrer">tencent.com</a>
+      <a href="https://simonwillison.net/2026/Aug/29/hy4/" target="_blank" rel="noopener noreferrer">simonwillison.net</a>
+      <a href="https://www.mindstudio.ai/blog/tencent-hy4-preview-open-weight-model" target="_blank" rel="noopener noreferrer">mindstudio.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>OpenAI&#x27;s Jalapeño Inference Chip Posts Up to 1.9x Throughput-per-Watt Against Nvidia Blackwell</h2>
+      <p class="summary">OpenAI published the first public benchmarks for Jalapeño, its Broadcom-co-designed inference ASIC, tested with SemiAnalysis&#x27; InferenceX on GPT-OSS 120B, DeepSeek R1 670B and Kimi K2.5 1T. The 700W part hit up to 1.9x throughput per kilowatt and 3.6x lower latency than Blackwell-based GB300 systems, widening to 2.1-4.1x faster responses on interactive workloads - though caveats note Blackwell&#x27;s results lag a memory generation and a like-for-like Rubin comparison has not been run. Deployment in OpenAI&#x27;s own infrastructure begins by end of year, with Omdia projecting custom ASICs exceeding GPU volumes by 2028.</p>
+      <div class="sources">
+      <a href="https://forbes.com/sites/jonmarkman/2026/08/27/openai-publishes-first-jalapeo-benchmarks-against-nvidia-blackwell" target="_blank" rel="noopener noreferrer">forbes.com</a>
+      <a href="https://www.cnbc.com/2026/08/26/openai-jalapeno-ai-chip-nvidia.html" target="_blank" rel="noopener noreferrer">cnbc.com</a>
+      <a href="https://arynews.tv/openai-jalapeno-chip-outperforms-nvidia-in-new-benchmark-tests" target="_blank" rel="noopener noreferrer">arynews.tv</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>OpenAI Cuts Cursor Access, Anthropic Pounces With Higher Claude Limits</h2>
+      <p class="summary">OpenAI will terminate Cursor&#x27;s direct model access on Nov 12 following SpaceX&#x27;s $60B acquisition of the coding startup, citing contract distrust; Cursor CEO Michael Truell downplayed it, saying OpenAI models serve only about 5% of user traffic. Anthropic co-founder Tom Brown immediately pledged increased compute for Claude in Cursor, where Anthropic has been a partner since Sonnet 3.5. The episode turns model distribution into a competitive weapon and underscores the platform risk of building on a competitor&#x27;s closed models.</p>
+      <div class="sources">
+      <a href="https://cnbc.com/2026/08/29/openai-cursor-spacex-model-access.html" target="_blank" rel="noopener noreferrer">cnbc.com</a>
+      <a href="https://digitaltrends.com/computing/stung-by-openai-pulling-gpt-models-from-cursor-anthropic-offers-a-timely-lifeline-with-higher-claude-limits" target="_blank" rel="noopener noreferrer">digitaltrends.com</a>
+      <a href="https://wccftech.com/anthropic-pounces-as-openai-abandons-spacexs-cursor-vowing-to-increase-claude-compute-even-as-openai-cites-contract-distrust/" target="_blank" rel="noopener noreferrer">wccftech.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>Google DeepMind Runs First Double-Blind Frontier Model Evaluation</h2>
+      <p class="summary">DeepMind piloted the world&#x27;s first double-blind evaluation of a proprietary frontier model, testing Gemini 2.5 Flash Lite inside a hardware-encrypted confidential-computing enclave with Singapore&#x27;s AISI, OpenMined, MLCommons and AVERI: the evaluator never sees model weights, Google never sees the benchmark prompts, and neither side can cheat. The pilot targets benchmark contamination, which research suggests inflates scores in roughly half of tested models. It is a template for independent safety and capability evaluations that do not force either side to surrender confidential data.</p>
+      <div class="sources">
+      <a href="https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations" target="_blank" rel="noopener noreferrer">deepmind.google</a>
+      <a href="https://thenewstack.io/google-double-blind-evaluation" target="_blank" rel="noopener noreferrer">thenewstack.io</a>
+      <a href="https://www.techtimes.com/articles/325882/20260828/google-deepmind-ran-historys-first-ai-benchmark-evaluation-where-neither-side-could-cheat.htm" target="_blank" rel="noopener noreferrer">techtimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>EU AI Act Enforcement Goes Live: AI Office Sends First RFIs to Model Providers</h2>
+      <p class="summary">On Aug 29, European Commission EVP Henna Virkkunen confirmed the AI Office has formally sent requests for information to a number of general-purpose AI model providers across different regions - the first enforcement step of the AI Act, which reached general application Aug 2 with Article 50 transparency duties (chatbot disclosure, synthetic-content marking) now live. Providers are legally obliged to respond; refusals can escalate to fines of up to 3% of global turnover. The move follows high-profile cybersecurity incidents at leading AI labs and targets security practices, with open-weight fine-tunes flagged as a compliance gray zone.</p>
+      <div class="sources">
+      <a href="https://euractiv.com/news/exclusive-eu-orders-leading-ai-labs-to-detail-security-practices" target="_blank" rel="noopener noreferrer">euractiv.com</a>
+      <a href="https://tokenstead.ai/guides/eu-ai-act-first-enforcement-security-rfis" target="_blank" rel="noopener noreferrer">tokenstead.ai</a>
+      <a href="https://valueaddvc.com/pulse/eu-ai-act-transparency-gpai-enforcement-2026" target="_blank" rel="noopener noreferrer">valueaddvc.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>First Confirmed Civilian Kill by Fully Autonomous AI Drone, Powered by $249 Nvidia Jetson Orin</h2>
+      <p class="summary">Forensic investigators told the NYT that a Russian Molniya drone using an Nvidia Jetson Orin module on a Chinese Leetop carrier board autonomously selected and killed three civilians in Zaporizhzhia on July 6 - the first documented combat death by a fully autonomous AI-guided drone. The drone flew with no antenna and no human in the loop; investigators could read the onboard targeting code, which classified a propane tank as the objective. Edge modules like Jetson Orin (from $249) fall outside US export controls and circulate on resale markets, exposing a gap in current policy.</p>
+      <div class="sources">
+      <a href="https://www.nytimes.com/2026/08/24/world/europe/russia-drones-autonomous-ai-kill-ukraine-war.html" target="_blank" rel="noopener noreferrer">nytimes.com</a>
+      <a href="https://tomshardware.com/tech-industry/drones/nvidia-jetson-orin-guided-the-russian-ai-drone-that-killed-three-civilians-in-ukraine-forensic-teams-say" target="_blank" rel="noopener noreferrer">tomshardware.com</a>
+      <a href="https://futurism.com/artificial-intelligence/russia-fully-ai-controlled-drones-kill-ukrainians" target="_blank" rel="noopener noreferrer">futurism.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">08</div>
+      <h2>DeepSeek Harness Nears 200K GitHub Stars as Ecosystem Tooling Floods In</h2>
+      <p class="summary">DeepSeek&#x27;s open-source &quot;dsh&quot; coding agent harness, released Aug 13 under MIT, hit 50K stars in 12 hours and stood at nearly 200,000 GitHub stars by Aug 27 - among the fastest climbs GitHub has recorded for a developer tool. The model-agnostic scaffold now has 90+ community plugins, and Aurora Mobile&#x27;s Modellix shipped a beta plugin connecting it to 28+ models via one API key, including a free route that auto-routes to current open-source LLMs. The takeaway getting repeated across the ecosystem: the harness around the model, not the model alone, is becoming the product.</p>
+      <div class="sources">
+      <a href="https://stocktitan.net/news/JG/aurora-mobile-s-modellix-releases-beta-plugin-for-deep-seek-harness-7r9dc5dge4er.html" target="_blank" rel="noopener noreferrer">stocktitan.net</a>
+      <a href="https://www.geeky-gadgets.com/deepseek-harness-open-source/" target="_blank" rel="noopener noreferrer">geeky-gadgets.com</a>
+      <a href="https://pub.towardsai.net/deepseek-harness-and-the-end-of-the-model-only-roadmap-badb4b38c302" target="_blank" rel="noopener noreferrer">pub.towardsai.net</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; August 31, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
