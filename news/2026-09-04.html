@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - September 4, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for September 4, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - September 4, 2026">
+  <meta property="og:description" content="Daily AI news brief for September 4, 2026. Nvidia acquires Hugging Face for $12.9 billion">
+  <meta property="og:url" content="https://techrot.tech/news/2026-09-04.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - September 4, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for September 4, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">September 4, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Nvidia acquires Hugging Face for $12.9 billion</h2>
+      <p class="summary">Nvidia will buy Hugging Face for $12.93 billion, its second-biggest acquisition ever, and says the platform will remain open for the entire AI ecosystem. Nvidia has contributed over 500 open models and 250 datasets to the hub since early 2025 and is also launching SAFE, an initiative for confidentially sharing AI incident data across companies.</p>
+      <div class="sources">
+      <a href="https://wired.com/story/nvidias-hugging-face-acquisition-is-a-dollar129-billion-bet-on-open-source-ai" target="_blank" rel="noopener noreferrer">wired.com</a>
+      <a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face" target="_blank" rel="noopener noreferrer">blogs.nvidia.com</a>
+      <a href="https://variety.com/2026/digital/news/nvidia-acquires-hugging-face-12-9-billion-1236850349" target="_blank" rel="noopener noreferrer">variety.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>Viral mystery model Ox Alpha revealed as GLM-5.3-Flash, MIT licensed</h2>
+      <p class="summary">Zhipu AI confirmed that Ox Alpha, the anonymous model topping agent leaderboards, was actually GLM-5.3-Flash: an open-weight, MIT-licensed system now live on Hugging Face that beats Claude Opus 4.8 on agent benchmarks at 1/42nd the API price. Independent evaluators place GLM-5.3-Flash at 57 on the Artificial Analysis Intelligence Index, near Gemini 3.8 Flash&#x27;s 59, at a fraction of the cost.</p>
+      <div class="sources">
+      <a href="https://startupfortune.com/chinas-glm-53-flash-just-beat-claude-opus-48-on-agent-benchmarks" target="_blank" rel="noopener noreferrer">startupfortune.com</a>
+      <a href="https://www.implicator.ai/gemini-3-8-flash-scores-59-behind-fable-and-sol/" target="_blank" rel="noopener noreferrer">implicator.ai</a>
+      <a href="https://techzine.eu/blogs/applications/144047/gpt-6-astra-openais-answer-to-fable-begins-rolling-out" target="_blank" rel="noopener noreferrer">techzine.eu</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>Institute of Foundation Models ships K2 Horizon: six fully open models, 0.9B to 375B parameters</h2>
+      <p class="summary">MBZUAI&#x27;s Institute of Foundation Models released K2 Horizon, calling it the largest fully open-source model launch in AI history. The fleet spans six models from 0.9B to 375B parameters (the 375B-A23B flagship targets enterprise deployments) and ships under Apache 2.0 with weights, code, training data and methodologies all published.</p>
+      <div class="sources">
+      <a href="https://prnewswire.com/news-releases/institute-of-foundation-models-launches-the-industrys-largest-fully-open-source-fleet-of-ai-models-complete-with-weights-code-training-data-and-methodologies-302868628.html" target="_blank" rel="noopener noreferrer">prnewswire.com</a>
+      <a href="https://cryptobriefing.com/k2-horizon-open-source-ai-models" target="_blank" rel="noopener noreferrer">cryptobriefing.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>OpenAI launches GPT-6 Astra and declares the AGI era</h2>
+      <p class="summary">OpenAI released GPT-6 Astra, calling it its most capable and most aligned model yet, with president Greg Brockman saying people may look back on this release as the moment AGI was created. Astra handles multistep agentic tasks, computer use, and independent discovery and exploitation of unknown security flaws, which is why rollout starts with vetted Daybreak enterprise users before Plus and Pro access. The launch follows an August pause after its cyber capabilities advanced faster than expected.</p>
+      <div class="sources">
+      <a href="https://theverge.com/ai-artificial-intelligence/989601/openai-gpt-6-astra-release" target="_blank" rel="noopener noreferrer">theverge.com</a>
+      <a href="https://venturebeat.com/technology/welcome-to-the-agi-era-openai-launches-gpt-6-astra" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://theguardian.com/technology/2026/sep/03/openai-artificial-general-intelligence-astra-release" target="_blank" rel="noopener noreferrer">theguardian.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>Astra&#x27;s 98.6% ARC-AGI-3 score comes with an asterisk</h2>
+      <p class="summary">OpenAI says GPT-6 Astra scored 98.6% on ARC-AGI-3, up from 7.8% six months ago, plus 97.6% on FrontierMath Tier 4. But the ARC Prize team and independent analysts note the figure bundles the model with OpenAI&#x27;s agent scaffolding, test settings are undisclosed, and the GDPval economic-tasks benchmark was omitted, so the AGI claim remains contested.</p>
+      <div class="sources">
+      <a href="https://thenewstack.io/astra-arc-agi-benchmark" target="_blank" rel="noopener noreferrer">thenewstack.io</a>
+      <a href="https://arcprize.org/blog/astra" target="_blank" rel="noopener noreferrer">arcprize.org</a>
+      <a href="https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra" target="_blank" rel="noopener noreferrer">artificialanalysis.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>US urges G20 to keep AI regulation hands-off</h2>
+      <p class="summary">At the G20 tech meeting in North Carolina, US officials including Michael Kratsios pushed the Carolina Principles, asking countries to avoid entirely new AI regulatory structures and write rules only for novel situations, and China signed on. The stance puts Washington against EU-style regulation and lands as a UN panel warns AI development is outpacing policy, days after rogue agent incidents including a Hugging Face intrusion.</p>
+      <div class="sources">
+      <a href="https://indianexpress.com/article/technology/artificial-intelligence/us-urges-g20-to-adopt-lighter-ai-regulation-10859621/" target="_blank" rel="noopener noreferrer">indianexpress.com</a>
+      <a href="https://thenextweb.com/news/us-g20-hands-off-ai-regulation" target="_blank" rel="noopener noreferrer">thenextweb.com</a>
+      <a href="https://www.business-standard.com/technology/tech-news/us-call-for-hands-off-approach-to-ai-regulation-at-g20-tech-meeting-126090200384_1.html" target="_blank" rel="noopener noreferrer">business-standard.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>Broadcom raises AI chip forecast to $115 billion for fiscal 2027</h2>
+      <p class="summary">Broadcom&#x27;s AI chip revenue hit $16.7 billion in its latest quarter, up 221% year over year, and the company now expects $115 billion for fiscal 2027, nearly doubling to $230 billion in fiscal 2028. It cites visibility into deployments including more than 10 gigawatts for Anthropic, over 5 GW for OpenAI and 3 GW for Meta.</p>
+      <div class="sources">
+      <a href="https://infotechlead.com/networking/broadcom-raises-ai-chip-revenue-forecast-to-115-billion-for-2027-as-meta-openai-and-anthropic-expand-ai-infrastructure-98147" target="_blank" rel="noopener noreferrer">infotechlead.com</a>
+      <a href="https://www.techtimes.com/articles/326405/20260903/broadcom-custom-ai-chip-revenue-surges-221-167b-q4-guidance-disappoints.htm" target="_blank" rel="noopener noreferrer">techtimes.com</a>
+      <a href="https://enterpriseai.economictimes.indiatimes.com/news/industry/broadcom-raises-ai-chip-outlook-as-big-tech-ramps-up-infrastructure-spending/133727548" target="_blank" rel="noopener noreferrer">enterpriseai.economictimes.indiatimes...</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; September 4, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
