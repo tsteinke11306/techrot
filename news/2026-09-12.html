@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - September 12, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for September 12, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - September 12, 2026">
+  <meta property="og:description" content="Daily AI news brief for September 12, 2026. DeepSeek V4.1-Flash undercuts the frontier: top open-weights challenger at $0.003/1M tokens">
+  <meta property="og:url" content="https://techrot.tech/news/2026-09-12.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - September 12, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for September 12, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">September 12, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>DeepSeek V4.1-Flash undercuts the frontier: top open-weights challenger at $0.003/1M tokens</h2>
+      <p class="summary">DeepSeek released V4.1-Flash, an open-weights model with native vision support that posts an 88.1 score on the CyberGym security benchmark, ahead of GPT-5.6 Sol and GLM 5.3 (both 84.5), while undercutting frontier API pricing with a $0.003 per 1M off-peak cached-input rate. Third-party tests found it matches or beats GPT-6 Astra and Claude Fable 5.1 on several coding, vision, and tool tasks at a fraction of the cost.</p>
+      <div class="sources">
+      <a href="https://venturebeat.com/technology/deepseek-v4-1-flash-debuts-with-0-003-1m-off-peak-cached-input-rate-and-benchmarks-eclipsing-gpt-5-6-sol-claude-opus-5" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://officechai.com/ai/deepseek-v4-1-flash-benchmarks-pricing/" target="_blank" rel="noopener noreferrer">officechai.com</a>
+      <a href="https://kingy.ai/blog/deepseek-v4-1-flash-vs-gpt-6-claude-test/" target="_blank" rel="noopener noreferrer">kingy.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>GLM-5.3 and Kimi K3 lead open-weights, now just 9 points behind GPT-6 and Claude</h2>
+      <p class="summary">GLM-5.3 and Kimi K3 share the open-weights lead at 44 on the Artificial Analysis Intelligence Index, closing to 9 points behind frontier closed models GPT-6 Astra and Claude Fable 5.1 (both 53). GLM-5.3-Flash is also listed as a cost-efficiency frontier model at score 42.</p>
+      <div class="sources">
+      <a href="https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-3" target="_blank" rel="noopener noreferrer">artificialanalysis.ai</a>
+      <a href="https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra" target="_blank" rel="noopener noreferrer">artificialanalysis.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>Abacus.AI launches Smaug line of open-weight enterprise agent models</h2>
+      <p class="summary">Abacus.AI released Smaug Agentic, Smaug Flash, and Smaug Mini: open-weight models built on open-source bases and tuned for long-running, self-improving enterprise agent loops, priced at 10-100x lower than frontier models from Anthropic and OpenAI.</p>
+      <div class="sources">
+      <a href="https://aithority.com/machine-learning/abacus-ai-launches-the-smaug-line-of-open-weight-models-optimized-for-enterprise-agentic-ai-use-cases" target="_blank" rel="noopener noreferrer">aithority.com</a>
+      <a href="https://interconnects.ai/p/open-source-ai-reading-list" target="_blank" rel="noopener noreferrer">interconnects.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>NASA and IBM open-source a lunar foundation model on Hugging Face</h2>
+      <p class="summary">IBM and NASA released the NASA-IBM Lunar Foundation Model, a free downloadable model on Hugging Face that predicts buried ice in the Moon&#x27;s permanently shadowed polar craters with 22% less error than the best dedicated algorithm, one of the first AI systems built specifically for lunar science.</p>
+      <div class="sources">
+      <a href="https://www.techtimes.com/articles/327302/20260911/nasa-ibm-open-source-lunar-ai-that-pinpoints-moon-ice-22-more-accurately.htm" target="_blank" rel="noopener noreferrer">techtimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>OY Labs claims perfect 100% ARC-AGI-3 score, open-sources the benchmark implementation</h2>
+      <p class="summary">AI research company OY Labs announced its OY1-AGI model scored a perfect 100.0% on the public ARC-AGI-3 benchmark, winning all 25 games and solving all 183 levels using GPT-6 Astra as a base. The company open-sourced the full benchmark implementation under Apache 2.0, including evaluated source, reproduction instructions, and results docs.</p>
+      <div class="sources">
+      <a href="https://globenewswire.com/news-release/2026/09/11/3360090/0/en/oy-labs-achieves-a-leading-arc-agi-3-public-score-in-its-mission-to-build-the-world-s-smartest-ai.html" target="_blank" rel="noopener noreferrer">globenewswire.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>Anthropic researcher&#x27;s exit sparks D.C. regulation push; Senate weighs making frontier-AI safety a legal duty</h2>
+      <p class="summary">Jacob Coxon, who quit Anthropic warning of a &quot;mini Manhattan project&quot; and looming disaster, triggered bipartisan congressional calls for AI regulation, with Sens. Ruben Gallego pushing a bipartisan AI select committee. Senate negotiators are weighing a bill that would legally require frontier-model developers to guard against catastrophic harms, and OpenAI&#x27;s Chris Lehane called for &quot;mandatory, capability-based national regulation.&quot;</p>
+      <div class="sources">
+      <a href="https://wired.com/story/anthropic-researcher-quits-jacob-coxon-ai-fears-humanity" target="_blank" rel="noopener noreferrer">wired.com</a>
+      <a href="https://qz.com/congress-ai-regulation-anthropic-researcher-extinction-warning-091126" target="_blank" rel="noopener noreferrer">qz.com</a>
+      <a href="https://cryptopolitan.com/senate-bill-frontier-ai-safety-legal-pledge" target="_blank" rel="noopener noreferrer">cryptopolitan.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>Newsom signs industry-endorsed AI regulation bills into law in California</h2>
+      <p class="summary">California Gov. Gavin Newsom signed a pair of AI regulation bills backed by both OpenAI and Anthropic, saying recent incidents &quot;reinforce what California has long recognized&quot; about AI risks. OpenAI Chief of Public Affairs Chris Lehane: &quot;We&#x27;ve reached a new chapter in AI capabilities, and that demands a new chapter for AI policy.&quot;</p>
+      <div class="sources">
+      <a href="https://gizmodo.com/newsom-signs-ai-industry-approved-ai-regulation-bills-into-law-in-california-2000809702" target="_blank" rel="noopener noreferrer">gizmodo.com</a>
+      <a href="https://mycolumbusmagic.com/3923041/gavin-newsom-signs-ai-regulation-bills/" target="_blank" rel="noopener noreferrer">mycolumbusmagic.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">08</div>
+      <h2>NSA, FBI, CISA advisory: six Chinese firms accused of siphoning billions of tokens from US models</h2>
+      <p class="summary">A joint NSA, FBI, and CISA advisory names six Chinese firms accused of harvesting billions of tokens from US models since 2024 to train rivals, converting a private complaint from US AI labs into an official government warning.</p>
+      <div class="sources">
+      <a href="https://thestreet.com/technology/us-intelligence-chinese-ai-data-theft" target="_blank" rel="noopener noreferrer">thestreet.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">09</div>
+      <h2>Qualcomm and Amazon sign up to $60B AI chip deal for AWS data centers</h2>
+      <p class="summary">Qualcomm and Amazon signed a deal worth up to $60 billion over 10 years to co-develop custom AI inference chips and 1.6 Tbps optical interconnects for AWS data centers; Qualcomm stock jumped 9% on the news.</p>
+      <div class="sources">
+      <a href="https://byteiota.com/qualcomm-and-aws-sign-60b-ai-chip-deal-inference-impact/" target="_blank" rel="noopener noreferrer">byteiota.com</a>
+      <a href="https://cnbc.com/2026/09/08/qualcomm-amazon-data-center-infrastructure-deal.html" target="_blank" rel="noopener noreferrer">cnbc.com</a>
+      <a href="https://hothardware.com/news/qualcomm-strikes-deal-amazon-custom-ai-data-center-chips" target="_blank" rel="noopener noreferrer">hothardware.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">10</div>
+      <h2>TSMC plans to double CoWoS advanced packaging capacity by 2028</h2>
+      <p class="summary">TSMC reportedly plans to double CoWoS advanced packaging capacity by 2028 as AI accelerator demand keeps rising, expanding capacity at its AP7 operations in Taiwan and its Arizona manufacturing campus.</p>
+      <div class="sources">
+      <a href="https://www.digitalcitizen.life/tsmc-reportedly-plans-to-double-cowos-capacity-by-2028-as-ai-packaging-demand-keeps-rising/" target="_blank" rel="noopener noreferrer">digitalcitizen.life</a>
+      <a href="https://semafor.com/article/09/08/2026/global-ai-infrastructure-spending-could-top-31t-pwc-estimates" target="_blank" rel="noopener noreferrer">semafor.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; September 12, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
