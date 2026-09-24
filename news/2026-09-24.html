@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - September 24, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for September 24, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - September 24, 2026">
+  <meta property="og:description" content="Daily AI news brief for September 24, 2026. Xiaomi&#x27;s MiMo-V2.6-Pro takes the open-weights crown">
+  <meta property="og:url" content="https://techrot.tech/news/2026-09-24.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - September 24, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for September 24, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">September 24, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Xiaomi&#x27;s MiMo-V2.6-Pro takes the open-weights crown</h2>
+      <p class="summary">Xiaomi open-sourced its MiMo-V2.6 series on Sept 22, and the flagship Pro model (1.02T total parameters, 42B active) scores 46 on the Artificial Analysis Intelligence Index, the highest open-weights result ever recorded, at $0.13 per benchmark task. The Pro RL training run cost an estimated $2.6M, and Xiaomi also released 7,000+ RL training environments under the MIT license.</p>
+      <div class="sources">
+      <a href="https://venturebeat.com/technology/better-than-deepseek-xiaomis-mimo-v2-6-pro-debuts-as-the-top-open-weights-model-in-the-world-alongside-cheaper-v2-6-flash" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://www.latent.space/p/ainews-xiaomi-mimo-v26-pro-1t-a42b" target="_blank" rel="noopener noreferrer">latent.space</a>
+      <a href="https://www.unite.ai/xiaomis-new-flagship-model-leads-open-weight-rankings-with-a-score-of-46/" target="_blank" rel="noopener noreferrer">unite.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>Open-weight models cross 50% of production AI traffic for the first time</h2>
+      <p class="summary">Vercel AI Gateway data shows downloadable-weight models processed 56% of production tokens in August 2026 while capturing only 14% of estimated spending, with token prices down 23%. In December 2025 open models handled fewer than 1 in 10 tokens, so the shift to majority-open inference took under a year.</p>
+      <div class="sources">
+      <a href="https://techstrong.ai/articles/open-weight-ai-models-seize-token-lead-but-proprietary-systems-still-make-the-money" target="_blank" rel="noopener noreferrer">techstrong.ai</a>
+      <a href="https://comparethecloud.net/news/open-weight-models-run-the-majority-of-ai-gateway-traffic-for-the-first-time-as-token-prices-fall-23" target="_blank" rel="noopener noreferrer">comparethecloud.net</a>
+      <a href="https://tomtunguz.com/the-most-important-market-in-ai-is-the-middle" target="_blank" rel="noopener noreferrer">tomtunguz.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>Claude Opus 5.5 and GPT-6 Sol/Luna drop hours apart, cutting prices</h2>
+      <p class="summary">Anthropic and OpenAI shipped new models within hours of each other on Sept 22: Opus 5.5 takes the top spot on the Artificial Analysis Intelligence Index at 58 with a company-reported 66.4% on Terminal-Bench 4.0, priced at $4/M input and $20/M output after a 20% cut, while GPT-6 Sol and Luna slash API costs 50% or more, with Luna starting at $0.10 per million input tokens.</p>
+      <div class="sources">
+      <a href="https://artificialanalysis.ai/articles/claude-opus-5-5" target="_blank" rel="noopener noreferrer">artificialanalysis.ai</a>
+      <a href="https://venturebeat.com/technology/anthropic-releases-claude-opus-5-5-beating-fable-5-1-on-key-agentic-benchmarks-at-60-cheaper-api-price" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://venturebeat.com/technology/openai-releases-gpt-6-sol-and-luna-models-slashing-api-costs-50-or-more" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Moonshot&#x27;s Kimi K3, the largest open model ever at 2.8T parameters, lands on Amazon Bedrock</h2>
+      <p class="summary">AWS made Kimi K3 generally available on Bedrock with a 1M-token context, native vision input, and explicit prompt caching, a first for an open-weight model on the platform. It is being watched as the key test of whether open-weight models can generate real revenue through third-party clouds, and Kimi K3.1 is already teased in internal config code for release before October.</p>
+      <div class="sources">
+      <a href="https://aws.amazon.com/about-aws/whats-new/2026/09/moonshot-ai-kimi-k3-on-amazon-bedrock/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+      <a href="https://www.scmp.com/tech/tech-trends/article/3368274/moonshots-kimi-k3-lands-amazon-key-test-chinese-open-source-ai-revenue" target="_blank" rel="noopener noreferrer">scmp.com</a>
+      <a href="https://wccftech.com/kimi-k3-1-model-teased-within-moonshots-internal-code-snippet-and-expected-to-land-before-october-as-carnegie-finds-57-percent-of-top-global-ai-talent-now-originates-from-china" target="_blank" rel="noopener noreferrer">wccftech.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>Alibaba unveils Zhenwu V900 chip and teases a 10-trillion-parameter Qwen model</h2>
+      <p class="summary">T-Head&#x27;s Zhenwu V900 is being called China&#x27;s most powerful AI chip, backing a plan to scale global data-center capacity beyond 20GW by 2032, and Alibaba teased a next-gen Qwen model with up to 10 trillion parameters on top of the 2.4T Qwen3.8-Max. The company also plans to list its T-Head chip design unit.</p>
+      <div class="sources">
+      <a href="https://www.bloomberg.com/news/articles/2026-09-22/alibaba-unveils-ai-chip-to-drive-20gw-of-data-centers-by-2032" target="_blank" rel="noopener noreferrer">bloomberg.com</a>
+      <a href="https://technode.com/2026/09/22/t-head-unveils-zhenwu-v900-ai-chip-in-alibabas-push-to-expand-its-ai-infrastructure-stack/" target="_blank" rel="noopener noreferrer">technode.com</a>
+      <a href="https://caixinglobal.com/2026-09-22/alibaba-unveils-new-ai-chip-as-it-deepens-ai-infrastructure-push-102487686.html" target="_blank" rel="noopener noreferrer">caixinglobal.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>GLM-5.3-Flash: 320B parameters, 18B active, MIT license</h2>
+      <p class="summary">Z.ai&#x27;s GLM-5.3-Flash is the first natively multimodal model in the GLM-5 family, with 320B total parameters, 18B active, and a 1M-token context under an MIT license, delivering near-frontier coding and agentic performance at roughly a tenth of the usual cost. Open-weights coding models keep closing the gap: on Vals AI&#x27;s SWE-bench Verified, DeepSeek V4 Pro scores 96.4% and GLM-5.3 95.4% against 97.0% for Claude Opus 5.</p>
+      <div class="sources">
+      <a href="https://autoclaw.z.ai/blog/model/glm-5.3-flash" target="_blank" rel="noopener noreferrer">autoclaw.z.ai</a>
+      <a href="https://dev.to/shaam_ai/glm-53-flash-explained-the-320b-open-weight-model-with-an-18b-brain-and-a-1m-token-memory-2026-5cbl" target="_blank" rel="noopener noreferrer">dev.to</a>
+      <a href="https://www.morphllm.com/best-ai-model-for-coding" target="_blank" rel="noopener noreferrer">morphllm.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>Sanders bill would ban superintelligence development outright</h2>
+      <p class="summary">Sen. Bernie Sanders and Rep. Greg Casar introduced legislation that would permanently ban the development of AI superintelligence, create a federal AI department, and expose violators to criminal penalties, with Sanders proposing to treat frontier AI like nuclear weapons. The bill lands the same week US and Chinese officials laid out sharply opposed visions of AI regulation at the UN Security Council.</p>
+      <div class="sources">
+      <a href="https://theverge.com/ai-artificial-intelligence/999443/bernie-sanders-ai-superintelligence-ban-act" target="_blank" rel="noopener noreferrer">theverge.com</a>
+      <a href="https://foxbusiness.com/politics/employees-at-companies-back-bernie-sanders-bill-cracking-down-development" target="_blank" rel="noopener noreferrer">foxbusiness.com</a>
+      <a href="https://www.politico.com/news/2026/09/23/us-chinese-visions-for-ai-regulation-differ-sharply-at-un-meeting-01090906" target="_blank" rel="noopener noreferrer">politico.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; September 24, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
