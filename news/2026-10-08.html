@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - October 8, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for October 8, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - October 8, 2026">
+  <meta property="og:description" content="Daily AI news brief for October 8, 2026. Mistral launches Large 4, a trillion-parameter open-weight model, as Europe&#x27;s counter to US and Chinese labs">
+  <meta property="og:url" content="https://techrot.tech/news/2026-10-08.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - October 8, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for October 8, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">October 8, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Mistral launches Large 4, a trillion-parameter open-weight model, as Europe&#x27;s counter to US and Chinese labs</h2>
+      <p class="summary">Mistral released Mistral Large 4 (nicknamed Le Chonk) on October 6, its largest model ever at 1 trillion parameters and its first major release in about five months. It&#x27;s in public preview until October 27 with weights planned after safety testing, and Mistral says ML4 outperforms many rival open-weight models; in a blind coding eval with Surge AI it ranked second among five models behind Claude Opus 5.</p>
+      <div class="sources">
+      <a href="https://mlq.ai/news/mistral-launches-large-4-preview-a-1-trillion-parameter-ai-model" target="_blank" rel="noopener noreferrer">mlq.ai</a>
+      <a href="https://theaiinsider.tech/2026/10/07/mistral-ai-releases-trillion-parameter-mistral-large-4-as-europes-alternative-to-us-and-chinese-models" target="_blank" rel="noopener noreferrer">theaiinsider.tech</a>
+      <a href="https://govinfosecurity.com/mistral-touts-le-chonk-as-capable-european-sovereign-model-a-33032" target="_blank" rel="noopener noreferrer">govinfosecurity.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>AI-assisted dev yields open-source clones of Photoshop, Premiere, and Illustrator</h2>
+      <p class="summary">Engineer Brandon Thomas released seven open-source alternatives to Adobe Creative Cloud apps including Photoshop, Premiere, and Lightroom, built with AI-assisted development following similar AI-rebuilt game projects. This is a notable proof of what AI coding tools can do for full desktop application development.</p>
+      <div class="sources">
+      <a href="https://videocardz.com/newz/adobe-photoshop-premiere-and-illustrator-now-have-ai-built-open-source-clones" target="_blank" rel="noopener noreferrer">videocardz.com</a>
+      <a href="https://petapixel.com/2026/10/07/someone-rebuilt-free-open-source-versions-of-photoshop-premiere-and-lightroom-using-ai" target="_blank" rel="noopener noreferrer">petapixel.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>Windows ML Preview adds GGUF and llama.cpp support with native runtime APIs</h2>
+      <p class="summary">Microsoft&#x27;s Windows ML preview now supports GGUF, the llama.cpp model format that packs weights, tokenizer, and metadata into one portable file with aggressive quantization, plus native runtime APIs. Broader workloads, execution engines, and silicon coverage are promised as the APIs mature, a meaningful step for local inference on Windows.</p>
+      <div class="sources">
+      <a href="https://windowsforum.com/news/windows-ml-preview-adds-gguf-llama-cpp-support-and-native-runtime-apis.447615" target="_blank" rel="noopener noreferrer">windowsforum.com</a>
+      <a href="https://cnet.com/news-live/microsoft-windows-surface-event-october-2026-live" target="_blank" rel="noopener noreferrer">cnet.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Anthropic launches Claude Haiku 5.5 at 75% cheaper pricing, escalating the AI price war</h2>
+      <p class="summary">Anthropic released Claude Haiku 5.5, calling it its fastest and cheapest small model ever, roughly 75% cheaper to run than Haiku 4.5 and priced at about 1/20th of Sonnet 5.5. The company says it beats GPT-6 Luna across most benchmarks while improving coding and computer use over the previous Haiku.</p>
+      <div class="sources">
+      <a href="https://www.indiatoday.in/technology/news/story/anthropic-launches-claude-haiku-55-says-it-is-75-cheaper-than-previous-model-3012492-2026-10-08" target="_blank" rel="noopener noreferrer">indiatoday.in</a>
+      <a href="https://officechai.com/ai/claude-5-5-haiku-benchmarks/" target="_blank" rel="noopener noreferrer">officechai.com</a>
+      <a href="https://cybersecuritynews.com/claude-haiku-5-5" target="_blank" rel="noopener noreferrer">cybersecuritynews.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>OpenAI publishes 722 math manuscripts from a still-unreleased model, drawing mathematicians&#x27; concerns</h2>
+      <p class="summary">OpenAI released hundreds of new mathematical findings, including work on long-standing open problems, generated by an internal frontier model that remains unreleased and is still training. The papers went up on GitHub with citation guidelines, but mathematicians warn verification lags and that the models are inaccessible to the broader math community, reviving attribution and credit debates.</p>
+      <div class="sources">
+      <a href="https://theguardian.com/technology/2026/oct/07/openai-mathematical-findings-concerns" target="_blank" rel="noopener noreferrer">theguardian.com</a>
+      <a href="https://firstpost.com/tech/openais-unreleased-ai-model-solves-hundreds-of-long-standing-math-problems-14050977.html/amp" target="_blank" rel="noopener noreferrer">firstpost.com</a>
+      <a href="https://futuretweets.com/openai-722-math-manuscripts-unreleased-model-2026" target="_blank" rel="noopener noreferrer">futuretweets.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>AI coalition launches effort to pool idle compute and ease the supply crunch</h2>
+      <p class="summary">An industry coalition announced a national compute grid effort to pool computing power, arguing many data centers run well below capacity while startups and researchers scramble for scarce GPUs. AI infrastructure has become a multitrillion-dollar bet, and better utilization is one of the cheaper levers.</p>
+      <div class="sources">
+      <a href="https://axios.com/2026/10/07/national-compute-grid-ai-capacity" target="_blank" rel="noopener noreferrer">axios.com</a>
+      <a href="https://prnewswire.com/news-releases/ais-next-infrastructure-challenge-is-power-digitimes-examines-the-shift-toward-800vdc-data-centers-302899474.html" target="_blank" rel="noopener noreferrer">prnewswire.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>India to release AI regulation consultation paper next month, focused on safety and deepfakes</h2>
+      <p class="summary">IT Minister Ashwini Vaishnaw said India will publish an AI regulation consultation paper within a month, prioritizing safety, deepfake mitigation, and a human-first approach. It adds another major jurisdiction to the global rulemaking race alongside the EU, US, and China.</p>
+      <div class="sources">
+      <a href="https://timesofindia.indiatimes.com/business/india-business/ai-regulation-consultation-paper-next-month-says-it-minister-vaishnaw-focus-on-safety-deepfakes/articleshow/134785844.cms" target="_blank" rel="noopener noreferrer">timesofindia.indiatimes.com</a>
+      <a href="https://www.rediff.com/business/report/ai-regulations-consultation-paper-coming-soon-focus-on-safety/20261008.htm" target="_blank" rel="noopener noreferrer">rediff.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; October 8, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
