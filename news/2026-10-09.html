@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - October 9, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for October 9, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - October 9, 2026">
+  <meta property="og:description" content="Daily AI news brief for October 9, 2026. Mistral Large 4 &quot;Le Chonk&quot; Is Europe&#x27;s Biggest Open-Weight Bet Yet">
+  <meta property="og:url" content="https://techrot.tech/news/2026-10-09.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - October 9, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for October 9, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">October 9, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Mistral Large 4 &quot;Le Chonk&quot; Is Europe&#x27;s Biggest Open-Weight Bet Yet</h2>
+      <p class="summary">Mistral launched Large 4 as a public API preview: a 1.05T-parameter multimodal Mixture-of-Experts model with 49B active parameters and 1M context, nicknamed &quot;Le Chonk&quot;. Independent evaluator Artificial Analysis ranked it the best model outside the US and China, though Chinese open-weights still lead overall, and Mistral reports an 82% score on a reproduce-and-patch cyber test where it says Claude Opus 5.5 and GPT-6 Astra score near zero. Weights ship by October 27 under a still-unnamed license; DeepSWE puts it at 62% vs roughly 69% for GLM-5.3 and Kimi K3.</p>
+      <div class="sources">
+      <a href="https://venturebeat.com/technology/mistral-debuts-large-4-le-chonk-a-1-trillion-parameter-text-output-model-with-high-benchmarks-planned-for-open-weights-release" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://tomshardware.com/tech-industry/artificial-intelligence/independent-tests-rank-mistrals-new-trillion-parameter-large-4-the-best-ai-model-outside-the-u-s-and-china-but-chinese-open-weights-still-overcome-europes-best-efforts" target="_blank" rel="noopener noreferrer">tomshardware.com</a>
+      <a href="https://byteiota.com/mistral-large-4-open-weight-model-2026" target="_blank" rel="noopener noreferrer">byteiota.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>Nvidia-Backed Reflection AI Ships Beam: 501B Open-Weight Params, Apache 2.0</h2>
+      <p class="summary">Reflection AI, founded by ex-DeepMind researchers and valued at $25B, unveiled Beam, its first open-weight model: a 501B-parameter MoE with 23B active, 1M context, and Apache 2.0-licensed weights, pitched as the West&#x27;s answer to Chinese open models with a claim of 3-4x less compute than rivals. Full weights release is promised later this October, with the launch backed by roughly $4.7B raised and a reported $6.3B SpaceX GB300 compute deal.</p>
+      <div class="sources">
+      <a href="https://siliconangle.com/2026/10/05/reflection-ai-debuts-open-source-beam-model-with-501b-parameters/" target="_blank" rel="noopener noreferrer">siliconangle.com</a>
+      <a href="https://www.marktechpost.com/2026/10/05/reflection-ai-introduces-beam-a-501b-open-weight-moe-model-with-23b-active-parameters-for-coding-and-agentic-workloads/" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+      <a href="https://www.nytimes.com/2026/10/06/business/dealbook/anthropic-reflection-open-weight-ai.html" target="_blank" rel="noopener noreferrer">nytimes.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>Solo Dev Ships Open-Source Rust Clones of Adobe&#x27;s Suite</h2>
+      <p class="summary">A solo developer rebuilt Photoshop, Illustrator, and Premiere as open-source Rust apps with heavy AI assistance and released all seven apps free, targeting 100% Adobe parity within a month. The suite is alpha quality but scriptable via MCP, and the release reignited the debate over Adobe subscription pricing and AI-assisted codegen.</p>
+      <div class="sources">
+      <a href="https://tomshardware.com/software/video-editing-graphic-design/solo-developer-rebuilds-adobe-creative-suite-in-rust-using-claude-releases-it-free-to-all-targets-100-percent-parity-in-one-month-despite-piracy-claims-and-safety-warnings" target="_blank" rel="noopener noreferrer">tomshardware.com</a>
+      <a href="https://videocardz.com/newz/adobe-photoshop-premiere-and-illustrator-now-have-ai-built-open-source-clones" target="_blank" rel="noopener noreferrer">videocardz.com</a>
+      <a href="https://hothardware.com/news/dev-uses-ai-to-build-clones-of-photoshop-and-entire-adobe-suite-for-free" target="_blank" rel="noopener noreferrer">hothardware.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Anthropic Cuts Small-Model Pricing: Claude Haiku 5.5 at $0.10/M Input Tokens</h2>
+      <p class="summary">Anthropic launched Claude Haiku 5.5, cutting small-model API pricing by up to 90% to $0.10/$0.50 per million input/output tokens, matching GPT-6 Luna&#x27;s rate card. Artificial Analysis scores it 43, just behind Kimi K3 and ahead of GPT-6 Luna; Terminal-Bench 4.0 jumps to 33% from Haiku 4.5&#x27;s 0%, level with GLM-5.3 Flash. Vals reports a 1M context window with 128K max output.</p>
+      <div class="sources">
+      <a href="https://officechai.com/ai/claude-5-5-haiku-benchmarks/" target="_blank" rel="noopener noreferrer">officechai.com</a>
+      <a href="https://officechai.com/ai/claude-haiku-5-5-scores-43-on-artificial-analysis-index-just-behind-kimi-k3-while-ahead-of-gpt-6-luna" target="_blank" rel="noopener noreferrer">officechai.com</a>
+      <a href="https://technology.org/2026/10/08/claude-haiku-5-5-anthropic-price-benchmarks" target="_blank" rel="noopener noreferrer">technology.org</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>Manus Raises $500M+ After Beijing Forced Meta Out</h2>
+      <p class="summary">Butterfly Effect, parent of AI agent startup Manus, raised over $500M from Boyu Capital, IDG Capital, and Tencent after Beijing blocked Meta&#x27;s roughly $2B acquisition. The agent startup reportedly has $100M+ revenue and is resuming independent operations. Separately, DeepSeek is reportedly considering expanding its round to up to $14.9B with state-backed funds.</p>
+      <div class="sources">
+      <a href="https://techcrunch.com/2026/10/08/chinas-manus-raises-over-500m-in-first-funding-round-since-split-with-meta" target="_blank" rel="noopener noreferrer">techcrunch.com</a>
+      <a href="https://www.cnbc.com/2026/10/08/manus-fund-raise-meta-muse-tencent.html" target="_blank" rel="noopener noreferrer">cnbc.com</a>
+      <a href="https://decrypt.co/380546/maus-ai-startup-raises-500m-meta-acquisition-china" target="_blank" rel="noopener noreferrer">decrypt.co</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>California Signs Nearly 30 AI Bills as State AGs Race In</h2>
+      <p class="summary">Governor Newsom signed nearly 30 AI-related bills in California, positioning the state at the center of US AI regulation while federal policy leans on voluntary pledges. State attorneys general from both parties are campaigning on AI enforcement, India pledged a draft AI regulation framework within 30 days, and a Reuters/Ipsos poll shows most voters want federal safeguards.</p>
+      <div class="sources">
+      <a href="https://www.thetechedvocate.org/californias-bold-ai-move-nearly-30-new-laws-reshape-techs-future/" target="_blank" rel="noopener noreferrer">thetechedvocate.org</a>
+      <a href="https://www.politico.com/news/2026/10/09/attorneys-general-ai-regulation-01112328" target="_blank" rel="noopener noreferrer">politico.com</a>
+      <a href="https://business-standard.com/technology/artificial-intelligence/govt-to-release-draft-ai-regulation-paper-within-30-days-ashwini-vaishnaw-126100801183_1.html" target="_blank" rel="noopener noreferrer">business-standard.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>Samsung Logs Record $80B Quarter, GlobalFoundries Inks $2B TSMC Deal</h2>
+      <p class="summary">The AI chip boom is printing record numbers: Samsung flagged a 783% jump in Q3 operating profit to a record $80.2B, and TSMC hit a quarterly sales record. GlobalFoundries separately announced a $2B agreement to make a key AI processor-to-memory link component for TSMC at its New York fab, while Wall Street is building a new financial system (loans, insurance, futures) around Nvidia GPUs.</p>
+      <div class="sources">
+      <a href="https://www.bbc.com/news/articles/c687z8127302o" target="_blank" rel="noopener noreferrer">bbc.com</a>
+      <a href="https://investing.com/news/stock-market-news/globalfoundries-to-make-key-ai-chip-component-for-tsmc-4939071" target="_blank" rel="noopener noreferrer">investing.com</a>
+      <a href="https://businessinsider.com/wall-street-wants-nvidia-gpus-to-be-next-asset-class-2026-10" target="_blank" rel="noopener noreferrer">businessinsider.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; October 9, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
