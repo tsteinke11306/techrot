@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - October 13, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for October 13, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - October 13, 2026">
+  <meta property="og:description" content="Daily AI news brief for October 13, 2026. Meta Launches Muse Wonder and Wonder Full, Claiming Frontier Parity With OpenAI and Anthropic">
+  <meta property="og:url" content="https://techrot.tech/news/2026-10-13.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - October 13, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for October 13, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">October 13, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Meta Launches Muse Wonder and Wonder Full, Claiming Frontier Parity With OpenAI and Anthropic</h2>
+      <p class="summary">Meta released its first frontier-class models Monday, built over 14 months under Alexandr Wang&#x27;s Superintelligence Labs, with the weaker Wonder available via Meta Model API at $4/$20 token pricing while Wonder Full is gated behind paid Muse subscription tiers of $20 to $100 per month. Meta announced no open-weights plans, despite still not shipping the weights it promised for Muse Spark, and Abacus.AI CEO Bindu Reddy countered that Muse Wonder is &quot;nowhere near Fable or Astra level.&quot;</p>
+      <div class="sources">
+      <a href="https://www.cnbc.com/2026/10/12/meta-muse-wonder-ai-model-agent.html" target="_blank" rel="noopener noreferrer">cnbc.com</a>
+      <a href="https://venturebeat.com/technology/metas-new-muse-wonder-and-muse-wonder-full-models-achieve-frontier-performance-but-only-the-weaker-one-is-available-via-api" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://cointelegraph.com/news/meta-launches-muse-wonder-ai-models-challenging-top-rivals" target="_blank" rel="noopener noreferrer">cointelegraph.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>Z.ai&#x27;s Open-Weight GLM-Legal Outscores GPT-6 Astra and Claude Fable 5 on Harvey LAB at 70x Cheaper</h2>
+      <p class="summary">Z.ai released GLM-Legal on October 12, an open-weight legal-domain model that posts 19.2% all-pass on Harvey&#x27;s open-source Legal Agent Benchmark (1,250 tasks, 24 practice areas, 75,000+ rubric criteria) versus 5.42% for GPT-6 Astra, at $0.15 per task instead of $10.55 for frontier APIs. The company&#x27;s launch chart omits six higher-ranked models led by Muse Spark 1.2 at 25.42%, but GLM-Legal still passes 92.5% of individual criteria while being fully open weight.</p>
+      <div class="sources">
+      <a href="https://marktechpost.com/2026/10/13/zai-glm-legal-harvey-lab-legal-ai-model" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+      <a href="https://byteiota.com/glm-legal-z-ai-open-weight-legal-ai-beats-frontier-models/" target="_blank" rel="noopener noreferrer">byteiota.com</a>
+      <a href="https://orcarouter.ai/blog/glm-legal-beta-release" target="_blank" rel="noopener noreferrer">orcarouter.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>Nvidia Reportedly in Talks to Buy or Back Reflection AI as Beam Open Weights Near Release</h2>
+      <p class="summary">Financial Times reporting describes early-stage talks for Nvidia to acquire or deepen its investment in Reflection AI, the startup behind Beam, a 501B-parameter open-weight model whose Apache 2.0 weights ship later this month. A deal would place Nvidia directly behind the West&#x27;s open-weights push, which also includes Mistral&#x27;s trillion-parameter Large 4 shipping its own weights October 27.</p>
+      <div class="sources">
+      <a href="https://www.tipranks.com/news/private-companies/nvidia-weighs-deeper-tie-up-with-reflection-ai-in-open-weight-model-push" target="_blank" rel="noopener noreferrer">tipranks.com</a>
+      <a href="https://saltindex.com/blog/nvidia-explores-reflection-ai-deal-after-beam-a-501b-parameter-open-weight-model" target="_blank" rel="noopener noreferrer">saltindex.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Ecosia Drops Mistral for Chinese Open-Weight Models as Open-Source Competition Intensifies</h2>
+      <p class="summary">Search engine Ecosia is parting ways with Mistral AI and switching to open-weight models, including Chinese ones like DeepSeek, citing the strength of open-source alternatives, even as Mistral prepares to openly release its Large 4 &quot;Le Chonk&quot; weights on October 27. A French industry analysis this week framed the new equilibrium: open models now trail proprietary AI by only about six months.</p>
+      <div class="sources">
+      <a href="https://www.heise.de/en/news/Adieu-Mistral-Ecosia-switches-to-Chinese-open-source-AI-models-11481432.html" target="_blank" rel="noopener noreferrer">heise.de</a>
+      <a href="https://itdaily.fr/nouvelles/logiciel/ecosia-relegue-mistral-au-second-plan/" target="_blank" rel="noopener noreferrer">itdaily.fr</a>
+      <a href="https://www.lexpress.fr/economie/high-tech/retour-de-mistral-succes-de-deepseek-les-modeles-ouverts-ont-six-mois-de-decalage-sur-les-ia-YF3JQIM2TZH27GTSJ5HBD5MEJQ/" target="_blank" rel="noopener noreferrer">lexpress.fr</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>Anthropic Warns Small AI Models Could Soon Self-Replicate Across Consumer IoT Devices</h2>
+      <p class="summary">Anthropic&#x27;s Frontier Red Team published research October 12 warning that small AI models may be months from self-replicating across cheap, poorly secured devices like Android TV boxes with no datacenter needed, forming autonomous, self-propagating worm botnets it describes as &quot;challenging&quot; to shut down. The report outlines mitigation measures to stop such propagation before the capability matures.</p>
+      <div class="sources">
+      <a href="https://anthropic.com/research/self-replicating-ai" target="_blank" rel="noopener noreferrer">anthropic.com</a>
+      <a href="https://theverge.com/ai-artificial-intelligence/1009658/anthropic-self-propagating-ai-slime-mold-botnets" target="_blank" rel="noopener noreferrer">theverge.com</a>
+      <a href="https://thenextweb.com/news/auto-anthropic-small-ai-models-self-replicate-iot-devices" target="_blank" rel="noopener noreferrer">thenextweb.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>UK Regains Pre-Release Access to US Frontier Models After White House Reversal</h2>
+      <p class="summary">The White House reversed a September decision that cut UK AI Security Institute researchers off from pre-release testing of unreleased Anthropic and OpenAI models, an intervention that had pushed Anthropic to restrict British officials&#x27; access to Claude Mythos 5.1. The reversal restores the voluntary arrangement under which AISI receives major new models before launch to assess capabilities and risks.</p>
+      <div class="sources">
+      <a href="https://techrepublic.com/article/news-uk-ai-model-access-white-house-reversal-emea" target="_blank" rel="noopener noreferrer">techrepublic.com</a>
+      <a href="https://gurufocus.com/news/9118742/us-government-lifts-ai-model-access-ban-for-uk-researchers" target="_blank" rel="noopener noreferrer">gurufocus.com</a>
+      <a href="https://cryptobriefing.com/uk-aisi-regains-pre-release-ai-model-access" target="_blank" rel="noopener noreferrer">cryptobriefing.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>Microsoft Unveils Maia 300 AI Chip, Plans to Run Copilot on Its Own Silicon by 2027</h2>
+      <p class="summary">Microsoft unveiled Maia 300, its biggest in-house silicon bet yet: the chip will handle most AI work behind Microsoft 365 Copilot and GitHub Copilot, does more AI work per watt than leading GPUs, and will begin rolling out in 2027 with reports of a million-chip deployment. Microsoft claims up to sevenfold rack-level throughput over Maia 200 as it works to cut Nvidia reliance.</p>
+      <div class="sources">
+      <a href="https://www.geekwire.com/2026/microsoft-makes-biggest-bet-yet-on-its-own-silicon-unveils-new-ai-chip-to-reduce-reliance-on-nvidia/" target="_blank" rel="noopener noreferrer">geekwire.com</a>
+      <a href="https://www.itpro.com/hardware/microsoft-weans-itself-off-nvidia-chips-with-home-grown-alternative" target="_blank" rel="noopener noreferrer">itpro.com</a>
+      <a href="https://memesita.com/microsoft-to-deploy-million-maia-300-ai-chips-starting-next-year" target="_blank" rel="noopener noreferrer">memesita.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; October 13, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
