@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Brief - October 17, 2026</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- OPEN GRAPH / SOCIAL META -->
+  <meta name="description" content="AI News Brief for October 17, 2026. Daily AI news, sourced from Brave News API.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="TechRot">
+  <meta property="og:title" content="AI News Brief - October 17, 2026">
+  <meta property="og:description" content="Daily AI news brief for October 17, 2026. Meta ships Muse Spark Open, its biggest open-weight model: 816B params spanning two Mac Studios">
+  <meta property="og:url" content="https://techrot.tech/news/2026-10-17.html">
+  <meta property="og:image" content="https://techrot.tech/techrot-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TECHROT_AI">
+  <meta name="twitter:creator" content="@TECHROT_AI">
+  <meta name="twitter:title" content="AI News Brief - October 17, 2026">
+  <meta name="twitter:description" content="Daily AI news brief for October 17, 2026.">
+  <meta name="twitter:image" content="https://techrot.tech/techrot-banner.png">
+
+  <!-- Fonts: Space Grotesk + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #050505;
+    --fg: #f5f5f5;
+    --fg-mid: #888888;
+    --fg-dim: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-bg-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --transition: all 0.3s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Background orbs for glassmorphism depth */
+  body::before {
+    content: '';
+    position: fixed; top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none; z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--fg); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  nav ul {
+    display: flex; gap: 32px; list-style: none;
+  }
+  nav ul a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  nav ul a:hover { color: var(--fg); }
+  nav ul a.active { color: var(--fg); }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    margin-top: 60px;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+  .article-header .date-stamp {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .article-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -1px; color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .article-header .subtitle {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 14px; color: var(--fg-mid);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .back-link:hover {
+    color: var(--fg); border-color: var(--glass-border-hover);
+    background: var(--glass-bg);
+  }
+
+  /* STORIES */
+  .stories {
+    max-width: 820px; margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .story {
+    margin-bottom: 28px;
+    padding: 28px 32px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: var(--transition);
+  }
+  .story:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+  }
+  .story:last-child { margin-bottom: 0; }
+  .story .story-num {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .story h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px; color: var(--fg); font-weight: 600;
+    letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.4;
+  }
+  .story .summary {
+    font-size: 15px; color: #aaaaaa; line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .story .sources {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+  }
+  .story .sources a {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 2px;
+    transition: var(--transition);
+    word-break: break-all;
+  }
+  .story .sources a:hover {
+    color: var(--fg); border-bottom-color: rgba(255,255,255,0.3);
+  }
+  .story .no-sources {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--fg-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 48px 40px 40px; text-align: center;
+  }
+  footer .links {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px;
+  }
+  footer .links a {
+    color: var(--fg-mid); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    transition: var(--transition);
+  }
+  footer .links a:hover { color: var(--fg); }
+  footer .gen-credit {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+    margin-bottom: 8px;
+  }
+  footer .copyright {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    font-size: 12px; color: var(--fg-dim);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav ul { display: none; }
+    .article-header { padding: 80px 20px 32px; }
+    .article-header h1 { font-size: 28px; }
+    .stories { padding: 32px 20px 60px; }
+    .story { padding: 24px 20px; }
+    .story h2 { font-size: 17px; }
+    .story .summary { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .article-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">TS</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#videos">Videos</a></li>
+      <li><a href="/news/" class="active">News</a></li>
+      <li><a href="/#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <div class="date-stamp">October 17, 2026</div>
+    <h1>AI News Brief</h1>
+    <div class="subtitle">Daily AI news, sourced from Brave News API</div>
+    <a href="/news/" class="back-link">&larr; All Briefs</a>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <div class="story">
+      <div class="story-num">01</div>
+      <h2>Meta ships Muse Spark Open, its biggest open-weight model: 816B params spanning two Mac Studios</h2>
+      <p class="summary">Meta released Muse Spark Open as an 816B-total, 42B-active open-weight model with a 1M-token context window, calling it the most capable US open-weight model to date. It scores 39 on the Artificial Analysis Intelligence Index, still below China&#x27;s leading open weights, and it runs locally on two paired Apple M5 Ultra Mac Studios via Apple&#x27;s MLX framework. The license allows commercial use for companies under a $20M revenue threshold.</p>
+      <div class="sources">
+      <a href="https://research.meta.ai/blog/muse-spark-open" target="_blank" rel="noopener noreferrer">research.meta.ai</a>
+      <a href="https://www.unite.ai/metas-816b-parameter-muse-spark-open-weights-are-now-public/" target="_blank" rel="noopener noreferrer">unite.ai</a>
+      <a href="https://venturebeat.com/technology/meta-unveils-muse-spark-open-the-new-top-u-s-open-weights-model-and-it-runs-on-two-paired-mac-desktops" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">02</div>
+      <h2>DeepSeek drops V4.1-Flash-1017 with MIT weights and a big Terminal-Bench jump</h2>
+      <p class="summary">DeepSeek released V4.1-Flash-1017 on its web app, app, API, and as open weights under an MIT license on Hugging Face, reporting faster task completion and shorter outputs than its predecessor. Terminal-Bench 4.0 rose from 31.2 to 42.3 and DeepSWE v1.1 hit 77.0, and the company also opened new Search and Fetch APIs at $0.75 per 1,000 calls.</p>
+      <div class="sources">
+      <a href="https://the-decoder.com/deepseek-v4-1-flash-1017-beats-larger-rivals-in-agentic-tasks-while-once-again-massively-cutting-per-task-costs/" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+      <a href="https://www.marktechpost.com/2026/10/17/deepseek-just-released-v4-1-flash-1017-scores-77-0-on-deepswe-opens-search-api/" target="_blank" rel="noopener noreferrer">marktechpost.com</a>
+      <a href="https://explainx.ai/blog/deepseek-v4-1-flash-1017-open-weights-mit-terminal-bench-4-42-benchmarks-pricing-2026" target="_blank" rel="noopener noreferrer">explainx.ai</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">03</div>
+      <h2>NVIDIA&#x27;s open Nemotron 3.5 Super VL targets always-on agents: 120B MoE, 5x faster task completion</h2>
+      <p class="summary">NVIDIA released Nemotron 3.5 Super VL, an open 120B-parameter mixture-of-experts model with 12B active per token, built for enterprise agents that read documents, charts, images, and video all day. NVIDIA claims up to 5x faster task completion than the next-best model in its class, and vendor-claimed benchmarks show wins over Claude Opus 5 and GPT-6.1 Sol on specialized tasks. Two compact edge models join it: Bolt 74B-A9B at 24GB and Bolt E4B at 4GB.</p>
+      <div class="sources">
+      <a href="https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/" target="_blank" rel="noopener noreferrer">blogs.nvidia.com</a>
+      <a href="https://venturebeat.com/technology/nvidias-new-open-nemotron-3-5-super-vl-with-post-training-beats-claude-opus-5-gpt-6-1-sol-on-specialized-task-benchmarks" target="_blank" rel="noopener noreferrer">venturebeat.com</a>
+      <a href="https://the-decoder.com/nvidias-nemotron-3-5-super-vl-is-an-open-model-built-to-run-enterprise-ai-agents-nonstop/" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">04</div>
+      <h2>Reflection AI opens Beam under Apache 2.0: a 501B-parameter MoE users can fully reuse</h2>
+      <p class="summary">Reflection AI published the weights of Beam, its first open-weight model, as a 501B-total, 23B-active mixture-of-experts trained on 23.8T tokens under a true Apache 2.0 license with no revenue caveats. Baseten brought the model to its platform, and AWS documented deployment via SageMaker JumpStart and HyperPod for agentic coding and long-horizon work.</p>
+      <div class="sources">
+      <a href="https://www.unite.ai/reflection-releases-beams-open-weights-under-apache-2-0-license/" target="_blank" rel="noopener noreferrer">unite.ai</a>
+      <a href="https://aws.amazon.com/blogs/machine-learning/introducing-reflection-beam-an-open-weight-model-for-agentic-coding-on-aws/" target="_blank" rel="noopener noreferrer">aws.amazon.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">05</div>
+      <h2>Liquid AI&#x27;s LFM2.5-24B-A2B runs 24B-param agents on your laptop with 2B active per token</h2>
+      <p class="summary">Liquid AI released LFM2.5-24B-A2B, its largest LFM2.5 model, as open weights built for multi-step agent tasks on laptops and PCs. Context grew from 32K to 131,072 tokens, the vocabulary doubled to 128K via an in-place tokenizer expansion for non-Latin scripts, and a Q4_K_M GGUF is 14.5GB. It beats Qwen3.6 on tool use but trails on SWE-Bench.</p>
+      <div class="sources">
+      <a href="https://x.com/liquidai/status/2110055807194931348" target="_blank" rel="noopener noreferrer">x.com</a>
+      <a href="https://www.mindstudio.ai/blog/liquidai-lfm2-5-24b-a2b-release" target="_blank" rel="noopener noreferrer">mindstudio.ai</a>
+      <a href="https://tech-insider.org/liquid-ai-lfm2-5-24b-a2b-launch-2026" target="_blank" rel="noopener noreferrer">tech-insider.org</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">06</div>
+      <h2>OpenAI launches GPT-6 Sol and Luna, the closed-model frontier open weights now chase</h2>
+      <p class="summary">OpenAI introduced GPT-6 Sol and Luna, pitching them as two models balancing frontier capability against cost for everyday work. The rollout gives everyone who uses ChatGPT access, with GPT-6 Sol powering paid Plus, Pro, Business, and Enterprise tiers and GPT-6 Luna serving the free tier&#x27;s more than 1.2 billion weekly users.</p>
+      <div class="sources">
+      <a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/" target="_blank" rel="noopener noreferrer">openai.com</a>
+      <a href="https://okdiario.com/techy/gpt-6-gratis-chatgpt-interfaz-inteligente-openai-20556130" target="_blank" rel="noopener noreferrer">okdiario.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-num">07</div>
+      <h2>China proposes export controls on 23 AI technologies, with an open-source fast lane</h2>
+      <p class="summary">China&#x27;s Ministry of Commerce and Ministry of Science and Technology proposed adding 23 AI technologies to the national export-control list in a draft covering 40 technologies overall, spanning large models, AI agents, model weights, chip designs, and computing clusters. Controls would restrict systems around 10^26 FLOPs or 2 trillion parameters, and a fast-track rule would still clear open-source releases for overseas access. Public comments run until November 15, 2026.</p>
+      <div class="sources">
+      <a href="https://bloomberg.com/news/articles/2026-10-16/china-proposes-export-controls-on-ai-models-chips-and-agents" target="_blank" rel="noopener noreferrer">bloomberg.com</a>
+      <a href="https://the-decoder.com/china-plans-to-tighten-export-controls-on-open-weight-models-and-23-key-ai-technologies" target="_blank" rel="noopener noreferrer">the-decoder.com</a>
+      <a href="https://thenextweb.com/news/china-ai-export-controls-draft" target="_blank" rel="noopener noreferrer">thenextweb.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="https://www.youtube.com/@TECHROT_AI">YouTube</a>
+      <a href="https://x.com/TECHROT_AI" target="_blank">Twitter / X</a>
+      <a href="/news/">News</a>
+    </div>
+    <div class="gen-credit">Generated by Hermes Agent &middot; @TECHROT_AI</div>
+    <div class="copyright">AI News Brief &middot; October 17, 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
